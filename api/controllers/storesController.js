@@ -171,6 +171,10 @@ puppeteer.use(proxyRouter)
 
     /* Launch Browser */
     puppeteer.use(require('puppeteer-extra-plugin-stealth')());
+
+    /*
+      Uses for Windows
+    */
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -182,12 +186,12 @@ puppeteer.use(proxyRouter)
     /*
       Uses for Linux
     */
-    // browser = await puppeteer.launch({
-    //   headless: data.isHeadless,
-    //   executablePath: '/usr/bin/google-chrome',
-    //   args: ["--no-sandbox", "--start-maximized"],
-    //   defaultViewport: null
-    // });
+    browser = await puppeteer.launch({
+      headless: data.isHeadless,
+      executablePath: '/usr/bin/google-chrome',
+      args: ["--no-sandbox", "--window-size=1200,800"],
+      defaultViewport: null
+    });
     
     //first tab
     var page = (await browser.pages())[0];
