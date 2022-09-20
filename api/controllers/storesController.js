@@ -189,7 +189,12 @@ puppeteer.use(proxyRouter)
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
-      args: ["--no-sandbox", "--window-size=1200,800"],
+      args: ["--no-sandbox",
+             "--window-size=1200,800",
+             "--disable-gpu",
+             "--disable-dev-shm-usage",
+             "--disable-setuid-sandbox"
+            ],
       defaultViewport: null
     });
     
