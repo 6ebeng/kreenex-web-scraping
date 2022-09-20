@@ -175,13 +175,13 @@ puppeteer.use(proxyRouter)
     /*
       Uses for Windows
     */
-    browser = await puppeteer.launch({
-      headless: data.isHeadless,
-      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
-	    userDataDir: 'C:/Users/Tishko/AppData/Local/Google/Chrome/User Data/Profile 3',
-      args: ["--no-sandbox", '--window-size=1200,800'],
-      defaultViewport: null
-    });
+    // browser = await puppeteer.launch({
+    //   headless: data.isHeadless,
+    //   executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+	  //   userDataDir: 'C:/Users/Tishko/AppData/Local/Google/Chrome/User Data/Profile 3',
+    //   args: ["--no-sandbox", '--window-size=1200,800'],
+    //   defaultViewport: null
+    // });
 
     /*
       Uses for Linux
