@@ -1,0 +1,48 @@
+{
+    "isHeadless": false,
+    "container": "div.product-description",
+    "notInStockSizes": {
+        "attribute": "",
+        "regex": "",
+        "groups": [],
+        "selector": "ul.picker-list > li.item.out-of-stock > div > button > span:first-child"
+      },
+    "inStockSizes": {
+        "attribute": "",
+        "regex": "",
+        "groups": [],
+        "selector": "ul.picker-list > li.item:not(.out-of-stock) > div > button > span:first-child"
+      },
+    "clickSize": "",
+    "title": {
+              "attribute": "",
+              "regex": "",
+              "groups": [],
+              "selector": "hm-product-name#js-product-name"
+            },
+    "category": {
+                "attribute": "",
+                "regex": "[\\S ]+ ([\\S ]+)",
+                "groups": [1],
+                "selector": "hm-product-name#js-product-name"
+              },
+    "price": {
+                "attribute": "",
+                "regex": "",
+                "groups": [],
+                "selector": "//hm-product-price[@id='product-price']/div/span[1]"
+              },
+    "color": {
+                "attribute": "",
+                "regex": "",
+                "groups": [],
+                "selector": "h3.product-input-label"
+              },
+    "images": {
+                "attribute": "src",
+                "regex": "",
+                "groups": [],
+                "selector": "figure.pdp-image > div > img"
+              }
+
+}

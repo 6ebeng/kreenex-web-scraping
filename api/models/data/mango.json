@@ -1,0 +1,48 @@
+{
+    "isHeadless": true,
+    "container": "div.product-detail-main",
+    "notInStockSizes": {
+        "attribute": "data-size",
+        "regex": "",
+        "groups": [],
+        "selector": "div.selector-list > .size-unavailable"
+      },
+    "inStockSizes": {
+        "attribute": "data-size",
+        "regex": "",
+        "groups": [],
+        "selector": "div.selector-list > .size-available "
+      },
+    "clickSize": "",
+    "title": {
+              "attribute": "",
+              "regex": "",
+              "groups": [],
+              "selector": "h1.product-name"
+            },
+    "category": {
+                "attribute": "",
+                "regex": "[\\S ]+ ([\\S ]+)",
+                "groups": [1],
+                "selector": "h1.product-name"
+              },
+    "price": {
+                "attribute": "",
+                "regex": "",
+                "groups": [],
+                "selector": "//div[@class='sticky-prices']/span/div[@data-testid='prices.wrapper']/span[last()]"
+              },
+    "color": {
+                "attribute": "",
+                "regex": "",
+                "groups": [],
+                "selector": "span[itemprop='color']"
+              },
+    "images": {
+                "attribute": "src",
+                "regex": "",
+                "groups": [],
+                "selector": "div.product-images > ul > li > div > img"
+              }
+
+}
