@@ -1,5 +1,5 @@
 {
-    "isHeadless": true,
+    "isHeadless": false,
     "container": "div.product-description",
     "notInStockSizes": {
         "attribute": "",

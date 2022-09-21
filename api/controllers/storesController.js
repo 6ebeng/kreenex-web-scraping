@@ -191,10 +191,11 @@ puppeteer.use(proxyRouter)
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
              "--window-size=1200,800",
+             "--disable-setuid-sandbox",
              "--disable-gpu",
-             "--disable-dev-shm-usage",
-             "--disable-setuid-sandbox"
+             "--disable-dev-shm-usage"
             ],
+       env: { DISPLAY: ":99"},
       defaultViewport: null
     });
     
