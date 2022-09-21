@@ -192,8 +192,8 @@ puppeteer.use(proxyRouter)
       // sudo apt-get install -y xvfb
       // sudo apt-get -y install xorg xvfb gtk2-engines-pixbuf
       // sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
-      // Xvfb -ac :99 -screen 0 1200x800x16 &
-      // export DISPLAY=:99
+    // Xvfb -ac :99 -screen 0 1200x800x16 &
+    // export DISPLAY=:99
 
 
     browser = await puppeteer.launch({
