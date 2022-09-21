@@ -213,7 +213,7 @@ puppeteer.use(proxyRouter)
       waitUntil: 'networkidle0',
       timeout: 0
     });
-    //await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
+    await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
