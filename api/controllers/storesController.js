@@ -200,12 +200,9 @@ puppeteer.use(proxyRouter)
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
-             "--window-size=1200,800",
-             "--disable-setuid-sandbox",
-             "--disable-gpu",
-             "--disable-dev-shm-usage"
+             "--window-size=1200,800"
             ],
-       env: { DISPLAY: ":99"},
+       env: { DISPLAY: ":10"},
       defaultViewport: null
     });
     
@@ -216,7 +213,7 @@ puppeteer.use(proxyRouter)
       waitUntil: 'networkidle0',
       timeout: 0
     });
-    await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
+    //await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
