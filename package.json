@@ -27,6 +27,7 @@
     "puppeteer": "^18.0.4",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1",
-    "scroll-to-bottomjs": "^1.1.0"
+    "scroll-to-bottomjs": "^1.1.0",
+    "xvfb": "^0.4.0"
   }
 }

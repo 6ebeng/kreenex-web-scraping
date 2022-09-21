@@ -183,9 +183,19 @@ puppeteer.use(proxyRouter)
     //   defaultViewport: null
     // });
 
+
+
     /*
       Uses for Linux
     */
+      // Uses for Virtual Display
+      // sudo apt-get install -y xvfb
+      // sudo apt-get -y install xorg xvfb gtk2-engines-pixbuf
+      // sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
+      // Xvfb -ac :99 -screen 0 1200x800x16 &
+      // export DISPLAY=:99
+
+
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
@@ -221,7 +231,7 @@ puppeteer.use(proxyRouter)
       let requiredSize = Size.toString();
       var NotInStockSizes = await elementSelector(page,data.notInStockSizes.selector,data.notInStockSizes.attribute || null,data.notInStockSizes.regex || null,data.notInStockSizes.groups || [],true)
       if (await NotInStockSizes.length > 0 && await NotInStockSizes.includes(requiredSize)) {
-        browser.close();
+        await browser.close();
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
@@ -234,7 +244,7 @@ puppeteer.use(proxyRouter)
       // InStock Sizes
       var InStockSizes = await elementSelector(page,data.inStockSizes.selector,data.inStockSizes.attribute || null,data.inStockSizes.regex || null,data.inStockSizes.groups || [],true)
       if (await InStockSizes.length > 0 && !await InStockSizes.includes(requiredSize)) {
-        browser.close();
+        await browser.close();
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
@@ -310,7 +320,7 @@ puppeteer.use(proxyRouter)
     });
   } catch (e) {
     console.log('err', e)
-    //browser.close();
+    await browser.close();
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
