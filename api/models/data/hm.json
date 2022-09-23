@@ -2,7 +2,21 @@
   "isHeadless": false,
   "waitUntill": "networkidle0",
   "blockResourceTypes": ["image","media","stylesheet"],
-  "blockUrls": [],
+  "blockUrls": [
+    "tags.tiqcdn.com",
+    "jdl.nmgplatform.com",
+    "idservice.hm.com",
+    "mjca-yijws.global.ssl.fastly.net",
+    "www2.hm.com/tr_tr/metrics/default/touchpoint.js",
+    "www2.hm.com/tr_tr/v1/promotionMarkers",
+    "www2.hm.com/tr_tr/pra/panel/product-detail-page",
+    "www2.hm.com/alive/user",
+    "www2.hm.com/tr_tr/v2/settings",
+    "www2.hm.com/tr_tr/pra/notification/click",
+    "www2.hm.com/tr_tr/productpage",
+    "lp2.hm.com",
+    "akstat.io"
+  ],
   "container": "div.product-description",
   "notInStockSizes": {
     "attribute": "",
