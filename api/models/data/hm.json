@@ -13,7 +13,8 @@
     "www2.hm.com/tr_tr/pra/panel/product-detail-page",
     "www2.hm.com/alive/user",
     "www2.hm.com/tr_tr/v2/settings",
-    "www2.hm.com/tr_tr/pra/notification/click"
+    "www2.hm.com/tr_tr/pra/notification/click",
+    "lp2.hm.com"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
