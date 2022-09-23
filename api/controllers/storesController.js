@@ -215,12 +215,7 @@ puppeteer.use(proxyRouter)
     //Block unnecessary resource types and urls
     await page.setRequestInterception(true);
     page.on('request', request => {
-      var resourceType
-      var url
-      for (let index = 0; index < data.blockResourceTypes.length; index++) {
-        if (request.resourceType() === data.blockResourceTypes[index]) resourceType = true
-      }
-      if (resourceType || url) request.abort(); else request.continue();
+      console.log(request.resourceType())
     });
 
 
