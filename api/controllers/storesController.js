@@ -212,8 +212,18 @@ puppeteer.use(proxyRouter)
     //first tab
     var page = (await browser.pages())[0];
 
+    //Block resource types
+    await page.setRequestInterception(true);
+    page.on('request', request => {
+      if (request.resourceType() === 'image' || request.resourceType() === 'media' || request.resourceType() === 'stylesheet') {
+        request.abort();
+      } else {
+        request.continue();
+      }
+    });
+
     await page.goto(req.body.Url, {
-      waitUntil: 'networkidle0',
+      waitUntil: 'domcontentloaded',
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
