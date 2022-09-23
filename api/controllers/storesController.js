@@ -223,7 +223,7 @@ puppeteer.use(proxyRouter)
     });
 
     await page.goto(req.body.Url, {
-      waitUntil: 'domcontentloaded',
+      waitUntil: 'networkidle0',
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
