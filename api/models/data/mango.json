@@ -1,7 +1,7 @@
 {
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
-  "blockResourceTypes": ["image","media","font","other","fetch"],
+  "blockResourceTypes": ["image","media","font","other"],
   "blockUrls": [
     "google",
     "cookielaw",
