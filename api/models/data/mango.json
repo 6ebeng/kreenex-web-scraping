@@ -1,6 +1,7 @@
 {
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
+  "blockResourceTypes": ["image","media"],
   "container": "div.product-detail-main",
   "notInStockSizes": {
     "attribute": "data-size",

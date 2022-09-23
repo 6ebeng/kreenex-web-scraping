@@ -215,11 +215,11 @@ puppeteer.use(proxyRouter)
     //Block resource types
     await page.setRequestInterception(true);
     page.on('request', request => {
-      if (request.resourceType() === 'image' || request.resourceType() === 'media') {
-        request.abort();
-      } else {
-        request.continue();
+      var resourceType
+      for (let index = 0; index < data.blockResourceTypes.length; index++) {
+        if (request.resourceType() === data.blockResourceTypes[index]) resourceType = data.blockResourceTypes[index]
       }
+      if (resourceType) request.abort(); else request.continue();
     });
 
     await page.goto(req.body.Url, {
