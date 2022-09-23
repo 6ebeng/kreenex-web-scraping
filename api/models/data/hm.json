@@ -1,12 +1,12 @@
 {
   "isHeadless": false,
   "waitUntill": "networkidle0",
-  "blockResourceTypes": ["image","media","stylesheet","font"],
+  "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
   "blockUrls": [
-    "tags.tiqcdn.com",
-    "jdl.nmgplatform.com",
+    "tiqcdn.com",
+    "nmgplatform.com",
     "idservice.hm.com",
-    "mjca-yijws.global.ssl.fastly.net",
+    "fastly.net",
     "akstat.io",
     "www2.hm.com/tr_tr/metrics/default/touchpoint.js",
     "www2.hm.com/tr_tr/v1/promotionMarkers",
