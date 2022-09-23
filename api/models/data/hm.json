@@ -1,7 +1,7 @@
 {
   "isHeadless": false,
   "waitUntill": "networkidle0",
-  "blockResourceTypes": ["image","media","stylesheet"],
+  "blockResourceTypes": ["image","media","stylesheet","xhr","font"],
   "blockUrls": [
     "tags.tiqcdn.com",
     "jdl.nmgplatform.com",
