@@ -216,6 +216,7 @@ puppeteer.use(proxyRouter)
     await page.setRequestInterception(true);
     page.on('request', request => {
       console.log(request.resourceType())
+      request.continue()
     });
 
 
