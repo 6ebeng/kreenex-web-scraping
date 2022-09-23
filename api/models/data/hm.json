@@ -1,6 +1,6 @@
 {
   "isHeadless": false,
-  "waitUntill": "domcontentloaded",
+  "waitUntill": "networkidle0",
   "blockResourceTypes": ["image","media","stylesheet"],
   "blockUrls": [],
   "container": "div.product-description",
