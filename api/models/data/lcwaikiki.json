@@ -1,48 +1,49 @@
 {
-    "isHeadless": true,
-    "container": "div.product-detail",
-    "notInStockSizes": {
-        "attribute": "size",
-        "regex": "",
-        "groups": [],
-        "selector": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a.disabledNotSelected"
-      },
-    "inStockSizes": {
-        "attribute": "size",
-        "regex": "",
-        "groups": [],
-        "selector": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a:not(.disabledNotSelected)"
-      },
-    "clickSize": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a[size='{{size}}']",
-    "title": {
-              "attribute": "",
-              "regex": "",
-              "groups": [],
-              "selector": "div#productInfo > div#rightInfoBar > div.info-panel:nth-child(1) > div.main-info-area > div.title-info > div > div.product-title"
-            },
-    "category": {
-                "attribute": "",
-                "regex": "[\\S ]+ ([\\S ]+)",
-                "groups": [1],
-                "selector": "//ul[contains(@class,'breadcrumb')]/li[@class='active']/text()"
-              },
-    "price": {
-                "attribute": "",
-                "regex": "",
-                "groups": [],
-                "selector": "//div[contains(@class,'price-area')]/div/div[last()]/*[contains(text(),'TL')]"
-              },
-    "color": {
-                "attribute": "alt",
-                "regex": "",
-                "groups": [],
-                "selector": "div#productInfo > div#rightInfoBar > div.info-panel:nth-child(3) > div.colors-panel > div.colors-area > a.color-option.active > div.color-box > div"
-              },
-    "images": {
-                "attribute": "data-large-img-url",
-                "regex": "",
-                "groups": [],
-                "selector": "div#productSliderPhotos > div.product-images-desktop > div > img"
-              }
+  "isHeadless": true,
+  "waitUntill": "domcontentloaded",
+  "container": "div.product-detail",
+  "notInStockSizes": {
+    "attribute": "size",
+    "regex": "",
+    "groups": [],
+    "selector": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a.disabledNotSelected"
+  },
+  "inStockSizes": {
+    "attribute": "size",
+    "regex": "",
+    "groups": [],
+    "selector": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a:not(.disabledNotSelected)"
+  },
+  "clickSize": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a[size='{{size}}']",
+  "title": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "div#productInfo > div#rightInfoBar > div.info-panel:nth-child(1) > div.main-info-area > div.title-info > div > div.product-title"
+  },
+  "category": {
+    "attribute": "",
+    "regex": "[\\S ]+ ([\\S ]+)",
+    "groups": [1],
+    "selector": "//ul[contains(@class,'breadcrumb')]/li[@class='active']/text()"
+  },
+  "price": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "//div[contains(@class,'price-area')]/div/div[last()]/*[contains(text(),'TL')]"
+  },
+  "color": {
+    "attribute": "alt",
+    "regex": "",
+    "groups": [],
+    "selector": "div#productInfo > div#rightInfoBar > div.info-panel:nth-child(3) > div.colors-panel > div.colors-area > a.color-option.active > div.color-box > div"
+  },
+  "images": {
+    "attribute": "data-large-img-url",
+    "regex": "",
+    "groups": [],
+    "selector": "div#productSliderPhotos > div.product-images-desktop > div > img"
+  }
 
 }

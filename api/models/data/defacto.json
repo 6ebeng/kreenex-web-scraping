@@ -1,48 +1,49 @@
 {
-    "isHeadless": true,
-    "container": "div.product-card__details",
-    "notInStockSizes": {
-        "attribute": "value",
-        "regex": "",
-        "groups": [],
-        "selector": "div.product-size-selector__buttons > button.product-no-stock"
-      },
-    "inStockSizes": {
-        "attribute": "value",
-        "regex": "",
-        "groups": [],
-        "selector": "div.product-size-selector__buttons > button:not(.product-no-stock)"
-      },
-    "clickSize": "div.product-size-selector__buttons > button:not(.product-no-stock)[value='{{size}}']",
-    "title": {
-              "attribute": "",
-              "regex": "",
-              "groups": [],
-              "selector": "h1.product-card__name"
-            },
-    "category": {
-                "attribute": "",
-                "regex": "[\\S ]+ ([\\S ]+)",
-                "groups": [1],
-                "selector": "h1.product-card__name"
-              },
-    "price": {
-                "attribute": "",
-                "regex": "",
-                "groups": [],
-                "selector": "//div[contains(@class,'product-card__details__left')]/div[contains(@class,'product-card__price-list')] /div[contains(@class,'product-card__price')][last()]"
-              },
-    "color": {
-                "attribute": "",
-                "regex": "(?<=Renk : ).+",
-                "groups": [],
-                "selector": "//div[@class='sideMenu__box']/ul/li[contains(.,'Renk')]"
-              },
-    "images": {
-                "attribute": "src",
-                "regex": "",
-                "groups": [],
-                "selector": "div.product-card__image-slider--container > div.swiper-wrapper > div.swiper-slide > div.swiper-item > img"
-              }
+  "isHeadless": true,
+  "waitUntill": "domcontentloaded",
+  "container": "div.product-card__details",
+  "notInStockSizes": {
+    "attribute": "value",
+    "regex": "",
+    "groups": [],
+    "selector": "div.product-size-selector__buttons > button.product-no-stock"
+  },
+  "inStockSizes": {
+    "attribute": "value",
+    "regex": "",
+    "groups": [],
+    "selector": "div.product-size-selector__buttons > button:not(.product-no-stock)"
+  },
+  "clickSize": "div.product-size-selector__buttons > button:not(.product-no-stock)[value='{{size}}']",
+  "title": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "h1.product-card__name"
+  },
+  "category": {
+    "attribute": "",
+    "regex": "[\\S ]+ ([\\S ]+)",
+    "groups": [1],
+    "selector": "h1.product-card__name"
+  },
+  "price": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "//div[contains(@class,'product-card__details__left')]/div[contains(@class,'product-card__price-list')] /div[contains(@class,'product-card__price')][last()]"
+  },
+  "color": {
+    "attribute": "",
+    "regex": "(?<=Renk : ).+",
+    "groups": [],
+    "selector": "//div[@class='sideMenu__box']/ul/li[contains(.,'Renk')]"
+  },
+  "images": {
+    "attribute": "src",
+    "regex": "",
+    "groups": [],
+    "selector": "div.product-card__image-slider--container > div.swiper-wrapper > div.swiper-slide > div.swiper-item > img"
+  }
 
 }

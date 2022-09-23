@@ -1,48 +1,49 @@
 {
-    "isHeadless": true,
-    "container": "div.product-info",
-    "notInStockSizes": {
-        "attribute": "data-value",
-        "regex": "",
-        "groups": [],
-        "selector": "div.variant__options > div.variant__option.-disabled"
-      },
-    "inStockSizes": {
-        "attribute": "data-value",
-        "regex": "",
-        "groups": [],
-        "selector": "div.variant__options > div.variant__option:not(.-disabled)"
-      },
-    "clickSize": "",
-    "title": {
-              "attribute": "",
-              "regex": "",
-              "groups": [],
-              "selector": "h1.product-info__header-title"
-            },
-    "category": {
-                "attribute": "",
-                "regex": "",
-                "groups": [],
-                "selector": "//div[contains(@class,'breadcrumb')]/a[last()]"
-              },
-    "price": {
-                "attribute": "",
-                "regex": "",
-                "groups": [],
-                "selector": "div.price > div.price__base > div.price__price"
-              },
-    "color": {
-                "attribute": "",
-                "regex": "(?<=Renk: ).+",
-                "groups": [],
-                "selector": "pz-variant[name='Renk'] > p > span"
-              },
-    "images": {
-                "attribute": "data-src",
-                "regex": "",
-                "groups": [],
-                "selector": "div.product-media__images > picture > img"
-              }
+  "isHeadless": true,
+  "waitUntill": "domcontentloaded",
+  "container": "div.product-info",
+  "notInStockSizes": {
+    "attribute": "data-value",
+    "regex": "",
+    "groups": [],
+    "selector": "div.variant__options > div.variant__option.-disabled"
+  },
+  "inStockSizes": {
+    "attribute": "data-value",
+    "regex": "",
+    "groups": [],
+    "selector": "div.variant__options > div.variant__option:not(.-disabled)"
+  },
+  "clickSize": "",
+  "title": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "h1.product-info__header-title"
+  },
+  "category": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "//div[contains(@class,'breadcrumb')]/a[last()]"
+  },
+  "price": {
+    "attribute": "",
+    "regex": "",
+    "groups": [],
+    "selector": "div.price > div.price__base > div.price__price"
+  },
+  "color": {
+    "attribute": "",
+    "regex": "(?<=Renk: ).+",
+    "groups": [],
+    "selector": "pz-variant[name='Renk'] > p > span"
+  },
+  "images": {
+    "attribute": "data-src",
+    "regex": "",
+    "groups": [],
+    "selector": "div.product-media__images > picture > img"
+  }
 
 }
