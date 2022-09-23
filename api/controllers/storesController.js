@@ -220,11 +220,6 @@ puppeteer.use(proxyRouter)
       for (let index = 0; index < data.blockResourceTypes.length; index++) {
         if (request.resourceType() === data.blockResourceTypes[index]) resourceType = true
       }
-      if(!resourceType){
-      for (let index = 0; index < data.blockUrls.length; index++) {
-        if (request.url().startsWith(data.blockUrls[index])) url = true
-      }
-      }
       if (resourceType || url) request.abort(); else request.continue();
     });
 
