@@ -220,7 +220,6 @@ puppeteer.use(proxyRouter)
       for (let index = 0; index < data.blockResourceTypes.length; index++) {
         if (request.resourceType() === data.blockResourceTypes[index]) resourceType = true
       }
-      console.log("this is >>" + resourceType)
       if(!resourceType){
       for (let index = 0; index < data.blockUrls.length; index++) {
         if (request.url().includes(data.blockUrls[index])) url = true

@@ -2,8 +2,7 @@
   "isHeadless": false,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet"],
-  "blockUrls": [
-    "tags.tiqcdn.com"],
+  "blockUrls": [],
   "container": "div.product-description",
   "notInStockSizes": {
     "attribute": "",
