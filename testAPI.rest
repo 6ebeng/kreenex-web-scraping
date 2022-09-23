@@ -38,10 +38,10 @@ Content-Type: application/json
 
 {
     "Url" : "https://www2.hm.com/tr_tr/productpage.1119492001.html",
-    "Size": "XXS"
+    "Size": "M"
 }
 ######
-POST http://164.92.141.204:4200/api/search HTTP/1.1
+POST http://164.92.141.204:4200/api/search
 Content-Type: application/json
 
 {
