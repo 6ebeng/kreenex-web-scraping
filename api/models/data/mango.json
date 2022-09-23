@@ -1,6 +1,6 @@
 {
   "isHeadless": true,
-  "waitUntill": "networkidle0",
+  "waitUntill": "domcontentloaded",
   "container": "div.product-detail-main",
   "notInStockSizes": {
     "attribute": "data-size",
