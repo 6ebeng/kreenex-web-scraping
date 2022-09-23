@@ -2,6 +2,7 @@
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet"],
+  "blockUrls": [],
   "container": "div.product-info",
   "notInStockSizes": {
     "attribute": "data-value",

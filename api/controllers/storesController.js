@@ -212,15 +212,22 @@ puppeteer.use(proxyRouter)
     //first tab
     var page = (await browser.pages())[0];
 
-    //Block resource types
+    //Block unnecessary resource types and urls
     await page.setRequestInterception(true);
     page.on('request', request => {
       var resourceType
+      var url
       for (let index = 0; index < data.blockResourceTypes.length; index++) {
-        if (request.resourceType() === data.blockResourceTypes[index]) resourceType = data.blockResourceTypes[index]
+        if (request.resourceType() === data.blockResourceTypes[index]) resourceType = true
       }
-      if (resourceType) request.abort(); else request.continue();
+      if(!resourceType){
+      for (let index = 0; index < data.blockUrls.length; index++) {
+        if (request.url().includes(data.blockUrls[index])) url = true
+      }
+      }
+      if (resourceType || url) request.abort(); else request.continue();
     });
+
 
     await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
