@@ -1,7 +1,7 @@
 {
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
-  "blockResourceTypes": ["image","media"],
+  "blockResourceTypes": ["image","media","font","other","fetch"],
   "blockUrls": [],
   "container": "div.product-detail-main",
   "notInStockSizes": {
