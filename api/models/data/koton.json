@@ -1,7 +1,7 @@
 {
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
-  "blockResourceTypes": ["image","media","stylesheet","font","other","fetch","script"],
+  "blockResourceTypes": ["image","media","stylesheet","font","other","fetch","xhr"],
   "blockUrls": [
     "360yield.com",
     "sharethrough.com",
