@@ -21,14 +21,7 @@
     "creativecdn.com",
     "filter=lastViewed",
     "shop.mango.com/ws-size-guide/sizeguide",
-    "shop.mango.com/services/header-bag",
-    "shop.mango.com/st-fukku",
-    "st.mngbcn.com/scripts/optimize.js",
-    "st0.mngbcn.com/static/shop/desktop/custom.js",
-    "shop.mango.com/st-header/header/desktop/styles",
-    "shop.mango.com/st-newsletter/newsletter/footer/styles",
-    "shop.mango.com/services/newsletterConfiguration",
-    "st0.mngbcn.com/fukku"
+    "shop.mango.com/services/header-bag"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
