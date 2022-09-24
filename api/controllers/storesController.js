@@ -266,6 +266,7 @@ puppeteer.use(proxyRouter)
       var NotInStockSizes = await elementSelector(page,data.notInStockSizes.selector,data.notInStockSizes.attribute || null,data.notInStockSizes.regex || null,data.notInStockSizes.groups || [],true)
         var isOutStock
         NotInStockSizes.map(item=>{
+          console.log("here" + NotInStockSizes[item])
           if(NotInStockSizes[item].trim() === requiredSize.trim()) isOutStock = true
         })
         if (isOutStock) {
