@@ -42,7 +42,7 @@
     "https://shop.mango.com/st-shopping-cart/shoppingCart/",
     "https://shop.mango.com/services/header-bag/getBagItems",
     "https://shop.mango.com/services/header/",
-    "remoteEntry.js"
+    "https://shop.mango.com/services/traducciones/"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
