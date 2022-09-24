@@ -1,6 +1,6 @@
 {
   "isHeadless": false,
-  "waitUntill": "networkidle0",
+  "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
   "whiteListUrls": [
     "https://www2.hm.com",
@@ -22,8 +22,7 @@
     "https://www2.hm.com/akam",
     "https://www2.hm.com/tr_tr/v1/labels",
     "https://www2.hm.com/tr_tr/i18n.json",
-    "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader",
-    "https://s1-cdn.hm.com/global/frontend/web-components/componentsloader"
+    "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
