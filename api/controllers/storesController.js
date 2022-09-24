@@ -264,14 +264,17 @@ puppeteer.use(proxyRouter)
     if (Size) {
       let requiredSize = Size.toString();
       var NotInStockSizes = await elementSelector(page,data.notInStockSizes.selector,data.notInStockSizes.attribute || null,data.notInStockSizes.regex || null,data.notInStockSizes.groups || [],true)
-      if (await NotInStockSizes.length > 0 && await NotInStockSizes.includes(requiredSize)) {
-        await browser.close();
+        var isOutStock
+        for (let index = 0; index < NotInStockSizes.length; index++) {
+          if(NotInStockSizes[index].trim() === requiredSize.trim()) isOutStock = true
+        }
+        if (isOutStock) {
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
           Message: `Size ${Size} is Out Of Stock!`
         });
-      }
+        }
 
 
 
