@@ -216,13 +216,13 @@ puppeteer.use(proxyRouter)
     await page.setRequestInterception(true);
     page.on('request', request => {
       var resourceType
-      var url
+      var url = true
       for (let index = 0; index < data.blockResourceTypes.length; index++) {
         if (request.resourceType() === data.blockResourceTypes[index]) resourceType = true
       }
       if (!resourceType) {
         for (let index = 0; index < data.blockUrls.length; index++) {
-          if (!(request.url().includes(data.blockUrls[index]))) url = true;
+          if (request.url().includes(data.blockUrls[index])) url = null;
         }
       }
       if (resourceType || url) {
@@ -231,7 +231,6 @@ puppeteer.use(proxyRouter)
       } else {
         request.continue();
       }   
-      
     });
 
 
