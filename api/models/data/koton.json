@@ -3,7 +3,6 @@
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
   "blockUrls": ["https://www.koton.com",
-  ".mncdn.com",
   "koton.akinoncdn.com"
 
   ],
