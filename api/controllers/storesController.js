@@ -291,8 +291,9 @@ puppeteer.use(proxyRouter)
       // Click Size to appear the true price
       if (isInstock) {
         if(data.clickSize){
+          console.log(data.clickSize.replace("{{size}}", Size))
         await elementClick(page,
-                           data.clickSize.replace("{{size}}", Size)
+                           data.clickSize.replace("{{size}}", Size.trim())
                            );
         await delay(2000);
         }
