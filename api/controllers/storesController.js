@@ -225,7 +225,8 @@ puppeteer.use(proxyRouter)
           if (!request.url().includes(data.blockUrls[index])) url = true
         }
       }
-      if (resourceType || url) request.abort(); else request.continue();
+      if (resourceType || url) request.abort(); else  console.log(request.url()); request.continue();
+      
     });
 
 
