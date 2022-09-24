@@ -15,7 +15,8 @@
 "https://st0.mngbcn.com/static/js/pluginsTOP.js",
 "https://st0.mngbcn.com/static/js/topLayoutDivs.js",
 "https://st0.mngbcn.com/static/js/plugins.js",
-"https://st0.mngbcn.com/lib/verne/utils.js"
+"https://st0.mngbcn.com/lib/verne/utils.js",
+"https://st0.mngbcn.com/lib/verne/navigation/navigation.js"
 
   ],
   "container": "div.product-detail-main",
