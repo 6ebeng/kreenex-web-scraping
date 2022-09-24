@@ -45,8 +45,8 @@ POST http://164.92.141.204:4200/api/search
 Content-Type: application/json
 
 {
-    "Url" : "https://shop.mango.com/tr/kadin/ceketler-ve-blazer-ceketler/motorcu-tarz-fermuarl%C4%B1-ceket_37095951.html",
-    "Size": "XS"
+    "Url" : "https://shop.mango.com/tr/kadin/ceketler-ve-blazer-ceketler-blazer-ceket/kemerli-yun-blazer-ceket_37065140.html",
+    "Size": "S"
 }
 
 

@@ -282,7 +282,7 @@ puppeteer.use(proxyRouter)
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
-          Message: `Size ${Size} are not available !!`
+          Message: `Size ${Size} is not available !!`
         });
       }
 
