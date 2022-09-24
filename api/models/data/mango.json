@@ -2,16 +2,11 @@
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","font","other"],
-  "whiteListUrls": ["https://shop.mango.com"],
+  "whiteListUrls": [
+    "https://shop.mango.com",
+    "mngbcn.com"
+  ],
   "blockUrls": [
-    "shop.mango.com/ws-size-guide/sizeguide",
-    "shop.mango.com/services/header-bag",
-    "st.mngbcn.com/scripts/optimize.js",
-    "st0.mngbcn.com/static/shop/desktop/custom.js",
-    "shop.mango.com/st-header/header/desktop/styles",
-    "shop.mango.com/st-newsletter/newsletter/footer/styles",
-    "shop.mango.com/services/newsletterConfiguration",
-    "st0.mngbcn.com/fukku"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
