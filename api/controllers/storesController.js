@@ -224,7 +224,7 @@ puppeteer.use(proxyRouter)
           if (request.url().includes(data.whiteListUrls[index])) url = true;
         }
       }
-      if (resourceType || url) {
+      if (!resourceType || url) {
         console.log(request.resourceType()); 
         console.log(request.url()); 
         request.continue();
