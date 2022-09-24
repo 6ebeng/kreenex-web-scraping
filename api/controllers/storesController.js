@@ -260,14 +260,14 @@ puppeteer.use(proxyRouter)
 
     /* Check Product Sizes */
     let Size = req.body.Size;
-    // Not Instock sizes
-    if (Size) {
+
+    if (Size) { // Size is optional
+
+      // Not Instock sizes
       let requiredSize = Size.toString();
       var NotInStockSizes = await elementSelector(page,data.notInStockSizes.selector,data.notInStockSizes.attribute || null,data.notInStockSizes.regex || null,data.notInStockSizes.groups || [],true)
-        var isOutStock
-        NotInStockSizes.forEach(item=>{
-          if(item.trim() === requiredSize.trim()) isOutStock = true
-        })
+      var isOutStock
+        NotInStockSizes.forEach(item=>{if(item.trim() === requiredSize.trim()) isOutStock = true})
         if (isOutStock) {
         return res.status(500).json({
           ResponseCode: 500,
@@ -276,24 +276,20 @@ puppeteer.use(proxyRouter)
         });
         }
 
-
       // InStock Sizes
       var InStockSizes = await elementSelector(page,data.inStockSizes.selector,data.inStockSizes.attribute || null,data.inStockSizes.regex || null,data.inStockSizes.groups || [],true)
         var isInstock
-        InStockSizes.forEach(item =>{
-          if(item.trim() === requiredSize.trim()) isInstock =true
-        })
+        InStockSizes.forEach(item =>{if(item.trim() === requiredSize.trim()) isInstock =true})
         if (!isInstock) {
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
-          Message: `Size ${Size} is not available !!`
+          Message: `Size ${Size} is not available!`
         });
         }
 
-
       // Click Size to appear the true price
-      if (InStockSizes.length > 0 && InStockSizes.includes(requiredSize)) {
+      if (isInstock) {
         if(data.clickSize){
         await elementClick(page,
                            data.clickSize.replace("{{size}}", Size)
