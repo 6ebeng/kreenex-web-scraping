@@ -8,7 +8,8 @@
   ],
   "blockUrls": [
     ".svg",
-    "https://www.koton.com/baskets/basket/"
+    "https://www.koton.com/baskets/basket/",
+    "hydration.js"
   ],
   "container": "div.product-info",
   "notInStockSizes": {
