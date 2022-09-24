@@ -2,7 +2,8 @@
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
-  "blockUrls": ["koton.com"
+  "blockUrls": ["https://www.koton.com",
+  ".mncdn.com"
 
   ],
   "container": "div.product-info",
