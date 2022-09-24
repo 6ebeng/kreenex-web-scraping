@@ -38,7 +38,11 @@
     "https://shop.mango.com/st-product-tech-qualities/productTechQualities/productDetail",
     "https://shop.mango.com/st-recommendations/recommendations/productDetailDesktop",
     "https://shop.mango.com/ws-favorites/favorites/v1/favorites/check",
-    "https://shop.mango.com/cms/tr-TR/shop/ficha/envioydevoluciones/desktop.html"
+    "https://shop.mango.com/cms/tr-TR/shop/ficha/envioydevoluciones/desktop.html",
+    "https://shop.mango.com/st-shopping-cart/shoppingCart/",
+    "https://shop.mango.com/st-fukku/fukku/",
+    "https://shop.mango.com/services/header-bag/getBagItems",
+    "https://shop.mango.com/services/header/"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
