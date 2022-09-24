@@ -53,13 +53,13 @@
     "attribute": "data-size",
     "regex": "",
     "groups": [],
-    "selector": "div.selector-list > .size-unavailable"
+    "selector": "div#sizeSelector > div.selector-list > .size-unavailable"
   },
   "inStockSizes": {
     "attribute": "data-size",
     "regex": "",
     "groups": [],
-    "selector": "div.selector-list > .size-available "
+    "selector": "div#sizeSelector > div.selector-list > .size-available "
   },
   "clickSize": "",
   "title": {
