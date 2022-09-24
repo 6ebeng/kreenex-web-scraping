@@ -103,10 +103,13 @@ async function elementClick(page, selector){
   if (selector.startsWith('//')) {
     await page.waitForXPath(selector)
     const elements = await page.$x(selector)
-    return await elements[0].click() 
+    await elements[0].click() 
   } else {
+    // await page.evaluate((selector) =>{
+    //   document.querySelector(selector).click();
+    // },selector)
     await page.waitForSelector(selector);
-    return await page.click(selector)
+    await page.click(selector)
   }
 }
 
