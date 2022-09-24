@@ -59,9 +59,9 @@
     "attribute": "data-size",
     "regex": "",
     "groups": [],
-    "selector": "div#sizeSelector > div.selector-list > .size-available "
+    "selector": "div#sizeSelector > div.selector-list > .size-available"
   },
-  "clickSize": "",
+  "clickSize": "div#sizeSelector > div.selector-list > .size-available[data-size='{{size}}']",
   "title": {
     "attribute": "",
     "regex": "",
