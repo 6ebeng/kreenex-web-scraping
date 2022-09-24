@@ -41,7 +41,8 @@
     "https://shop.mango.com/cms/tr-TR/shop/ficha/envioydevoluciones/desktop.html",
     "https://shop.mango.com/st-shopping-cart/shoppingCart/",
     "https://shop.mango.com/services/header-bag/getBagItems",
-    "https://shop.mango.com/services/header/"
+    "https://shop.mango.com/services/header/",
+    "remoteEntry.js"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
