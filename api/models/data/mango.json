@@ -7,7 +7,11 @@
     "mngbcn.com"
   ],
   "blockUrls": [
-    "https://st0.mngbcn.com/static/shop/desktop/custom.css"
+    "https://st0.mngbcn.com/static/shop/desktop/custom.css",
+"https://st.mngbcn.com/scripts/optimize.js",
+"https://st0.mngbcn.com/static/styleguide",
+"https://st0.mngbcn.com/fukku/fukku.css",
+"https://shop.mango.com/javax.faces.resource"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
