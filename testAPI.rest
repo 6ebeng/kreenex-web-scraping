@@ -30,7 +30,7 @@ Content-Type: application/json
 
 {
     "Url" : "https://www.koton.com/uzun-hirka-uzun-kollu-siyah-1266202/",
-    "Size": "XS"
+    "Size": "S"
 }
 ######
 POST http://164.92.141.204:4200/api/search HTTP/1.1
