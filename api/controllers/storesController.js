@@ -233,13 +233,13 @@ puppeteer.use(proxyRouter)
       if (resourceType || url) {
         if(url){
           //console.log(request.resourceType()); 
-          console.log('\x1b[31m%s\x1b[0m',"Block " + request.url()); 
+          console.log('\x1b[31m%s\x1b[0m',request.url()); 
         }
 
         request.abort(); 
       } else{
         //console.log(request.resourceType()); 
-        console.log('\x1b[32m%s\x1b[0m',"Allow " + request.url()); 
+        console.log('\x1b[32m%s\x1b[0m',request.url()); 
         request.continue();
       }   
       

@@ -7,18 +7,6 @@
     "mngbcn.com"
   ],
   "blockUrls": [
-    "https://st0.mngbcn.com/static/shop/desktop/custom.css",
-    "https://st0.mngbcn.com/static/shop/desktop/specifics/productPage/css/productPage.css",
-    "https://st.mngbcn.com/static/js/webcomponents/2.4.0/webcomponents-loader.js",
-    "https://st.mngbcn.com/static/js/webcomponents/2.4.0/custom-elements-es5-adapter.js",
-    "https://st0.mngbcn.com/lib/verne/mdm.js",
-    "https://st0.mngbcn.com/lib/verne/wa.js",
-    "https://st0.mngbcn.com/lib/verne/utils.js",
-    "https://st.mngbcn.com/scripts/optimize.js",
-    "https://st0.mngbcn.com/static/js/react.production.min.js",
-    "https://st0.mngbcn.com/static/js/react-dom.production.min.js",
-    "https://st0.mngbcn.com/static/styleguide/styles.css",
-    "https://st0.mngbcn.com/fukku/fukku.css"
 
   ],
   "container": "div.product-detail-main",
