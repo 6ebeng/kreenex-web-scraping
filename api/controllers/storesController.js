@@ -349,8 +349,6 @@ puppeteer.use(proxyRouter)
      }
  
      Response.Images = strImages
-
-     await browser.close();
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
@@ -358,12 +356,14 @@ puppeteer.use(proxyRouter)
     });
   } catch (e) {
     console.log('err', e)
-    await browser.close();
+
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
       Message: "Some error occured Or data not found, please try again."
     });
+  } finally{
+    await browser.close();
   }
 }
 
