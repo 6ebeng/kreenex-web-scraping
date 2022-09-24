@@ -4,6 +4,7 @@
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
   "whiteListUrls": ["https://www2.hm.com"],
   "blockUrls": [
+
     "www2.hm.com/tr_tr/metrics/default/touchpoint.js",
     "www2.hm.com/tr_tr/v1/promotionMarkers",
     "www2.hm.com/tr_tr/pra/panel/product-detail-page",
@@ -17,13 +18,13 @@
     "attribute": "",
     "regex": "",
     "groups": [],
-    "selector": "//ul[contains(@class,'picker-list')]/li[contains(@class,'item')][contains(@class,'out-of-stock')]/div/button/span[1]"
+    "selector": "ul.picker-list > li.item.out-of-stock > div > button > span:first-child"
   },
   "inStockSizes": {
     "attribute": "",
     "regex": "",
     "groups": [],
-    "selector": "//ul[contains(@class,'picker-list')]/li[contains(@class,'item')][not(contains(@class,'out-of-stock'))]/div/button/span[1]"
+    "selector": "ul.picker-list > li.item:not(.out-of-stock) > div > button > span:first-child"
   },
   "clickSize": "",
   "title": {
