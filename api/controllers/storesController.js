@@ -105,11 +105,11 @@ async function elementClick(page, selector){
     const elements = await page.$x(selector)
     await elements[0].click() 
   } else {
-    //await page.waitForSelector(selector);
+    await page.waitForSelector(selector);
     await page.evaluate((selector) =>{
       document.querySelector(selector).click();
     },selector)
-    await page.click(selector)
+    //await page.click(selector)
   }
 }
 
