@@ -46,7 +46,7 @@ Content-Type: application/json
 
 {
     "Url" : "https://shop.mango.com/tr/kadin/ceketler-ve-blazer-ceketler/motorcu-tarz-fermuarl%C4%B1-ceket_37095951.html",
-    "Size": "XL"
+    "Size": "XS"
 }
 
 
