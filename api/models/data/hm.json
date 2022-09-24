@@ -2,6 +2,7 @@
   "isHeadless": false,
   "waitUntill": "networkidle0",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
+  "whiteListUrls": [],
   "blockUrls": [
     "tiqcdn.com",
     "nmgplatform.com",
