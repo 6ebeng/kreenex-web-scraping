@@ -20,8 +20,7 @@
     "https://www2.hm.com/akam/13/pixel",
     "https://www2.hm.com/tr_tr/favourites",
     "https://www2.hm.com/tr_tr/pra/notification/",
-    "https://www2.hm.com/akam",
-    "https://s1-cdn.hm.com/global/frontend/web-components"
+    "https://www2.hm.com/akam"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
