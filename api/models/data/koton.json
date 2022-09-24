@@ -2,9 +2,9 @@
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
-  "whiteListUrls": ["https://www.koton.com",
-  "koton.akinoncdn.com"
-
+  "whiteListUrls": [
+    "https://www.koton.com",
+    "https://koton.akinoncdn.com"
   ],
   "container": "div.product-info",
   "notInStockSizes": {
