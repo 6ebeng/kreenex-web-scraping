@@ -265,9 +265,9 @@ puppeteer.use(proxyRouter)
       let requiredSize = Size.toString();
       var NotInStockSizes = await elementSelector(page,data.notInStockSizes.selector,data.notInStockSizes.attribute || null,data.notInStockSizes.regex || null,data.notInStockSizes.groups || [],true)
         var isOutStock
-        for (let index = 0; index < NotInStockSizes.length; index++) {
-          if(NotInStockSizes[index].trim() === requiredSize.trim()) isOutStock = true
-        }
+        NotInStockSizes.map(item=>{
+          if(NotInStockSizes[item].trim() === requiredSize.trim()) isOutStock = true
+        })
         if (isOutStock) {
         return res.status(500).json({
           ResponseCode: 500,
@@ -280,14 +280,17 @@ puppeteer.use(proxyRouter)
 
       // InStock Sizes
       var InStockSizes = await elementSelector(page,data.inStockSizes.selector,data.inStockSizes.attribute || null,data.inStockSizes.regex || null,data.inStockSizes.groups || [],true)
-      if (await InStockSizes.length > 0 && !await InStockSizes.includes(requiredSize)) {
-        await browser.close();
+        var isInstock
+        InStockSizes.map(item =>{
+          if(InStockSizes[item].trim() === requiredSize.trim()) isInstock =true
+        })
+        if (!isInstock) {
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
           Message: `Size ${Size} is not available !!`
         });
-      }
+        }
 
 
       // Click Size to appear the true price

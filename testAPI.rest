@@ -46,7 +46,7 @@ Content-Type: application/json
 
 {
     "Url" : "https://shop.mango.com/tr/kadin/ceketler-ve-blazer-ceketler-blazer-ceket/kemerli-yun-blazer-ceket_37065140.html",
-    "Size": "S"
+    "Size": "L"
 }
 
 
