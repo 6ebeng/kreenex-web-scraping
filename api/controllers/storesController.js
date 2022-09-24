@@ -266,7 +266,7 @@ puppeteer.use(proxyRouter)
       var NotInStockSizes = await elementSelector(page,data.notInStockSizes.selector,data.notInStockSizes.attribute || null,data.notInStockSizes.regex || null,data.notInStockSizes.groups || [],true)
         var isOutStock
         NotInStockSizes.forEach(item=>{
-          console.log(NotInStockSizes[item])
+          console.log(item)
         })
         NotInStockSizes.forEach(item=>{
           console.log(NotInStockSizes[item])
