@@ -23,7 +23,7 @@
     "https://www2.hm.com/tr_tr/v1/labels",
     "https://www2.hm.com/tr_tr/i18n.json",
     "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader",
-    "https://www2.hm.com/hmwebservices/service/product/tr/availability/"
+    "https://s1-cdn.hm.com/global/frontend/web-components/componentsloader"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
