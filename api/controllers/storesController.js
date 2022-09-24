@@ -282,7 +282,6 @@ puppeteer.use(proxyRouter)
       // InStock Sizes
       var InStockSizes = await elementSelector(page, data.inStockSizes.selector, data.inStockSizes.attribute || null, data.inStockSizes.regex || null, data.inStockSizes.groups || [], true)
       var isInstock
-      console.log("here is " + InStockSizes)
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
       if (!isInstock) {
         return res.status(500).json({

@@ -14,7 +14,10 @@
     "www2.hm.com/alive/user",
     "www2.hm.com/tr_tr/v2/settings",
     "www2.hm.com/tr_tr/pra/notification/click",
-    "lp2.hm.com"
+    "lp2.hm.com",
+    "https://www2.hm.com/tr_tr/reviews/",
+    "https://www2.hm.com/services/hybris/configuration",
+    "https://www2.hm.com/akam/13/pixel"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
