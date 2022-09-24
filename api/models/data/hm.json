@@ -17,13 +17,13 @@
     "attribute": "",
     "regex": "",
     "groups": [],
-    "selector": "ul.picker-list > li.item.out-of-stock > div > button > span:first-child"
+    "selector": "//ul[contains(@class,'picker-list')]/li[contains(@class,'item')][contains(@class,'out-of-stock')]/div/button/span[1]"
   },
   "inStockSizes": {
     "attribute": "",
     "regex": "",
     "groups": [],
-    "selector": "ul.picker-list > li.item:not(.out-of-stock) > div > button > span:first-child"
+    "selector": "//ul[contains(@class,'picker-list')]/li[contains(@class,'item')][not(contains(@class,'out-of-stock'))]/div/button/span[1]"
   },
   "clickSize": "",
   "title": {
