@@ -6,6 +6,10 @@
     "https://www.koton.com",
     "https://koton.akinoncdn.com"
   ],
+  "blockUrls": [
+    ".svg",
+    "https://www.koton.com/baskets/basket/"
+  ],
   "container": "div.product-info",
   "notInStockSizes": {
     "attribute": "data-value",

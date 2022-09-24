@@ -225,6 +225,11 @@ puppeteer.use(proxyRouter)
           if (request.url().includes(data.whiteListUrls[index])) url = null
         }
       }
+      if (!url) {
+        for (let index = 0; index < data.blockUrls.length; index++) {
+          if (request.url().includes(data.blockUrls[index])) url = true
+        }
+      }
       if (resourceType || url) {
         request.abort(); 
       } else{
