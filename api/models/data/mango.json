@@ -7,7 +7,7 @@
     "mngbcn.com"
   ],
   "blockUrls": [
-    "https://st0.mngbcn.com/static/shop/desktop/custom.css?v=9_24_0&ts=1539"
+    "https://st0.mngbcn.com/static/shop/desktop/custom.css"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
