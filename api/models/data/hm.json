@@ -2,7 +2,10 @@
   "isHeadless": false,
   "waitUntill": "networkidle0",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
-  "whiteListUrls": ["https://www2.hm.com"],
+  "whiteListUrls": [
+    "https://www2.hm.com",
+    "https://s1-cdn.hm.com"
+  ],
   "blockUrls": [
 
     "www2.hm.com/tr_tr/metrics/default/touchpoint.js",
