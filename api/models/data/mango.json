@@ -26,7 +26,9 @@
 "https://shop.mango.com/st-header/header/desktop/manifest.json",
 "https://shop.mango.com/st-newsletter/newsletter",
 "https://shop.mango.com/st-store-locator/storeLocator/manifest.json",
-"https://shop.mango.com/st-newsletter/newsletter/footer/manifest.json"
+"https://shop.mango.com/st-newsletter/newsletter/footer/manifest.json",
+"https://shop.mango.com/st-header/header/desktop/main",
+"https://shop.mango.com/st-header/header/desktop/styles"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
