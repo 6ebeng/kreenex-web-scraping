@@ -31,7 +31,8 @@
 "https://shop.mango.com/st-header/header/desktop/styles",
 "https://st0.mngbcn.com/static/shop/desktop/specifics/common/main.js",
 "https://st0.mngbcn.com/static/shop/desktop/specifics/register/components.js",
-"https://st0.mngbcn.com/static/shop/desktop/custom.js"
+"https://st0.mngbcn.com/static/shop/desktop/custom.js",
+"https://shop.mango.com/services/garments"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
