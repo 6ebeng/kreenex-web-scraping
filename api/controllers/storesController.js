@@ -231,10 +231,12 @@ puppeteer.use(proxyRouter)
         }
       }
       if (resourceType || url) {
+        console.log(request.resourceType()); 
+        console.log("Block" + request.url()); 
         request.abort(); 
       } else{
         console.log(request.resourceType()); 
-        console.log(request.url()); 
+        console.log("Allow" + request.url()); 
         request.continue();
       }   
       
