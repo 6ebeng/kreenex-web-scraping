@@ -3,8 +3,7 @@
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": ["image","media","font"],
     "whiteListUrls": [
-        "https://www.zara.com/",
-        "https://static.zara.net"
+        "zara"
 
     ],
     "blockUrls": [
