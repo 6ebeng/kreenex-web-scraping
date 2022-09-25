@@ -4,8 +4,7 @@
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
   "whiteListUrls": ["https://www.lcwaikiki.com"],
   "blockUrls": [
-    "https://www.lcwaikiki.com/ReactLCW",
-    "https://www.lcwaikiki.com/Resource/Scripts/tracking/",
+
     "https://www.lcwaikiki.com/Resource/Scripts/favoritelist",
     "https://www.lcwaikiki.com/Resource/Scripts/slick",
     "https://www.lcwaikiki.com/Resource/Scripts/omnichannel",
@@ -13,6 +12,7 @@
     "https://www.lcwaikiki.com/Resource/Scripts/imagezoom",
     "https://www.lcwaikiki.com/tr-TR/TR/ajax/home",
     "https://www.lcwaikiki.com/Resource/Scripts/lib/pinch-zoom",
+    "https://www.lcwaikiki.com/Resource/Scripts/validate?",
     "https://www.lcwaikiki.com/Resource/Scripts/cookie-seal.js",
     "https://www.lcwaikiki.com/NYhlO6K0m/LQa/ET5kjQ/amED6Qhr/aixKAQ/Qj9/3SmwlThIB",
 "https://www.lcwaikiki.com/NYhlO6K0m/LQa/ET5kjQ/amED6Qhr/aixKAQ/Qj9/3SmwlThIB",
