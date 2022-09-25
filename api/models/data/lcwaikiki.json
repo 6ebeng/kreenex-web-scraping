@@ -2,7 +2,11 @@
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
-  "whiteListUrls": ["https://www.lcwaikiki.com","https://lcw.bunsar.com"],
+  "whiteListUrls": [
+    "https://www.lcwaikiki.com",
+    "https://lcw.bunsar.com",
+    "https://api.lcwaikiki.com"
+  ],
   "blockUrls": [
     "https://www.lcwaikiki.com/ReactLCW",
     "https://www.lcwaikiki.com/Resource/Scripts/tracking/",
