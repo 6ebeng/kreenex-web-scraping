@@ -11,7 +11,8 @@
     "entry.header.bundle.js",
     "Resource_tr-tr.js",
     "GetBunsarSimilar",
-    "GetBunsarCompleteTheLook"
+    "GetBunsarCompleteTheLook",
+    "GetProductVariantRatingDataList"
   ],
   "container": "div.product-card__details",
   "notInStockSizes": {
