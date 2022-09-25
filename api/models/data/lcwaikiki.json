@@ -28,13 +28,13 @@
     "attribute": "size",
     "regex": "",
     "groups": [],
-    "selector": "div.main-size-area > div.option-sizes > div#option-size > a.disabledNotSelected"
+    "selector": "//div[contains(@class,'main-size-area')]/div[contains(@class,'option-sizes')]/div[contains(@id,'option-size')]/*[contains(@class,'disabledNotSelected')]/descendant-or-self::*[contains(@class,'disabledNotSelected')][not(self::div)][not(self::input)][not(self::span)][not(self::b)][not(self::i)]"
   },
   "inStockSizes": {
     "attribute": "size",
     "regex": "",
     "groups": [],
-    "selector": "div.main-size-area > div.option-sizes >div#option-size > a:not(.disabledNotSelected)"
+    "selector": "//div[contains(@class,'main-size-area')]/div[contains(@class,'option-sizes')]/div[contains(@id,'option-size')]/*[not(contains(@class,'disabledNotSelected'))]/descendant-or-self::*[not(contains(@class,'disabledNotSelected'))][not(self::div)][not(self::input)][not(self::span)][not(self::b)][not(self::i)]"
   },
   "clickSize": "div.main-size-area > div.option-sizes >div#option-size > a.[size='{{size}}']",
   "title": {
