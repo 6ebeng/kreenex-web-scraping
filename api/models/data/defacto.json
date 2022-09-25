@@ -10,7 +10,6 @@
     "entry.footer.bundle.js",
     "entry.header.bundle.js",
     "Resource_tr-tr.js",
-    "entry.product.bundle.js",
     "CheckCustomerWithContext",
     "GetBunsarSimilar",
     "GetBunsarCompleteTheLook"
