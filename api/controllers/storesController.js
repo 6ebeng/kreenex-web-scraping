@@ -257,6 +257,7 @@ puppeteer.use(proxyRouter)
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
+    await page.screenshot({path: 'screenshot.png'});
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
@@ -367,7 +368,7 @@ puppeteer.use(proxyRouter)
       Message: "Some error occured Or data not found, please try again."
     });
   } finally{
-    await page.screenshot({path: 'screenshot.png'});
+    
     await browser.close();
   }
 }
