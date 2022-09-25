@@ -22,7 +22,13 @@
     "https://www2.hm.com/akam",
     "https://www2.hm.com/tr_tr/v1/labels",
     "https://www2.hm.com/tr_tr/i18n.json",
-    "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader"
+    "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader",
+    "https://s1-cdn.hm.com/global/frontend/web-components/es6/702.c2b432b4bc205ca847ce.js",
+"https://s1-cdn.hm.com/global/frontend/web-components/es6/5643.745beba27623bb46aa01.js",
+"https://s1-cdn.hm.com/global/frontend/web-components/es6/7759.8a357430d26aed259427.js",
+"https://s1-cdn.hm.com/global/frontend/web-components/es6/4551.005d035cfc3a8a99f500.js",
+"https://s1-cdn.hm.com/global/frontend/web-components/es6/9714.bcbe7595af51d798e2ac.js",
+"https://s1-cdn.hm.com/global/frontend/web-components/es6/1635.fc3808ab8c73d48d8b4c.js"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
