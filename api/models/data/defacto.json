@@ -3,7 +3,8 @@
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet", "font", "other", "fetch"],
   "whiteListUrls": [
-    "https://www.defacto.com"
+    "https://www.defacto.com",
+    "https://dfcdn.defacto.com"
   ],
   "blockUrls": [],
   "container": "div.product-card__details",
