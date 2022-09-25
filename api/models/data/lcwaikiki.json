@@ -28,7 +28,7 @@
     "attribute": "size",
     "regex": "",
     "groups": [],
-    "selector": "div.main-size-area > div.option-sizes >div#option-size > a.disabledNotSelected"
+    "selector": "div.main-size-area > div.option-sizes > div#option-size > a.disabledNotSelected"
   },
   "inStockSizes": {
     "attribute": "size",
