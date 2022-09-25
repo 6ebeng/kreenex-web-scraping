@@ -261,7 +261,7 @@ puppeteer.use(proxyRouter)
       timeout: 30000
     });
 
-    console.log(await page.evaluate(document.querySelector(body)))
+    console.log(await page.evaluate(document.querySelectorAll("body")[0].innerHTML))
     // /* Load Page Content */
     // var $ = cheerio.load(await page.content());
 
