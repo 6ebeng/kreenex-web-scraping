@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "Url" : "https://www.lcwaikiki.com/tr-TR/TR/urun/LC-WAIKIKI/erkek-bebek/Takim/5954656/2494297",
-    "Size": "9-12 Ay"
+    "Size": "18-24 Ay"
 }
 ######
 POST http://164.92.141.204:4200/api/search HTTP/1.1
