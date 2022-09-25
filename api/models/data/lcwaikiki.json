@@ -34,15 +34,15 @@
     "attribute": "size",
     "regex": "",
     "groups": [],
-    "selector": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a.disabledNotSelected"
+    "selector": "div.main-size-area > div.option-sizes >div#option-size > a.disabledNotSelected"
   },
   "inStockSizes": {
     "attribute": "size",
     "regex": "",
     "groups": [],
-    "selector": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a:not(.disabledNotSelected)"
+    "selector": "div.main-size-area > div.option-sizes >div#option-size > a:not(.disabledNotSelected)"
   },
-  "clickSize": "div#productInfo > div#rightInfoBar > div:nth-child(1) > div.main-info-area > div.mobile-size-and-cart-container > div.size-pop-up > div:nth-child(2) > div.main-size-area > div.option-sizes > div#option-size > a[size='{{size}}']",
+  "clickSize": "div.main-size-area > div.option-sizes >div#option-size > a.[size='{{size}}']",
   "title": {
     "attribute": "",
     "regex": "",
