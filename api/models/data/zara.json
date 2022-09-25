@@ -1,5 +1,5 @@
 {
-    "isHeadless": false,
+    "isHeadless": true,
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": ["image","media","font"],
     "whiteListUrls": [
