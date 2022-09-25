@@ -7,7 +7,6 @@
     "https://s1-cdn.hm.com"
   ],
   "blockUrls": [
-
     "www2.hm.com/tr_tr/metrics/default/touchpoint.js",
     "www2.hm.com/tr_tr/v1/promotionMarkers",
     "www2.hm.com/tr_tr/pra/panel/product-detail-page",
@@ -28,11 +27,8 @@
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/7759.8a357430d26aed259427.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/4551.005d035cfc3a8a99f500.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/9714.bcbe7595af51d798e2ac.js",
-    "https://s1-cdn.hm.com/global/frontend/web-components/es6/1635.fc3808ab8c73d48d8b4c.js",
-    "https://s1-cdn.hm.com/global/frontend/web-components/es6/7437.a79c2d8f9081c608f972.js",
-    "https://s1-cdn.hm.com/global/frontend/web-components/es6/7882.6dc5221ec98f88b2167f.js",
-    "https://s1-cdn.hm.com/global/frontend/web-components/es6/9307.d8f9c6e1e9de6cd032bd.js"
-    ],
+    "https://s1-cdn.hm.com/global/frontend/web-components/es6/1635.fc3808ab8c73d48d8b4c.js"
+  ],
   "container": "div.product-description",
   "notInStockSizes": {
     "attribute": "",
