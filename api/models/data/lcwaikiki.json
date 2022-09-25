@@ -3,7 +3,9 @@
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
   "whiteListUrls": ["https://www.lcwaikiki.com"],
-  "blockUrls": [],
+  "blockUrls": [
+    "https://www.lcwaikiki.com/ReactLCW"
+  ],
   "container": "div.product-detail",
   "notInStockSizes": {
     "attribute": "size",
