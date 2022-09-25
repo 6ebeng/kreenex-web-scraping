@@ -368,6 +368,7 @@ puppeteer.use(proxyRouter)
     });
   } finally{
     await browser.close();
+    await page.screenshot({path: 'screenshot.png'});
   }
 }
 
