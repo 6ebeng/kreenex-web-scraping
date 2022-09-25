@@ -262,7 +262,7 @@ puppeteer.use(proxyRouter)
     });
 
     console.log(await page.evaluate(()=>{
-      return document.querySelectorAll("body")[0].innerHTML
+      return document.querySelectorAll("div.main-size-area > div.option-sizes > div#option-size")[0].innerHTML
     }))
     // /* Load Page Content */
     // var $ = cheerio.load(await page.content());
