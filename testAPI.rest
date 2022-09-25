@@ -48,3 +48,11 @@ Content-Type: application/json
     "Url" : "https://shop.mango.com/tr/kadin/ceketler-ve-blazer-ceketler-blazer-ceket/kemerli-yun-blazer-ceket_37065140.html",
     "Size": "L"
 }
+######
+POST http://164.92.141.204:4200/api/search
+Content-Type: application/json
+
+{
+    "Url" : "https://www.zara.com/tr/en/textured-overshirt-p08495150.html?v1=215899530&v2=2113434",
+    "Size": "L"
+}
