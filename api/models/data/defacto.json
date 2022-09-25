@@ -6,7 +6,10 @@
     "https://www.defacto.com",
     "https://dfcdn.defacto.com"
   ],
-  "blockUrls": [],
+  "blockUrls": [
+    "https://dfcdn.defacto.com.tr/AssetsV2/tr/js/entry.footer.bundle.js",
+    "https://dfcdn.defacto.com.tr/AssetsV2/tr/js/entry.header.bundle.js"
+  ],
   "container": "div.product-card__details",
   "notInStockSizes": {
     "attribute": "value",
