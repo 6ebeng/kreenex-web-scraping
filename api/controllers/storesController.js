@@ -367,8 +367,8 @@ puppeteer.use(proxyRouter)
       Message: "Some error occured Or data not found, please try again."
     });
   } finally{
-    await browser.close();
     await page.screenshot({path: 'screenshot.png'});
+    await browser.close();
   }
 }
 
