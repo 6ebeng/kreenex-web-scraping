@@ -12,8 +12,7 @@
     "Resource_tr-tr.js",
     "GetBunsarSimilar",
     "GetBunsarCompleteTheLook",
-    "main.bundle.js",
-    "CheckCustomerWithContext"
+    "main.bundle.js"
   ],
   "container": "div.product-card__details",
   "notInStockSizes": {
