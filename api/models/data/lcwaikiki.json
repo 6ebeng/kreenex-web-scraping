@@ -2,7 +2,7 @@
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet"],
-  "whiteListUrls": [],
+  "whiteListUrls": ["https://www.lcwaikiki.com"],
   "blockUrls": [],
   "container": "div.product-detail",
   "notInStockSizes": {
