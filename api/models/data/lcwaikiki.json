@@ -34,7 +34,7 @@
     "groups": [],
     "selector": "div.main-size-area > div.option-sizes >div#option-size > a:not(.disabledNotSelected)"
   },
-  "clickSize": "div.main-size-area > div.option-sizes >div#option-size > a[size='{{size}}']",
+  "clickSize": "",
   "title": {
     "attribute": "",
     "regex": "",
