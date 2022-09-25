@@ -212,6 +212,7 @@ puppeteer.use(proxyRouter)
       defaultViewport: null
     });
     
+    
     //first tab
     var page = (await browser.pages())[0];
 
