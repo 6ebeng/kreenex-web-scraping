@@ -7,8 +7,13 @@
     "https://dfcdn.defacto.com"
   ],
   "blockUrls": [
-    "https://dfcdn.defacto.com.tr/AssetsV2/tr/js/entry.footer.bundle.js",
-    "https://dfcdn.defacto.com.tr/AssetsV2/tr/js/entry.header.bundle.js"
+    "entry.footer.bundle.js",
+    "entry.header.bundle.js",
+    "Resource_tr-tr.js",
+    "entry.product.bundle.js",
+    "CheckCustomerWithContext",
+    "GetBunsarSimilar",
+    "GetBunsarCompleteTheLook"
   ],
   "container": "div.product-card__details",
   "notInStockSizes": {
