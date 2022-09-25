@@ -28,7 +28,7 @@
     "attribute": "size",
     "regex": "",
     "groups": [],
-    "selector": "//div[contains(@class,'main-size-area')]/div[contains(@class,'option-sizes')]/div[contains(@id,'option-size')]/*[contains(@class,'disabledNotSelected')]/descendant-or-self::*[contains(@class,'disabledNotSelected')][not(self::div)][not(self::input)][not(self::span)][not(self::b)][not(self::i)]"
+    "selector": "//div[contains(@class,'main-size-area')]/div[contains(@class,'option-sizes')]/div[contains(@id,'option-size')]/*/descendant-or-self::*[contains(@class,'disabledNotSelected')][not(self::div)][not(self::input)][not(self::span)][not(self::b)][not(self::i)]"
   },
   "inStockSizes": {
     "attribute": "size",
