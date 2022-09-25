@@ -1,9 +1,10 @@
 {
-    "isHeadless": false,
+    "isHeadless": true,
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": ["image","media","font"],
     "whiteListUrls": [
-        "zara"
+        "https://www.zara.com/",
+        "https://static.zara.net"
 
     ],
     "blockUrls": [
