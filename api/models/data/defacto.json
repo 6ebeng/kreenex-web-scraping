@@ -27,7 +27,7 @@
     "groups": [],
     "selector": "div.product-size-selector__buttons > button:not(.product-no-stock)"
   },
-  "clickSize": "div.product-size-selector__buttons > button:not(.product-no-stock)[value='{{size}}']",
+  "clickSize": "",
   "title": {
     "attribute": "",
     "regex": "",
