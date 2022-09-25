@@ -257,7 +257,9 @@ puppeteer.use(proxyRouter)
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
-    await page.screenshot({path: 'screenshot.png'});
+    console.log(await page.evaluate(()=>{
+      return document.querySelectorAll("body")[0].innerHTML
+    }))
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
