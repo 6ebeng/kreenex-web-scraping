@@ -20,7 +20,8 @@
     "https://www.lcwaikiki.com/NYhlO6K0m/LQa/ET5kjQ/amED6Qhr/aixKAQ/Qj9/3SmwlThIB",
     "https://www.lcwaikiki.com/NYhlO6K0m/LQa/ET5kjQ/amED6Qhr/aixKAQ/Qj9/3SmwlThIB",
     "https://www.lcwaikiki.com/NYhlO6K0m/LQa/ET5kjQ/amED6Qhr/aixKAQ/Qj9/3SmwlThIB",
-    "https://www.lcwaikiki.com/Resource/Scripts/lib/lazysizes"
+    "https://www.lcwaikiki.com/Resource/Scripts/lib/lazysizes",
+    "https://www.lcwaikiki.com/Resource/Scripts/lib/bootstrapselect"
   ],
   "container": "div.product-detail",
   "notInStockSizes": {
