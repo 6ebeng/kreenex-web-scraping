@@ -249,11 +249,48 @@ puppeteer.use(proxyRouter)
       
     });
 
-    if(data.isHeadless) await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
 
-    console.log("navigator.userAgent >>" + await page.evaluate(()=>{return navigator.userAgent}))
-    console.log("!!navigator.webdriver >>" + await page.evaluate(()=>{return !!navigator.webdriver}))
-    console.log("navigator.hardwareConcurrency >>" + await page.evaluate(()=>{return navigator.hardwareConcurrency}))
+    // Bypass detections
+
+    if(data.isHeadless) await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
+    
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'userAgent', {      get: () => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'  });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'webdriver', {get: () => false });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'language', {      get: () => "en-US",  });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'deviceMemory', {      get: () => 8  });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'hardwareConcurrency', {    get: () => 8});})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'platform', {      get: () => 'Win32'  });})
+    await page.evaluate(()=>{  var inject = function () {
+      var overwrite = function (name) {
+        const OLD = HTMLCanvasElement.prototype[name];
+        Object.defineProperty(HTMLCanvasElement.prototype, name, {
+          "value": function () {
+            var shift = {
+              'r': Math.floor(Math.random() * 10) - 5,
+              'g': Math.floor(Math.random() * 10) - 5,
+              'b': Math.floor(Math.random() * 10) - 5,
+              'a': Math.floor(Math.random() * 10) - 5
+            };
+            var width = this.width, height = this.height, context = this.getContext("2d");
+            var imageData = context.getImageData(0, 0, width, height);
+            for (var i = 0; i < height; i++) {
+              for (var j = 0; j < width; j++) {
+                var n = ((i * (width * 4)) + (j * 4));
+                imageData.data[n + 0] = imageData.data[n + 0] + shift.r;
+                imageData.data[n + 1] = imageData.data[n + 1] + shift.g;
+                imageData.data[n + 2] = imageData.data[n + 2] + shift.b;
+                imageData.data[n + 3] = imageData.data[n + 3] + shift.a;
+              }
+            }
+            context.putImageData(imageData, 0, 0);
+            return OLD.apply(this, arguments);
+          }
+        });
+      };
+      overwrite('toBlob');
+      overwrite('toDataURL');
+    };
+    inject();})
 
 
 
