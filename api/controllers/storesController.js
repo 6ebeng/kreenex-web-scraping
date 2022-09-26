@@ -12,8 +12,7 @@ const async = require("async"),
   scrollToBottom = require('scroll-to-bottomjs'), {
     check,
     validationResult
-  } = require('express-validator'),
-  chrome = require('chrome-cookies-secure')
+  } = require('express-validator')
 
 var browser;
 let storesController = {
@@ -217,7 +216,6 @@ puppeteer.use(proxyRouter)
     
     //first tab
     var page = (await browser.pages())[0];
-    await page.setCookie(...cookies);
     await page.setRequestInterception(true);
 
     //Block unnecessary resource types and urls
