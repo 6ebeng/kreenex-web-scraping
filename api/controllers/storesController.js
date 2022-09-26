@@ -93,7 +93,6 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         return tmpSelector[0] //return the first array
       }
     } else {
-      console.log(await mainSelector(page, selector, attribute))
       return await mainSelector(page, selector, attribute)
     }
 }
@@ -363,8 +362,8 @@ puppeteer.use(proxyRouter)
     Response.Url = req.body.Url;
 
     Response.Name = await elementSelector(page,data.title.selector || null,data.title.attribute || null, data.title.regex || null, data.title.groups || [], false) || "";
-    Response.Category = await elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true).join(" ").trim() || "";
-    
+    var strCategory = await elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true) || "";
+    Response.Category = strCategory.join(" ").trim()
     var strPrice = await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
     //Extract clean price without decimal
     if(strPrice.includes(",") || strPrice.includes(".")) {
