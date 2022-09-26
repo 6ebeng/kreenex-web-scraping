@@ -38,7 +38,7 @@
     "attribute": "",
     "regex": "",
     "groups": [1],
-    "selector": " //ol[contains(@class,'breadcrumb')]/li[last()-2] | //ol[contains(@class,'breadcrumb')]/li[last()-1]"
+    "selector": "//ol[contains(@class,'breadcrumb')]/li[last()-2] | //ol[contains(@class,'breadcrumb')]/li[last()-1]"
   },
   "price": {
     "attribute": "",
