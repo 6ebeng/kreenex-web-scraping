@@ -52,7 +52,6 @@ async function mainSelector(page, selector, attribute) {
       },{selector,attribute})
     } else {
       return  await page.evaluate(async (selector)=>{
-        
         return Array.from((function () {var arr = []; var results = document.evaluate(selector, document,null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null); while (node = results.iterateNext()){ arr.push(node)} return arr;})()).map(el=> (el.textContent.replace(/(\r\n|\n|\r)/gm, "").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"").replace(/&39;/g, "'").replace(/&amp;/g, "&").replace(/\n/g, "").trim()))
        },selector)
     }
@@ -94,6 +93,7 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         return tmpSelector[0] //return the first array
       }
     } else {
+      console.log(await mainSelector(page, selector, attribute))
       return await mainSelector(page, selector, attribute)
     }
 }
