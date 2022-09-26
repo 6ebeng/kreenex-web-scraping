@@ -12,7 +12,8 @@ const async = require("async"),
   scrollToBottom = require('scroll-to-bottomjs'), {
     check,
     validationResult
-  } = require('express-validator')
+  } = require('express-validator'),
+  chrome = require('chrome-cookies-secure')
 
 var browser;
 let storesController = {
@@ -167,10 +168,25 @@ puppeteer.use(proxyRouter)
 
   /* Initialize Browser */
   try {
-    let store = req.body.Url
-    store = store.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")[4]
+    let url = req.body.Url
+    let match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+    store = match[4]
     store = store.substring(0, store.indexOf('.'))
     const data = require('../models/data/' + store)
+
+    // check if previous cookies available
+    const site = match[1] + match[3] + match[4]
+    console.log(site)
+    const getCookies = (callback) => {
+      chrome.getCookies(site, 'puppeteer', function(err, cookies) {
+          if (err) {
+              //console.log(err, 'error');
+              return
+          }
+          //console.log(cookies, 'cookies');
+          callback(cookies);
+      }) 
+  }
 
     /* Launch Browser */
     puppeteer.use(require('puppeteer-extra-plugin-stealth')());
@@ -215,9 +231,10 @@ puppeteer.use(proxyRouter)
     
     //first tab
     var page = (await browser.pages())[0];
+    await page.setCookie(...cookies);
+    await page.setRequestInterception(true);
 
     //Block unnecessary resource types and urls
-    await page.setRequestInterception(true);
     page.on('request', request => {
       var resourceType
       var url = true
@@ -248,6 +265,8 @@ puppeteer.use(proxyRouter)
       }   
       
     });
+
+
 
 
     // Bypass detections
