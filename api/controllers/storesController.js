@@ -174,8 +174,8 @@ puppeteer.use(proxyRouter)
     const data = require('../models/data/' + store)
 
     // check if previous cookies available
-    console.log(match[1] + match[3] + match[4].replace(/[\/]+/g,''))
-    const site = match[1] + match[3] + match[4].replace(/[\/]+/g,'')
+    console.log(match[1] + match[3] + match[4].replace(/\/.+/g,''))
+    const site = match[1] + match[3] + match[4].replace(/\/.+/g,'')
     console.log(site)
     const getCookies = (callback) => {
       chrome.getCookies(site, 'puppeteer', function(err, cookies) {
