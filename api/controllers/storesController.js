@@ -12,8 +12,8 @@ const async = require("async"),
   scrollToBottom = require('scroll-to-bottomjs'), {
     check,
     validationResult
-  } = require('express-validator')
-  
+  } = require('express-validator'),
+  chrome = require('chrome-cookies-secure')
 
 var browser;
 let storesController = {
@@ -166,32 +166,12 @@ const proxyRouter = ProxyRouter({
 puppeteer.use(proxyRouter)
 */
 
-
-let url = req.body.Url
-var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
-let store = match[4].replace(/\..+/g,'')
-const data = require('../models/data/' + store)
-
-// check if previous cookies available
-const site = match[1] + match[3] + match[4].replace(/\/.+/g,'')
-
-
-
-const chrome = require('chrome-cookies-secure')
-const getCookies = (callback) => {
-  chrome.getCookies(url, 'puppeteer', function(err, cookies) {
-      if (err) {
-          console.log(err, 'error');
-          return
-      }
-      console.log(cookies, 'cookies');
-      callback(cookies);
-  }) 
-}
-
   /* Initialize Browser */
-  getCookies(async (cookies) => {
   try {
+    let url = req.body.Url
+    var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+    let store = match[4].replace(/\..+/g,'')
+    const data = require('../models/data/' + store)
 
 
     /* Launch Browser */
@@ -220,24 +200,24 @@ const getCookies = (callback) => {
     // Xvfb -ac :99 -screen 0 1200x800x16 &
     // export DISPLAY=:99
 
-      browser = await puppeteer.launch({
-        headless: data.isHeadless,
-        executablePath: '/usr/bin/google-chrome',
-        args: ["--no-sandbox",
-               "--window-size=1200,800",
-               "--blink-settings=imagesEnabled=false",
-               "--disable-translate",
-               "--autoplay-policy=no-user-gesture-required"
-              ],
-        env: { DISPLAY: ":10"},
-        defaultViewport: null
-      });
-      var page = (await browser.pages())[0];
-      await page.setCookie(...cookies);
-      
+
+    browser = await puppeteer.launch({
+      headless: data.isHeadless,
+      executablePath: '/usr/bin/google-chrome',
+      args: ["--no-sandbox",
+             "--window-size=1200,800",
+             "--blink-settings=imagesEnabled=false",
+             "--disable-translate",
+             "--autoplay-policy=no-user-gesture-required"
+            ],
+      env: { DISPLAY: ":10"},
+      defaultViewport: null
+    });
+    
     
     //first tab
-
+    var page = (await browser.pages())[0];
+    await page.setCookie(...cookies);
     await page.setRequestInterception(true);
 
     //Block unnecessary resource types and urls
@@ -442,5 +422,5 @@ const getCookies = (callback) => {
     await browser.close();
   }
 }
-  )}
+
 module.exports = storesController;
