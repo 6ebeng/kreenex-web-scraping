@@ -45,9 +45,9 @@
   },
   "category": {
     "attribute": "",
-    "regex": "[\\S ]+ ([\\S ]+)",
-    "groups": [1],
-    "selector": "//ul[contains(@class,'breadcrumb')]/li[@class='active']/text()"
+    "regex": "",
+    "groups": [],
+    "selector": "//ul[contains(@class,'breadcrumb')]/li[last()-1]"
   },
   "price": {
     "attribute": "",
