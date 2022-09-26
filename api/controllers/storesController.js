@@ -12,8 +12,8 @@ const async = require("async"),
   scrollToBottom = require('scroll-to-bottomjs'), {
     check,
     validationResult
-  } = require('express-validator'),
-  chrome = require('chrome-cookies-secure')
+  } = require('express-validator')
+  
 
 var browser;
 let storesController = {
@@ -175,14 +175,15 @@ puppeteer.use(proxyRouter)
 
     // check if previous cookies available
     const site = match[1] + match[3] + match[4].replace(/\/.+/g,'')
-    console.log(site)
+
+    const chrome = require('chrome-cookies-secure')
     const getCookies = (callback) => {
-      chrome.getCookies(site, 'puppeteer', function(err, cookies) {
+      chrome.getCookies(url, 'puppeteer', function(err, cookies) {
           if (err) {
-              //console.log(err, 'error');
+              console.log(err, 'error');
               return
           }
-          //console.log(cookies, 'cookies');
+          console.log(cookies, 'cookies');
           callback(cookies);
       }) 
   }
@@ -212,25 +213,24 @@ puppeteer.use(proxyRouter)
       // sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
     // Xvfb -ac :99 -screen 0 1200x800x16 &
     // export DISPLAY=:99
-
-
-    browser = await puppeteer.launch({
-      headless: data.isHeadless,
-      executablePath: '/usr/bin/google-chrome',
-      args: ["--no-sandbox",
-             "--window-size=1200,800",
-             "--blink-settings=imagesEnabled=false",
-             "--disable-translate",
-             "--autoplay-policy=no-user-gesture-required"
-            ],
-      env: { DISPLAY: ":10"},
-      defaultViewport: null
-    });
-    
+    getCookies(async (cookies) => {
+      browser = await puppeteer.launch({
+        headless: data.isHeadless,
+        executablePath: '/usr/bin/google-chrome',
+        args: ["--no-sandbox",
+               "--window-size=1200,800",
+               "--blink-settings=imagesEnabled=false",
+               "--disable-translate",
+               "--autoplay-policy=no-user-gesture-required"
+              ],
+        env: { DISPLAY: ":10"},
+        defaultViewport: null
+      });
+      var page = (await browser.pages())[0];
+      await page.setCookie(...cookies);
     
     //first tab
-    var page = (await browser.pages())[0];
-    await page.setCookie(...cookies);
+
     await page.setRequestInterception(true);
 
     //Block unnecessary resource types and urls
@@ -422,6 +422,7 @@ puppeteer.use(proxyRouter)
       Data: Response,
       Message: "Success."
     });
+  });
   } catch (e) {
     console.log('err', e)
 
