@@ -166,27 +166,33 @@ const proxyRouter = ProxyRouter({
 puppeteer.use(proxyRouter)
 */
 
+
+let url = req.body.Url
+var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+let store = match[4].replace(/\..+/g,'')
+const data = require('../models/data/' + store)
+
+// check if previous cookies available
+const site = match[1] + match[3] + match[4].replace(/\/.+/g,'')
+
+
+
+const chrome = require('chrome-cookies-secure')
+const getCookies = (callback) => {
+  chrome.getCookies(url, 'puppeteer', function(err, cookies) {
+      if (err) {
+          console.log(err, 'error');
+          return
+      }
+      console.log(cookies, 'cookies');
+      callback(cookies);
+  }) 
+}
+
   /* Initialize Browser */
+  getCookies(async (cookies) => {
   try {
-    let url = req.body.Url
-    var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
-    let store = match[4].replace(/\..+/g,'')
-    const data = require('../models/data/' + store)
 
-    // check if previous cookies available
-    const site = match[1] + match[3] + match[4].replace(/\/.+/g,'')
-
-    const chrome = require('chrome-cookies-secure')
-    const getCookies = (callback) => {
-      chrome.getCookies(url, 'puppeteer', function(err, cookies) {
-          if (err) {
-              console.log(err, 'error');
-              return
-          }
-          console.log(cookies, 'cookies');
-          callback(cookies);
-      }) 
-  }
 
     /* Launch Browser */
     puppeteer.use(require('puppeteer-extra-plugin-stealth')());
@@ -213,7 +219,7 @@ puppeteer.use(proxyRouter)
       // sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
     // Xvfb -ac :99 -screen 0 1200x800x16 &
     // export DISPLAY=:99
-    getCookies(async (cookies) => {
+
       browser = await puppeteer.launch({
         headless: data.isHeadless,
         executablePath: '/usr/bin/google-chrome',
@@ -228,6 +234,7 @@ puppeteer.use(proxyRouter)
       });
       var page = (await browser.pages())[0];
       await page.setCookie(...cookies);
+      
     
     //first tab
 
@@ -422,7 +429,6 @@ puppeteer.use(proxyRouter)
       Data: Response,
       Message: "Success."
     });
-  });
   } catch (e) {
     console.log('err', e)
 
@@ -436,5 +442,5 @@ puppeteer.use(proxyRouter)
     await browser.close();
   }
 }
-
+  )}
 module.exports = storesController;
