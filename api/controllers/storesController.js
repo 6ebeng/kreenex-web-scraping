@@ -169,13 +169,13 @@ puppeteer.use(proxyRouter)
   /* Initialize Browser */
   try {
     let url = req.body.Url
-    var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
-    console.log(match)
-    store = match[4].substring(0, store.indexOf('.'))
+    var Match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+    console.log(Match[4])
+    store = Match[4].substring(0, store.indexOf('.'))
     const data = require('../models/data/' + store)
 
     // check if previous cookies available
-    const site = match[1] + match[3] + match[4]
+    const site = Match[1] + Match[3] + Match[4]
     console.log(site)
     const getCookies = (callback) => {
       chrome.getCookies(site, 'puppeteer', function(err, cookies) {
