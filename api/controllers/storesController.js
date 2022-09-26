@@ -169,8 +169,8 @@ puppeteer.use(proxyRouter)
   /* Initialize Browser */
   try {
     let url = req.body.Url
-    let match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
-    
+    var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+    console.log(match)
     store = match[4].substring(0, store.indexOf('.'))
     const data = require('../models/data/' + store)
 
