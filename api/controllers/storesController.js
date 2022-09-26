@@ -174,6 +174,7 @@ puppeteer.use(proxyRouter)
     const data = require('../models/data/' + store)
 
     // check if previous cookies available
+    console.log(match)
     const site = match[1] + match[3] + match[4]
     console.log(site)
     const getCookies = (callback) => {
