@@ -59,12 +59,14 @@
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/7458.e12e8ed2efe57860951d.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/5765.aed1d3dfef5432de0235.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/7227.8cd1090a1c03333b9387.js",
-
+    
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/5368.dd85f54e28da925aa0e0.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/7239.b0f084b65e3176760ff3.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/8246.6f9db8cbeca0d1572d75.js",
-    "https://s1-cdn.hm.com/global/frontend/web-components/es6/6366.8dbeb0b0dc99244a8a4e.js"
+    "https://s1-cdn.hm.com/global/frontend/web-components/es6/6366.8dbeb0b0dc99244a8a4e.js",
 
+    "https://s1-cdn.hm.com/global/frontend/web-components/es6/9256.0ce71319b50517dfb561.js",
+    "https://s1-cdn.hm.com/global/frontend/web-components/es6/4833.18f95d40586ec9a131f6.js"
 
   ],
   "container": "div.product-description",
