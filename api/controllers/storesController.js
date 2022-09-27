@@ -363,6 +363,7 @@ puppeteer.use(proxyRouter)
 
     Response.Name = await elementSelector(page,data.title.selector || null,data.title.attribute || null, data.title.regex || null, data.title.groups || [], false) || "";
     var strCategory = await elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true) || "";
+    console.log(strCategory)
     Response.Category = strCategory.join(" ").trim()
     var strPrice = await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
     //Extract clean price without decimal
