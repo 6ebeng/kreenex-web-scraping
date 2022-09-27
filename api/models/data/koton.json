@@ -46,7 +46,7 @@
     "attribute": "label",
     "regex": "",
     "groups": [],
-    "selector": "pz-variant-option:not(.-selectable)"
+    "selector": "//pz-variant-option[contains(@class,'-selected')] | //pz-variant-option[not(contains(@class,'-selectable'))]"
   },
   "images": {
     "attribute": "data-src",
