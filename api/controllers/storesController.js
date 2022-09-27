@@ -204,6 +204,7 @@ puppeteer.use(proxyRouter)
         xvfb_args: ['-screen', '0', '1200x800x24+32']
       });
       xvfb.startSync();
+      console.log('xvfb started');
     }
 
     browser = await puppeteer.launch({
