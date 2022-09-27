@@ -68,7 +68,7 @@
   "category": {
     "attribute": "",
     "regex": "",
-    "groups": [1],
+    "groups": [],
     "selector": "//ol[@class='breadcrumbs']/li[last()-1]/a/span | //ol[@class='breadcrumbs']/li[last()]/a/span"
   },
   "price": {
