@@ -198,7 +198,13 @@ puppeteer.use(proxyRouter)
       // kill -- "-$xvfb_pid"
       // Xvfb -ac :10 -screen 0 1200x800x16 &
       // export DISPLAY=:10
-
+    if (data.isHeadless) {
+      var Xvfb = require('xvfb');
+      var xvfb = new Xvfb({
+        xvfb_args: ['-screen', '0', '1200x800x24+32']
+      });
+      xvfb.startSync();
+    }
 
     browser = await puppeteer.launch({
       headless: data.isHeadless,
@@ -207,10 +213,10 @@ puppeteer.use(proxyRouter)
              "--window-size=1200,800",
              //"--blink-settings=imagesEnabled=false",
              "--disable-translate",
+             "--window-position=0,0",
              "--autoplay-policy=no-user-gesture-required"
             ],
-      env: { DISPLAY: ":10"},
-      defaultViewport: null
+      env: { DISPLAY: ":10"}
     });
     
     
@@ -252,11 +258,12 @@ puppeteer.use(proxyRouter)
 
 
 
-
     // Bypass detections
 
-    if(data.isHeadless) await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
-    
+    if(data.isHeadless){
+    await page.setViewport({ width: 1200, height: 800 });
+    await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
+    }
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'userAgent', {      get: () => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'  });})
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'webdriver', {get: () => false });})
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'language', {      get: () => "en-US",  });})
@@ -416,8 +423,8 @@ puppeteer.use(proxyRouter)
       Message: "Some error occured Or data not found, please try again."
     });
   } finally{
-    
     await browser.close();
+    xvfb.stopSync();
   }
 }
 
