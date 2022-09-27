@@ -7,7 +7,12 @@
     "https://s1-cdn.hm.com"
   ],
   "blockUrls": [
-
+    "www2.hm.com/tr_tr/metrics/default/touchpoint.js",
+    "www2.hm.com/tr_tr/v1/promotionMarkers",
+    "www2.hm.com/tr_tr/pra/panel/product-detail-page",
+    "www2.hm.com/alive/user",
+    "www2.hm.com/tr_tr/v2/settings",
+    "www2.hm.com/tr_tr/pra/notification/click"
   ],
   "container": "div.product-description",
   "notInStockSizes": {
