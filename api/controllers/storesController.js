@@ -211,6 +211,7 @@ puppeteer.use(proxyRouter)
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
+             "--disable-setuid-sandbox",
              "--window-size=1200,800",
              //"--blink-settings=imagesEnabled=false",
              "--disable-translate",
@@ -311,9 +312,9 @@ puppeteer.use(proxyRouter)
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
-    // console.log(await page.evaluate(()=>{
-    //   return document.querySelectorAll("body")[0].textContent
-    // }))
+    console.log(await page.evaluate(()=>{
+      return document.querySelectorAll("body")[0].textContent
+    }))
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
