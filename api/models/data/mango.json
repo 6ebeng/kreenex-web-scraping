@@ -46,7 +46,6 @@
     "https://st0.mngbcn.com/static/js/jquery.js",
     "https://st.mngbcn.com/static/js/webcomponents",
     "https://st0.mngbcn.com/static/shop/desktop/specifics"
-
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
