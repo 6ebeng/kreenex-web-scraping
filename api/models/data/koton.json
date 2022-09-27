@@ -34,7 +34,7 @@
     "attribute": "",
     "regex": "",
     "groups": [],
-    "selector": "//div[contains(@class,'breadcrumb')]/a[last()]"
+    "selector": "//div[@class='breadcrumb ']/a[last()] | //div[@class='breadcrumb ']/a[last()-1]"
   },
   "price": {
     "attribute": "",
