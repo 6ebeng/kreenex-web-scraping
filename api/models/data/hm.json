@@ -7,14 +7,6 @@
     "https://s1-cdn.hm.com"
   ],
   "blockUrls": [
-    "https://www2.hm.com/tr_tr/reviews/",
-    "https://www2.hm.com/services/hybris/configuration",
-    "https://www2.hm.com/akam/13/pixel",
-    "https://www2.hm.com/tr_tr/favourites",
-    "https://www2.hm.com/tr_tr/pra/notification/",
-    "https://www2.hm.com/akam",
-    "https://www2.hm.com/tr_tr/v1/labels",
-    "https://www2.hm.com/tr_tr/i18n.json",
     "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/702.c2b432b4bc205ca847ce.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/5643.745beba27623bb46aa01.js",
