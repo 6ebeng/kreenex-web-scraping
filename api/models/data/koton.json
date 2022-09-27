@@ -43,10 +43,10 @@
     "selector": "div.price > div.price__base > div.price__price"
   },
   "color": {
-    "attribute": "",
-    "regex": "(?<=Renk: ).+",
+    "attribute": "label",
+    "regex": "",
     "groups": [],
-    "selector": "pz-variant[name='Renk'] > p > span"
+    "selector": "pz-variant-option:not(.-selectable)"
   },
   "images": {
     "attribute": "data-src",
