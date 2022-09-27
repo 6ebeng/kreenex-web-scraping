@@ -204,7 +204,7 @@ puppeteer.use(proxyRouter)
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
              "--window-size=1200,800",
-             "--blink-settings=imagesEnabled=false",
+             //"--blink-settings=imagesEnabled=false",
              "--disable-translate",
              "--autoplay-policy=no-user-gesture-required"
             ],
