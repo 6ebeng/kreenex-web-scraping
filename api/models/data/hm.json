@@ -7,7 +7,7 @@
     "https://s1-cdn.hm.com"
   ],
   "blockUrls": [
-    "https://s1-cdn.hm.com/global/frontend/vanilla/js/cssloader",
+
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/702.c2b432b4bc205ca847ce.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/5643.745beba27623bb46aa01.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/7759.8a357430d26aed259427.js",
@@ -71,11 +71,7 @@
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/7232.e45eb75a39a71a67f812.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/5404.47ebc497a133c2a8398e.js",
     "https://s1-cdn.hm.com/global/frontend/web-components/es6/4317.e38634bea4a9f09d1aea.js",
-    "https://s1-cdn.hm.com/global/frontend/web-components/es6/4117.da2ab170ae3fe152a967.js",
-    "https://www2.hm.com/1YsV1L/G0D/jfd/rO2W2w/G53YVp2maO/YEZIU28/KAFF/RHNaISEB",
-"https://www2.hm.com/1YsV1L/G0D/jfd/rO2W2w/G53YVp2maO/YEZIU28/KAFF/RHNaISEB",
-"https://s1-cdn.hm.com/global/frontend/web-components/es6/7882.6dc5221ec98f88b2167f.js",
-"https://s1-cdn.hm.com/global/frontend/web-components/es6/1024.197f2bedfe9e1f5b70db.js"
+    "https://s1-cdn.hm.com/global/frontend/web-components/es6/4117.da2ab170ae3fe152a967.js"
 
   ],
   "container": "div.product-description",
