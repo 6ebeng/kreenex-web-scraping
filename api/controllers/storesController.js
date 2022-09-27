@@ -198,7 +198,7 @@ puppeteer.use(proxyRouter)
       // kill -- "-$xvfb_pid"
       // Xvfb -ac :10 -screen 0 1200x800x16 &
       // export DISPLAY=:10
-    if (data.isHeadless) {
+    if (!data.isHeadless) {
       var Xvfb = require('xvfb');
       var xvfb = new Xvfb({
         xvfb_args: ['-screen', '0', '1200x800x24+32']
@@ -260,7 +260,7 @@ puppeteer.use(proxyRouter)
 
     // Bypass detections
 
-    if(data.isHeadless){
+    if(!data.isHeadless){
     await page.setViewport({ width: 1200, height: 800 });
     await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
     }
