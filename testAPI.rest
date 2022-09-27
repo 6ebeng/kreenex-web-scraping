@@ -29,7 +29,7 @@ POST http://164.92.141.204:4200/api/search HTTP/1.1
 Content-Type: application/json
 
 {
-    "Url" : "https://www.koton.com/uzun-hirka-uzun-kollu-siyah-1266202/",
+    "Url" : "https://www.koton.com/uzun-hirka-uzun-kollu-siyah-1266202/?integration_color_desc=050",
     "Size": "M"
 }
 ######

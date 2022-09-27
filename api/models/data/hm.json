@@ -114,9 +114,9 @@
   },
   "category": {
     "attribute": "",
-    "regex": "[\\S ]+ ([\\S ]+)",
-    "groups": [1],
-    "selector": "hm-product-name#js-product-name"
+    "regex": "",
+    "groups": [],
+    "selector": "//nav[@aria-label='Breadcrumb']/ol[count(li)=4]/li[last()-1]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=5]/li[last()-1]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=5]/li[last()-2]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=6]/li[last()-1]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=6]/li[last()-2]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=6]/li[last()-3]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=7]/li[last()-1]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=7]/li[last()-2]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=7]/li[last()-3]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=7]/li[last()-4]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=8]/li[last()-1]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=8]/li[last()-2]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=8]/li[last()-3]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=8]/li[last()-4]/a |  //nav[@aria-label='Breadcrumb']/ol[count(li)=8]/li[last()-5]/a"
   },
   "price": {
     "attribute": "",
