@@ -8,10 +8,7 @@
   ],
   "blockUrls": [
     "https://st0.mngbcn.com/static/shop/desktop/custom.css",
-    "https://st.mngbcn.com/scripts/optimize.js",
-    "https://st0.mngbcn.com/static/styleguide",
-    "https://shop.mango.com/javax.faces.resource",
-    "https://st0.mngbcn.com/static/js/pluginsTOP.js"
+    "https://st.mngbcn.com/scripts/optimize.js"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
