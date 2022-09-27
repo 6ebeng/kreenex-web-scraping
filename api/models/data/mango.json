@@ -70,9 +70,9 @@
   },
   "category": {
     "attribute": "",
-    "regex": "[\\S ]+ ([\\S ]+)",
+    "regex": "",
     "groups": [1],
-    "selector": "h1.product-name"
+    "selector": "//ol[@class='breadcrumbs']/li[last()-1]/a/span | //ol[@class='breadcrumbs']/li[last()]/a/span"
   },
   "price": {
     "attribute": "",
