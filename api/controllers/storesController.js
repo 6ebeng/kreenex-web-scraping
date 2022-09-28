@@ -290,11 +290,11 @@ puppeteer.use(proxyRouter)
 
 
     // Bypass detections
-
+    await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
+    
     if(!data.isHeadless){
     await page.setViewport({ width: 1200, height: 800 });
-    await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
-    }
+        }
 
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'userAgent', {      get: () => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'  });})
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'webdriver', {get: () => false });})
