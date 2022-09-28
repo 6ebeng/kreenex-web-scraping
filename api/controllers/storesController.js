@@ -198,14 +198,14 @@ puppeteer.use(proxyRouter)
       // kill -- "-$xvfb_pid"
       // Xvfb -ac :10 -screen 0 1200x800x16 &
       // export DISPLAY=:10
-    if (!data.isHeadless) {
-      var Xvfb = require('xvfb');
-      var xvfb = new Xvfb({
-        xvfb_args: ['-screen', '0', '1200x800x24+32']
-      });
-      xvfb.startSync();
-      console.log('xvfb started');
-    }
+    // if (!data.isHeadless) {
+    //   var Xvfb = require('xvfb');
+    //   var xvfb = new Xvfb({
+    //     xvfb_args: ['-screen', '0', '1200x800x24+32']
+    //   });
+    //   xvfb.startSync();
+    //   console.log('xvfb started');
+    // }
 
     let args
 
@@ -456,7 +456,9 @@ puppeteer.use(proxyRouter)
     });
   } finally{
     await browser.close();
-    if (!data.isHeadless) xvfb.stopSync();
+    // if (!data.isHeadless) {
+    //   xvfb.stopSync();
+    // }
   }
 }
 
