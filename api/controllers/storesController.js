@@ -207,6 +207,33 @@ puppeteer.use(proxyRouter)
       console.log('xvfb started');
     }
 
+    let args
+
+    if (data.isHeadless) {
+      args = [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--window-size=1200,800",
+        //"--blink-settings=imagesEnabled=false",
+        "--disable-translate",
+        "--window-position=0,0",
+        "--autoplay-policy=no-user-gesture-required"
+     ]
+    } else {
+      args = [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--window-size=1200,800",
+        //"--blink-settings=imagesEnabled=false",
+        "--disable-translate",
+        "--window-position=0,0",
+        "--autoplay-policy=no-user-gesture-required"
+     ]
+    }
+    
+
+
+
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
@@ -218,7 +245,9 @@ puppeteer.use(proxyRouter)
              "--window-position=0,0",
              "--autoplay-policy=no-user-gesture-required"
             ],
-      env: { DISPLAY: ":10"}
+      env: { DISPLAY: ":10"},
+      slowMo: 0,
+      ignoreHTTPSErrors: true
     });
     
     
@@ -266,6 +295,7 @@ puppeteer.use(proxyRouter)
     await page.setViewport({ width: 1200, height: 800 });
     await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
     }
+
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'userAgent', {      get: () => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'  });})
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'webdriver', {get: () => false });})
     // await page.evaluate(()=>{Object.defineProperty(navigator, 'language', {      get: () => "en-US",  });})
@@ -426,7 +456,7 @@ puppeteer.use(proxyRouter)
     });
   } finally{
     await browser.close();
-    xvfb.stopSync();
+    if (!data.isHeadless) xvfb.stopSync();
   }
 }
 
