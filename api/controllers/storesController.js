@@ -342,9 +342,9 @@ puppeteer.use(proxyRouter)
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
-    // console.log(await page.evaluate(()=>{
-    //   return document.querySelectorAll("body")[0].textContent
-    // }))
+    console.log(await page.evaluate(()=>{
+      return document.querySelectorAll("body")[0].textContent
+    }))
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
