@@ -349,6 +349,10 @@ puppeteer.use(proxyRouter)
       flag: 'w'
     })
 
+    await logo.screenshot({
+      path: 'screenshoot.png'
+      });
+
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
