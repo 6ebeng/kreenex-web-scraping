@@ -1,5 +1,5 @@
 {
-  "debug": true,
+  "debug": false,
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","font","other"],
