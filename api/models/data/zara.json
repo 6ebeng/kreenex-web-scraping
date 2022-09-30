@@ -4,8 +4,7 @@
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
     "whiteListUrls": [
-        "https://www.zara.com/",
-        "https://static.zara.net"
+"zara"
     ],
     "blockUrls": [
         
