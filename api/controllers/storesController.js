@@ -361,9 +361,9 @@ puppeteer.use(proxyRouter)
         flag: 'w'
       })
 
-      await page.evaluate(() => {
+      console.log(await page.evaluate(() => {
         return navigator.userAgent
-      })
+      }))
 
       await page.screenshot({
         path: 'debug/screenshoots/' + store + '.png'
