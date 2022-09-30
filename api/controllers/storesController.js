@@ -343,12 +343,12 @@ puppeteer.use(proxyRouter)
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
     fs.writeFileSync('example.html', await page.evaluate(()=>{
-      return document.querySelectorAll("body")[0].textContent
+      return document.querySelectorAll("html")[0].textContent
     }), {
       encoding: 'utf8',
       flag: 'w'
     })
-    
+
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
