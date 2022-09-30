@@ -242,20 +242,12 @@ puppeteer.use(proxyRouter)
              "--blink-settings=imagesEnabled=false",
              "--disable-translate",
              "--window-position=0,0",
-             "--autoplay-policy=no-user-gesture-required"
+             "--autoplay-policy=no-user-gesture-required",
+             "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
             ],
       env: { DISPLAY: ":10"},
       slowMo: 0,
-      ignoreHTTPSErrors: true,
-      setExtraHTTPHeaders: {
-        'user-agent':
-          '5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
-        'upgrade-insecure-requests': '1',
-        accept:
-          'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
-        'accept-encoding': 'gzip, deflate, br',
-        'accept-language': 'en-US,en;q=0.9,en;q=0.8',
-      }
+      ignoreHTTPSErrors: true
     });
     
     
