@@ -361,14 +361,19 @@ puppeteer.use(proxyRouter)
         flag: 'w'
       })
 
+      await page.evaluate(() => {
+        return navigator.userAgent
+      })
+
       await page.screenshot({
         path: 'debug/screenshoots/' + store + '.png'
       });
 
-      await page.waitForSelector(data.container, {
-        timeout: 30000
-      });
     }
+
+    await page.waitForSelector(data.container, {
+      timeout: 30000
+    });
 
     // /* Load Page Content */
     // var $ = cheerio.load(await page.content());
