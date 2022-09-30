@@ -7,12 +7,6 @@
     "mngbcn.com"
   ],
   "blockUrls": [
-    "https://st0.mngbcn.com/static/shop/desktop/custom.css",
-    "https://st0.mngbcn.com/static/styleguide",
-    "https://st0.mngbcn.com/fukku/fukku.css",
-    "https://shop.mango.com/javax.faces.resource",
-    "https://st0.mngbcn.com/static/js/pluginsTOP.js",
-    "https://st0.mngbcn.com/static/js/topLayoutDivs.js",
     "https://st0.mngbcn.com/static/js/plugins.js",
     "https://st0.mngbcn.com/lib/verne/utils.js",
     "https://st0.mngbcn.com/lib/verne/navigation/navigation.js",
@@ -42,6 +36,7 @@
     "https://shop.mango.com/services/header/",
     "https://shop.mango.com/services/menu/",
     "https://st0.mngbcn.com/static/js/jquery.js",
+    "https://st.mngbcn.com/static/js/webcomponents",
     "https://st0.mngbcn.com/static/shop/desktop/specifics"
   ],
   "container": "div.product-detail-main",
