@@ -243,7 +243,8 @@ puppeteer.use(proxyRouter)
              //"--blink-settings=imagesEnabled=false",
              "--disable-translate",
              "--window-position=0,0",
-             "--autoplay-policy=no-user-gesture-required"
+             "--autoplay-policy=no-user-gesture-required",
+             "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
             ],
       env: { DISPLAY: ":10"},
       slowMo: 0,
@@ -290,7 +291,6 @@ puppeteer.use(proxyRouter)
 
 
     // Bypass detections
-    await page.setUserAgent("5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
     
     if(!data.isHeadless){
     await page.setViewport({ width: 1200, height: 800 });
