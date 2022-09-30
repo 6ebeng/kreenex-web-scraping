@@ -296,11 +296,11 @@ puppeteer.use(proxyRouter)
         }
 
 
-    await page.evaluate(()=>{Object.defineProperty(navigator, 'webdriver', {get: () => false });})
-    await page.evaluate(()=>{Object.defineProperty(navigator, 'language', {      get: () => "en-US",  });})
-    await page.evaluate(()=>{Object.defineProperty(navigator, 'deviceMemory', {      get: () => 8  });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'webdriver', {set: () => false });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'language', {      set: () => "en-US",  });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'deviceMemory', {      set: () => 8  });})
     await page.evaluate(()=>{Object.defineProperty(navigator, 'hardwareConcurrency', {    get: () => 8});})
-    await page.evaluate(()=>{Object.defineProperty(navigator, 'platform', {      get: () => 'Win32'  });})
+    await page.evaluate(()=>{Object.defineProperty(navigator, 'platform', {      set: () => 'Win32'  });})
     await page.evaluate(()=>{  var inject = function () {
       var overwrite = function (name) {
         const OLD = HTMLCanvasElement.prototype[name];
