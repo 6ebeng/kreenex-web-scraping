@@ -9,10 +9,9 @@
 const async = require("async"),
   puppeteer = require('puppeteer-extra'),
   cheerio = require('cheerio'),
-  scrollToBottom = require('scroll-to-bottomjs'), {
-    check,
-    validationResult
-  } = require('express-validator')
+  scrollToBottom = require('scroll-to-bottomjs'), 
+  {check, validationResult} = require('express-validator'),
+  fs = require('fs')
 
 var browser;
 let storesController = {
@@ -342,9 +341,12 @@ puppeteer.use(proxyRouter)
       timeout: 0
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
-    // console.log(await page.evaluate(()=>{
-    //   return document.querySelectorAll("body")[0].textContent
-    // }))
+    fs.writeFileSync('/example.html', await page.evaluate(()=>{
+      return document.querySelectorAll("body")[0].textContent
+    }), {
+      encoding: 'utf8',
+      flag: 'w'
+    })
     await page.waitForSelector(data.container, {
       timeout: 30000
     });
