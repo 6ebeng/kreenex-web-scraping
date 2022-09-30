@@ -239,7 +239,7 @@ puppeteer.use(proxyRouter)
       args: ["--no-sandbox",
              "--disable-setuid-sandbox",
              "--window-size=1200,800",
-             "--blink-settings=imagesEnabled=false",
+             "--blink-settings=imagesEnabled=true",
              "--disable-translate",
              "--window-position=0,0",
              "--autoplay-policy=no-user-gesture-required",
