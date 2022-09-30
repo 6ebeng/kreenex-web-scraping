@@ -275,13 +275,13 @@ puppeteer.use(proxyRouter)
       if (resourceType || url) {
         if(url){
           //console.log(request.resourceType()); 
-          console.log('\x1b[31m%s\x1b[0m',request.url()); 
+          if (data.debug) console.log('\x1b[31m%s\x1b[0m',request.url()); 
         }
 
         request.abort(); 
       } else{
         //console.log(request.resourceType()); 
-        console.log('\x1b[32m%s\x1b[0m','"' + request.url() + '",'); 
+        if (data.debug) console.log('\x1b[32m%s\x1b[0m','"' + request.url() + '",'); 
         request.continue();
       }   
       
@@ -342,6 +342,8 @@ puppeteer.use(proxyRouter)
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
+
+    // debug
     if (data.debug) {
       fs.writeFileSync('debug/docs/' + store + '.html', await page.evaluate(() => {
         return document.querySelectorAll("html")[0].outerHTML
