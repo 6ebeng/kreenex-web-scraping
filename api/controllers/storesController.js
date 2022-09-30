@@ -349,7 +349,7 @@ puppeteer.use(proxyRouter)
       flag: 'w'
     })
 
-    await logo.screenshot({
+    await page.screenshot({
       path: 'screenshoot.png'
       });
 
