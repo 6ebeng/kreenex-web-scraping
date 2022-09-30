@@ -340,6 +340,8 @@ puppeteer.use(proxyRouter)
         arr.push(navigator.deviceMemory)
         arr.push(navigator.hardwareConcurrency)
         arr.push(navigator.platform)
+        arr.push(window.screen.width)
+        arr.push(window.screen.height)
         return arr
       }))
 
