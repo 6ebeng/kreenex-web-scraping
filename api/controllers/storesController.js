@@ -353,7 +353,13 @@ puppeteer.use(proxyRouter)
       })
 
       console.log(await page.evaluate(() => {
-        return navigator
+        var arr = []
+        arr.push(navigator.webdriver)
+        arr.push(navigator.language)
+        arr.push(navigator.deviceMemory)
+        arr.push(navigator.hardwareConcurrency)
+        arr.push(navigator.platform)
+        return arr
       }))
 
       await page.screenshot({
