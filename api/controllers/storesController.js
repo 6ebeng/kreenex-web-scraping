@@ -343,7 +343,7 @@ puppeteer.use(proxyRouter)
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
     if (data.debug) {
-      fs.writeFileSync('example.html', await page.evaluate(() => {
+      fs.writeFileSync('debug/docs/' + store + '.html', await page.evaluate(() => {
         return document.querySelectorAll("html")[0].textContent
       }), {
         encoding: 'utf8',
@@ -351,7 +351,7 @@ puppeteer.use(proxyRouter)
       })
 
       await page.screenshot({
-        path: 'screenshoot.png'
+        path: 'debug/screenshoots/' + store + '.png'
       });
 
       await page.waitForSelector(data.container, {
