@@ -342,20 +342,22 @@ puppeteer.use(proxyRouter)
     });
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
-    fs.writeFileSync('example.html', await page.evaluate(()=>{
-      return document.querySelectorAll("html")[0].textContent
-    }), {
-      encoding: 'utf8',
-      flag: 'w'
-    })
+    if (data.debug) {
+      fs.writeFileSync('example.html', await page.evaluate(() => {
+        return document.querySelectorAll("html")[0].textContent
+      }), {
+        encoding: 'utf8',
+        flag: 'w'
+      })
 
-    await page.screenshot({
-      path: 'screenshoot.png'
+      await page.screenshot({
+        path: 'screenshoot.png'
       });
 
-    await page.waitForSelector(data.container, {
-      timeout: 30000
-    });
+      await page.waitForSelector(data.container, {
+        timeout: 30000
+      });
+    }
 
     // /* Load Page Content */
     // var $ = cheerio.load(await page.content());

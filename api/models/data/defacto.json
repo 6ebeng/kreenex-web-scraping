@@ -1,4 +1,5 @@
 {
+  "debug": false,
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","stylesheet", "font", "other", "fetch"],

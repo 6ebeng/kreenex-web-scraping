@@ -1,4 +1,5 @@
 {
+    "debug": false,
     "isHeadless": false,
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
