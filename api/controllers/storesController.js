@@ -344,7 +344,7 @@ puppeteer.use(proxyRouter)
 
     if (data.debug) {
       fs.writeFileSync('debug/docs/' + store + '.html', await page.evaluate(() => {
-        return document.querySelectorAll("html")[0].innerHTML
+        return document.querySelectorAll("html")[0].outerHTML
       }), {
         encoding: 'utf8',
         flag: 'w'
