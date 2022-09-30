@@ -353,7 +353,7 @@ puppeteer.use(proxyRouter)
       })
 
       console.log(await page.evaluate(() => {
-        return navigator.userAgent
+        return navigator
       }))
 
       await page.screenshot({
