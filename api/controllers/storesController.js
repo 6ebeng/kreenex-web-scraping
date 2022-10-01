@@ -203,7 +203,7 @@ const data = require('../models/data/' + store)
       var Xvfb = require('xvfb');
       var xvfb = new Xvfb({
         silent: true,
-        xvfb_args: ["-screen", "0", '1280x720x24', "-ac"]
+        xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
     });
       await xvfb.startSync();
       console.log('xvfb started');
