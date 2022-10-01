@@ -213,7 +213,6 @@ const data = require('../models/data/' + store)
       argsValue = [
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      "--window-size=1366x768",
       "--blink-settings=imagesEnabled=true",
       "--disable-translate",
       "--window-position=0,0",
@@ -243,8 +242,6 @@ const data = require('../models/data/' + store)
       executablePath: '/usr/bin/google-chrome',
       userDataDir: "./tmp",
       args: argsValue,
-      slowMo: 0,
-      ignoreHTTPSErrors: true,
       defaultViewport: null
     });
     
