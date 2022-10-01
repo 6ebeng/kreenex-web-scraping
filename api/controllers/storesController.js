@@ -200,37 +200,12 @@ puppeteer.use(proxyRouter)
     if (!data.isHeadless) {
       var Xvfb = require('xvfb');
       var xvfb = new Xvfb({
-        xvfb_args: ['-screen', '0', '1200x800x24+32']
-      });
+        silent: true,
+        xvfb_args: ["-screen", "0", '1366x768x24', "-ac"],
+    });
       xvfb.startSync();
       console.log('xvfb started');
     }
-
-    let args
-
-    if (data.isHeadless) {
-      args = [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--window-size=1200,800",
-        //"--blink-settings=imagesEnabled=false",
-        "--disable-translate",
-        "--window-position=0,0",
-        "--autoplay-policy=no-user-gesture-required"
-     ]
-    } else {
-      args = [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--window-size=1200,800",
-        //"--blink-settings=imagesEnabled=false",
-        "--disable-translate",
-        "--window-position=0,0",
-        "--autoplay-policy=no-user-gesture-required"
-     ]
-    }
-    
-
 
 
     browser = await puppeteer.launch({
