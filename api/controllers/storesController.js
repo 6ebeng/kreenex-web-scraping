@@ -297,32 +297,32 @@ const data = require('../models/data/' + store)
       //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}});
       // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});
 
-      const getParameter = WebGLRenderingContext.getParameter;
-      WebGLRenderingContext.prototype.getParameter = function (parameter) {
-        // UNMASKED_VENDOR_WEBGL
-        if (parameter === 37445) {
-          return 'Google Inc. (Intel)';
-        }
-        // UNMASKED_RENDERER_WEBGL
-        if (parameter === 37446) {
-          return 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)';
-        }
+      // const getParameter = WebGLRenderingContext.getParameter;
+      // WebGLRenderingContext.prototype.getParameter = function (parameter) {
+      //   // UNMASKED_VENDOR_WEBGL
+      //   if (parameter === 37445) {
+      //     return 'Google Inc. (Intel)';
+      //   }
+      //   // UNMASKED_RENDERER_WEBGL
+      //   if (parameter === 37446) {
+      //     return 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)';
+      //   }
 
-        return getParameter(parameter);
-      };
+      //   return getParameter(parameter);
+      // };
 
-      // store the existing descriptor
-      const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
-      // redefine the property with a patched descriptor
-      Object.defineProperty(HTMLDivElement.prototype, 'offsetHeight', {
-        ...elementDescriptor,
-        get: function () {
-          if (this.id === 'modernizr') {
-            return 1;
-          }
-          return elementDescriptor.get.apply(this);
-        },
-      });
+      // // store the existing descriptor
+      // const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+      // // redefine the property with a patched descriptor
+      // Object.defineProperty(HTMLDivElement.prototype, 'offsetHeight', {
+      //   ...elementDescriptor,
+      //   get: function () {
+      //     if (this.id === 'modernizr') {
+      //       return 1;
+      //     }
+      //     return elementDescriptor.get.apply(this);
+      //   },
+      // });
       
       // (function () {        var overwrite = function (name) {
       //     const OLD = HTMLCanvasElement.prototype[name];
