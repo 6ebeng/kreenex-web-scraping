@@ -1,7 +1,7 @@
 {
   "debug": true,
   "isHeadless": true,
-  "waitUntill": "domcontentloaded",
+  "waitUntill": "networkidle0",
   "blockResourceTypes": ["image","media","font","other"],
   "whiteListUrls": [
     "https://shop.mango.com",
