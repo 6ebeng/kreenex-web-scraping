@@ -206,10 +206,7 @@ const data = require('../models/data/' + store)
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
     });
       await xvfb.startSync();
-      console.log('xvfb started');
     }
-
-    console.log(xvfb._display)
 
     browser = await puppeteer.launch({
       headless: data.isHeadless,
