@@ -201,9 +201,9 @@ puppeteer.use(proxyRouter)
       var Xvfb = require('xvfb');
       var xvfb = new Xvfb({
         silent: true,
-        xvfb_args: ["-screen", "0", '1366x768x24', "-ac"],
+        xvfb_args: ["-screen", "0", '1280x720x24', "-ac"]
     });
-      xvfb.startSync();
+      await xvfb.startSync();
       console.log('xvfb started');
     }
 
@@ -213,7 +213,7 @@ puppeteer.use(proxyRouter)
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
              "--disable-setuid-sandbox",
-             "--window-size=1366,768",
+             "--start-fullscreen",
              //"--blink-settings=imagesEnabled=true",
              "--disable-translate",
              "--window-position=0,0",
@@ -222,8 +222,10 @@ puppeteer.use(proxyRouter)
              "--lang=en,en-US", 
              "--display="+xvfb._display
             ],
+      //env: { DISPLAY: ":10"},
       slowMo: 0,
-      ignoreHTTPSErrors: true
+      ignoreHTTPSErrors: true,
+      defaultViewport: null,
     });
     
     
@@ -272,9 +274,9 @@ puppeteer.use(proxyRouter)
 
     // Bypass detections
     
-    if(!data.isHeadless){
-    await page.setViewport({ width: 1366, height: 768});
-        }
+    // if(!data.isHeadless){
+    // await page.setViewport({ width: 1366, height: 768});
+    //     }
 
 
 
