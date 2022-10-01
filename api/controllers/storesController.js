@@ -219,18 +219,8 @@ const data = require('../models/data/' + store)
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
       "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-      "--disable-gpu",
-      "--disable-accelerated-2d-canvas",
-      "--no-zygote",
-      "--renderer-process-limit=1",
-      "--no-first-run",
-      "--ignore-certificate-errors",
-      "--ignore-certificate-errors-spki-list",
-      "--disable-dev-shm-usage",
-      "--disable-infobars",
-      "--lang=en-US,en",
-      "--window-size=1366x768",
-      "--disable-extensions"
+      "--lang=en,en-US",
+      "--disable-gpu"
      ]
     } else {
       argsValue = [
@@ -242,7 +232,7 @@ const data = require('../models/data/' + store)
         "--window-position=0,0",
         "--autoplay-policy=no-user-gesture-required",
         "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-        '--lang=en-US,en',
+        "--lang=en,en-US",
         "--use-fake-device-for-media-stream",
         "--disable-gpu",
         "--display=" + xvfb._display
@@ -262,7 +252,6 @@ const data = require('../models/data/' + store)
     
     //first tab
     var page = (await browser.pages())[0];
-
 
     await page.setRequestInterception(true);
 
