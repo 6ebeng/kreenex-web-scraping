@@ -250,6 +250,7 @@ const data = require('../models/data/' + store)
     
     //first tab
     var page = (await browser.pages())[0];
+    await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
 
