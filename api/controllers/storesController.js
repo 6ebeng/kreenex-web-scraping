@@ -294,8 +294,8 @@ const data = require('../models/data/' + store)
       Object.defineProperty(navigator, 'deviceMemory', {get: () => 8  });
       Object.defineProperty(navigator, 'hardwareConcurrency', {get: () => 8});
       Object.defineProperty(navigator, 'platform', {get: () => 'Win32'  });
-      //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}});
-      // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});
+      //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
+      // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
 
       const getParameter = WebGLRenderingContext.getParameter;
       WebGLRenderingContext.prototype.getParameter = function (parameter) {
