@@ -1,6 +1,6 @@
 {
-  "debug": false,
-  "isHeadless": true,
+  "debug": true,
+  "isHeadless": false,
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image","media","font","other"],
   "whiteListUrls": [
