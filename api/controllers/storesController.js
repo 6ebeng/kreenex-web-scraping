@@ -219,8 +219,18 @@ const data = require('../models/data/' + store)
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
       "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-      "--lang=en,en-US",
-      "--disable-gpu"
+      "--disable-gpu",
+      "--disable-accelerated-2d-canvas",
+      "--no-zygote",
+      "--renderer-process-limit=1",
+      "--no-first-run",
+      "--ignore-certificate-errors",
+      "--ignore-certificate-errors-spki-list",
+      "--disable-dev-shm-usage",
+      "--disable-infobars",
+      "--lang=en-US,en",
+      "--window-size=1366x768",
+      "--disable-extensions"
      ]
     } else {
       argsValue = [
@@ -232,7 +242,7 @@ const data = require('../models/data/' + store)
         "--window-position=0,0",
         "--autoplay-policy=no-user-gesture-required",
         "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-        "--lang=en,en-US",
+        '--lang=en-US,en',
         "--use-fake-device-for-media-stream",
         "--disable-gpu",
         "--display=" + xvfb._display
@@ -246,9 +256,7 @@ const data = require('../models/data/' + store)
       args: argsValue,
       slowMo: 0,
       ignoreHTTPSErrors: true,
-      defaultViewport: null,
-      webgl_vendor: "Google Inc. (Intel)",
-      renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      defaultViewport: null
     });
     
     
