@@ -311,18 +311,18 @@ const data = require('../models/data/' + store)
         return getParameter(parameter);
       };
 
-      // // store the existing descriptor
-      // const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
-      // // redefine the property with a patched descriptor
-      // Object.defineProperty(HTMLDivElement.prototype, 'offsetHeight', {
-      //   ...elementDescriptor,
-      //   get: function () {
-      //     if (this.id === 'modernizr') {
-      //       return 1;
-      //     }
-      //     return elementDescriptor.get.apply(this);
-      //   },
-      // });
+      // store the existing descriptor
+      const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+      // redefine the property with a patched descriptor
+      Object.defineProperty(HTMLDivElement.prototype, 'offsetHeight', {
+        ...elementDescriptor,
+        get: function () {
+          if (this.id === 'modernizr') {
+            return 1;
+          }
+          return elementDescriptor.get.apply(this);
+        },
+      });
       
       // (function () {        var overwrite = function (name) {
       //     const OLD = HTMLCanvasElement.prototype[name];
