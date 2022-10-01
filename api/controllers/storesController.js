@@ -226,6 +226,9 @@ const data = require('../models/data/' + store)
       slowMo: 0,
       ignoreHTTPSErrors: true,
       defaultViewport: null,
+      webgl_vendor: "Google Inc. (Intel)",
+      renderer: "Intel Iris OpenGL EngineANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)"
+
     });
     
     
