@@ -225,7 +225,6 @@ const data = require('../models/data/' + store)
              "--lang=en,en-US", 
              "--display=" + xvfb._display
             ],
-      //env: { DISPLAY: ":10"},
       slowMo: 0,
       ignoreHTTPSErrors: true,
       defaultViewport: null,
