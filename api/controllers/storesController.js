@@ -127,40 +127,40 @@ async function search(req, res) {
 
 
 
-// Configure the proxy router plugin for more info go to https://github.com/berstend/puppeteer-extra/tree/master/packages/plugin-proxy-router
+// // Configure the proxy router plugin for more info go to https://github.com/berstend/puppeteer-extra/tree/master/packages/plugin-proxy-router
 
-const ProxyRouter = require('@extra/proxy-router')
-const proxyRouter = ProxyRouter({
-  // define the available proxies (replace this with your proxies)
-  proxies: {
-    // the default browser proxy, can be `null` as well for direct connections
-    DEFAULT: 'http://user:pass@proxyhost:port',
-    // optionally define more proxies you can use in `routeByHost`
-    // you can use whatever names you'd like for them
-    DATACENTER: 'http://user:pass@proxyhost2:port',
-    RESIDENTIAL_US: 'http://user:pass@proxyhost3:port',
-  },
-  // optional function for flexible proxy routing
-  // if this is not specified the `DEFAULT` proxy will be used for all connections
-  routeByHost: async ({ host }) => {
-    if (['pagead2.googlesyndication.com', 'fonts.gstatic.com'].includes(host)) {
-      return 'ABORT' // block connection to certain hosts
-    }
-    if (host.includes('google')) {
-      return 'DIRECT' // use a direct connection for all google domains
-    }
-    if (host.endsWith('.tile.openstreetmap.org')) {
-      return 'DATACENTER' // route heavy images through datacenter proxy
-    }
-    if (host === 'canhazip.com') {
-      return 'RESIDENTIAL_US' // special proxy for this domain
-    }
-    // everything else will use `DEFAULT` proxy
-  },
-})
+// const ProxyRouter = require('@extra/proxy-router')
+// const proxyRouter = ProxyRouter({
+//   // define the available proxies (replace this with your proxies)
+//   proxies: {
+//     // the default browser proxy, can be `null` as well for direct connections
+//     DEFAULT: 'http://user:pass@proxyhost:port',
+//     // optionally define more proxies you can use in `routeByHost`
+//     // you can use whatever names you'd like for them
+//     DATACENTER: 'http://user:pass@proxyhost2:port',
+//     RESIDENTIAL_US: 'http://user:pass@proxyhost3:port',
+//   },
+//   // optional function for flexible proxy routing
+//   // if this is not specified the `DEFAULT` proxy will be used for all connections
+//   routeByHost: async ({ host }) => {
+//     if (['pagead2.googlesyndication.com', 'fonts.gstatic.com'].includes(host)) {
+//       return 'ABORT' // block connection to certain hosts
+//     }
+//     if (host.includes('google')) {
+//       return 'DIRECT' // use a direct connection for all google domains
+//     }
+//     if (host.endsWith('.tile.openstreetmap.org')) {
+//       return 'DATACENTER' // route heavy images through datacenter proxy
+//     }
+//     if (host === 'canhazip.com') {
+//       return 'RESIDENTIAL_US' // special proxy for this domain
+//     }
+//     // everything else will use `DEFAULT` proxy
+//   },
+// })
 
-// Add the plugin
-puppeteer.use(proxyRouter)
+// // Add the plugin
+// puppeteer.use(proxyRouter)
 
 
 let url = req.body.Url
