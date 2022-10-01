@@ -5,7 +5,8 @@
     "blockResourceTypes": [],
     "whiteListUrls": [
 "sannysoft",
-"jsdelivr"
+"jsdelivr",
+"cloudflare"
     ],
     "blockUrls": [
         
