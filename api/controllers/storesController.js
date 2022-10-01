@@ -294,14 +294,6 @@ const data = require('../models/data/' + store)
 
 
     // Bypass detections
-    
-    // if(!data.isHeadless){
-    // await page.setViewport({ width: 1366, height: 768});
-    //     }
-
-
-
-
     await page.evaluateOnNewDocument(() => {
        
       Object.defineProperty(navigator, "languages", {get: () => ['en-US', 'en', 'ku'] });
