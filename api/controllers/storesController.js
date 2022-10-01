@@ -163,12 +163,14 @@ const proxyRouter = ProxyRouter({
 puppeteer.use(proxyRouter)
 */
 
+let url = req.body.Url
+var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+let store = match[4].replace(/\..+/g,'')
+const data = require('../models/data/' + store)
+
   /* Initialize Browser */
   try {
-    let url = req.body.Url
-    var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
-    let store = match[4].replace(/\..+/g,'')
-    const data = require('../models/data/' + store)
+
 
 
     /* Launch Browser */
