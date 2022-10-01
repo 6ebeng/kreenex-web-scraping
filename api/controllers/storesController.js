@@ -246,7 +246,6 @@ const data = require('../models/data/' + store)
       args: argsValue,
       slowMo: 0,
       ignoreHTTPSErrors: true,
-      defaultViewport: null
     });
     
     
