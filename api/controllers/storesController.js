@@ -208,21 +208,40 @@ const data = require('../models/data/' + store)
       await xvfb.startSync();
     }
 
+    let argsValues
+    if(data.headless){
+      argsValues = [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--window-size=1366,768",
+      "--blink-settings=imagesEnabled=true",
+      "--disable-translate",
+      "--window-position=0,0",
+      "--autoplay-policy=no-user-gesture-required",
+      "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
+      "--lang=en,en-US",
+      "--disable-gpu"
+     ]
+    } else {
+      argsValues = [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--window-size=1366,768",
+      "--blink-settings=imagesEnabled=true",
+      "--disable-translate",
+      "--window-position=0,0",
+      "--autoplay-policy=no-user-gesture-required",
+      "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
+      "--lang=en,en-US",
+      "--disable-gpu",
+      "--display=" + xvfb._display
+     ]
+    }
+
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
-      args: ["--no-sandbox",
-             "--disable-setuid-sandbox",
-             "--window-size=1366,768",
-             "--blink-settings=imagesEnabled=true",
-             "--disable-translate",
-             "--window-position=0,0",
-             "--autoplay-policy=no-user-gesture-required",
-             "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-             "--lang=en,en-US",
-             "--disable-gpu",
-             "--display=" + xvfb._display
-            ],
+      args: argsValues,
       slowMo: 0,
       ignoreHTTPSErrors: true,
       defaultViewport: null,
