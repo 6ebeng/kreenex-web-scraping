@@ -310,8 +310,7 @@ const data = require('../models/data/' + store)
       Object.defineProperty(navigator, 'platform', {get: () => 'Win32'  });
       //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}});
       Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});
-
-      if (!window.Notification) {window.Notification = {permission: 'denied'}}
+      Object.defineProperty(Notification, 'permission', {get: () => 'denied'  });
 
       const getParameter = WebGLRenderingContext.getParameter;
       WebGLRenderingContext.prototype.getParameter = function (parameter) {
@@ -329,7 +328,6 @@ const data = require('../models/data/' + store)
 
       // store the existing descriptor
       const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
-
       // redefine the property with a patched descriptor
       Object.defineProperty(HTMLDivElement.prototype, 'offsetHeight', {
         ...elementDescriptor,
