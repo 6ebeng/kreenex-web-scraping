@@ -422,7 +422,7 @@ const data = require('../models/data/' + store)
       var InStockSizes = await elementSelector(page, data.inStockSizes.selector, data.inStockSizes.attribute || null, data.inStockSizes.regex || null, data.inStockSizes.groups || [], true)
       var isInstock
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
-      console.log(NotInStockSizes)
+      console.log(InStockSizes)
       if (!isInstock) {
         return res.status(500).json({
           ResponseCode: 500,
