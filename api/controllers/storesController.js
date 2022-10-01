@@ -213,6 +213,8 @@ const data = require('../models/data/' + store)
       argsValue = [
       "--no-sandbox",
       "--disable-setuid-sandbox",
+      "--window-size=1366x768",
+      "--blink-settings=imagesEnabled=true",
       "--disable-translate",
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
@@ -224,7 +226,7 @@ const data = require('../models/data/' + store)
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--window-size=1366,768",
-        "--blink-settings=imagesEnabled=false",
+        "--blink-settings=imagesEnabled=true",
         "--disable-translate",
         "--window-position=0,0",
         "--autoplay-policy=no-user-gesture-required",
@@ -241,6 +243,8 @@ const data = require('../models/data/' + store)
       executablePath: '/usr/bin/google-chrome',
       userDataDir: "./tmp",
       args: argsValue,
+      slowMo: 0,
+      ignoreHTTPSErrors: true,
       defaultViewport: null
     });
     
@@ -419,7 +423,7 @@ const data = require('../models/data/' + store)
       var InStockSizes = await elementSelector(page, data.inStockSizes.selector, data.inStockSizes.attribute || null, data.inStockSizes.regex || null, data.inStockSizes.groups || [], true)
       var isInstock
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
-      console.log(InStockSizes)
+      console.log(NotInStockSizes)
       if (!isInstock) {
         return res.status(500).json({
           ResponseCode: 500,
