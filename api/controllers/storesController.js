@@ -209,7 +209,7 @@ const data = require('../models/data/' + store)
     }
 
     let argsValue
-    if(data.headless){
+    if(!data.headless){
       argsValue = [
       "--no-sandbox",
       "--disable-setuid-sandbox",
