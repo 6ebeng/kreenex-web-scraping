@@ -216,7 +216,7 @@ const data = require('../models/data/' + store)
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
              "--disable-setuid-sandbox",
-             "--start-fullscreen",
+             "--window-size=1366,768",
              //"--blink-settings=imagesEnabled=true",
              "--disable-translate",
              "--window-position=0,0",
