@@ -195,7 +195,7 @@ puppeteer.use(proxyRouter)
       // sudo apt-get -y install xorg xvfb gtk2-engines-pixbuf
       // sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
       // kill -- "-$xvfb_pid"
-      // Xvfb -ac :10 -screen 0 1200x800x16 &
+      // Xvfb -ac :10 -screen 0 1200x800x24 &
       // export DISPLAY=:10
     // if (!data.isHeadless) {
     //   var Xvfb = require('xvfb');
@@ -306,8 +306,7 @@ puppeteer.use(proxyRouter)
 
 
     await page.evaluateOnNewDocument(() => {
-      
-      Object.defineProperty(navigator, "language", {get: () => "en-US" });     
+       
       Object.defineProperty(navigator, "languages", {get: () => ['en-US', 'en', 'ku'] });
       Object.defineProperty(navigator, 'deviceMemory', {get: () => 8  });
       Object.defineProperty(navigator, 'hardwareConcurrency', {get: () => 8});
