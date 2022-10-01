@@ -41,10 +41,7 @@
     "https://shop.mango.com/st-shopping-cart/shoppingCart/",
     "https://shop.mango.com/services/header-bag/getBagItems",
     "https://shop.mango.com/services/header/",
-    "https://shop.mango.com/services/menu/",
-    "https://st0.mngbcn.com/static/js/jquery.js",
-    "https://st.mngbcn.com/static/js/webcomponents",
-    "https://st0.mngbcn.com/static/shop/desktop/specifics"
+    "https://shop.mango.com/services/menu/"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
