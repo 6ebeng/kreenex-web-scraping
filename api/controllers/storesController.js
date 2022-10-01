@@ -207,6 +207,7 @@ puppeteer.use(proxyRouter)
       console.log('xvfb started');
     }
 
+    console.log(xvfb._display)
 
     browser = await puppeteer.launch({
       headless: data.isHeadless,
@@ -220,7 +221,7 @@ puppeteer.use(proxyRouter)
              "--autoplay-policy=no-user-gesture-required",
              "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
              "--lang=en,en-US", 
-             "--display="+xvfb._display
+             "--display=" + xvfb._display
             ],
       //env: { DISPLAY: ":10"},
       slowMo: 0,
