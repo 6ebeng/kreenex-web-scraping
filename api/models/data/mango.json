@@ -48,14 +48,14 @@
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
-    "attribute": "data-size",
-    "regex": "",
+    "attribute": "",
+    "regex": "^\\S+",
     "groups": [],
     "selector": "div#sizeSelector > div.selector-list > .size-unavailable"
   },
   "inStockSizes": {
-    "attribute": "data-size",
-    "regex": "",
+    "attribute": "",
+    "regex": "^\\S+",
     "groups": [],
     "selector": "div#sizeSelector > div.selector-list > .size-available"
   },
