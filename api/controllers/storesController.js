@@ -125,10 +125,10 @@ async function search(req, res) {
     });
   }
 
-/*
-******
+
+
 // Configure the proxy router plugin for more info go to https://github.com/berstend/puppeteer-extra/tree/master/packages/plugin-proxy-router
-*******
+
 const ProxyRouter = require('@extra/proxy-router')
 const proxyRouter = ProxyRouter({
   // define the available proxies (replace this with your proxies)
@@ -161,7 +161,7 @@ const proxyRouter = ProxyRouter({
 
 // Add the plugin
 puppeteer.use(proxyRouter)
-*/
+
 
 let url = req.body.Url
 var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
@@ -242,6 +242,7 @@ const data = require('../models/data/' + store)
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
+      userDataDir: "./tmp",
       args: argsValue,
       slowMo: 0,
       ignoreHTTPSErrors: true,
