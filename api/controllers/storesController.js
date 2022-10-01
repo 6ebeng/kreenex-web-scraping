@@ -213,7 +213,6 @@ const data = require('../models/data/' + store)
       argsValue = [
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      "--blink-settings=imagesEnabled=false",
       "--disable-translate",
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
