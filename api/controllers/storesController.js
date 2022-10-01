@@ -408,7 +408,7 @@ const data = require('../models/data/' + store)
       let requiredSize = Size.toString();
       var NotInStockSizes = await elementSelector(page, data.notInStockSizes.selector, data.notInStockSizes.attribute || null, data.notInStockSizes.regex || null, data.notInStockSizes.groups || [], true)
       var isOutStock
-      console.log(NotInStockSizes)
+      if (data.debug) console.log(NotInStockSizes)
       NotInStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isOutStock = true })
       if (isOutStock) {
         return res.status(500).json({
@@ -422,7 +422,7 @@ const data = require('../models/data/' + store)
       var InStockSizes = await elementSelector(page, data.inStockSizes.selector, data.inStockSizes.attribute || null, data.inStockSizes.regex || null, data.inStockSizes.groups || [], true)
       var isInstock
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
-      console.log(InStockSizes)
+      if (data.debug) console.log(InStockSizes)
       if (!isInstock) {
         return res.status(500).json({
           ResponseCode: 500,
