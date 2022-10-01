@@ -6,7 +6,8 @@
     "whiteListUrls": [
 "sannysoft",
 "jsdelivr",
-"cloudflare"
+"cloudflare",
+"intoli"
     ],
     "blockUrls": [
         
