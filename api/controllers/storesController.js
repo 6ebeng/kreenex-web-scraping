@@ -238,7 +238,7 @@ puppeteer.use(proxyRouter)
       executablePath: '/usr/bin/google-chrome',
       args: ["--no-sandbox",
              "--disable-setuid-sandbox",
-             "--window-size=1200,800",
+             "--window-size=1366,768",
              //"--blink-settings=imagesEnabled=true",
              "--disable-translate",
              "--window-position=0,0",
@@ -299,7 +299,7 @@ puppeteer.use(proxyRouter)
     // Bypass detections
     
     if(!data.isHeadless){
-    await page.setViewport({ width: 1200, height: 800 });
+    await page.setViewport({ width: 1366, height: 768});
         }
 
 
