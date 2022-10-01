@@ -295,11 +295,11 @@ const data = require('../models/data/' + store)
       WebGLRenderingContext.prototype.getParameter = function (parameter) {
         // UNMASKED_VENDOR_WEBGL
         if (parameter === 37445) {
-          return 'Intel Open Source Technology Center';
+          return 'Google Inc. (Intel)';
         }
         // UNMASKED_RENDERER_WEBGL
         if (parameter === 37446) {
-          return 'Mesa DRI Intel(R) Ivybridge Mobile ';
+          return 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)';
         }
 
         return getParameter(parameter);
