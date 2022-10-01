@@ -312,6 +312,7 @@ puppeteer.use(proxyRouter)
       Object.defineProperty(navigator, 'deviceMemory', {get: () => 8  });
       Object.defineProperty(navigator, 'hardwareConcurrency', {get: () => 8});
       Object.defineProperty(navigator, 'platform', {get: () => 'Win32'  });
+      Object.defineProperty(screen, 'color', {get: () => '24'  });
       (function () {        var overwrite = function (name) {
           const OLD = HTMLCanvasElement.prototype[name];
           Object.defineProperty(HTMLCanvasElement.prototype, name, {
