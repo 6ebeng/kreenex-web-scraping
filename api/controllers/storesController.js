@@ -263,9 +263,6 @@ const data = require('../models/data/' + store)
     //first tab
     var page = (await browser.pages())[0];
 
-    await page.setExtraHTTPHeaders({
-      'Accept-Language': 'bn'
-    });
 
     await page.setRequestInterception(true);
 
