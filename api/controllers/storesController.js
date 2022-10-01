@@ -213,7 +213,7 @@ const data = require('../models/data/' + store)
       argsValue = [
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      "--blink-settings=imagesEnabled=true",
+      "--blink-settings=imagesEnabled=false",
       "--disable-translate",
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
@@ -225,7 +225,7 @@ const data = require('../models/data/' + store)
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--window-size=1366,768",
-        "--blink-settings=imagesEnabled=true",
+        "--blink-settings=imagesEnabled=false",
         "--disable-translate",
         "--window-position=0,0",
         "--autoplay-policy=no-user-gesture-required",
