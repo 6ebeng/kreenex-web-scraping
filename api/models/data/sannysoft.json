@@ -1,0 +1,57 @@
+{
+    "debug": true,
+    "isHeadless": false,
+    "waitUntill": "domcontentloaded",
+    "blockResourceTypes": [],
+    "whiteListUrls": [
+"sannysoft"
+    ],
+    "blockUrls": [
+        
+    ],
+    "container": "body",
+    "notInStockSizes": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "//li[contains(@class,'product-detail-size-selector__size-list-item')][not(@data-qa-action='size-in-stock')]/div/div/span"
+    },
+    "inStockSizes": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "//li[contains(@class,'product-detail-size-selector__size-list-item')][@data-qa-action='size-in-stock']/div/div/span"
+    },
+    "clickSize": "",
+    "title": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "h1.product-detail-info__header-name"
+    },
+    "category": {
+      "attribute": "",
+      "regex": "[\\S ]+ ([\\S ]+)",
+      "groups": [1],
+      "selector": "h1.product-detail-info__header-name"
+    },
+    "price": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "//div[contains(@class,'product-detail-info__price')]/div/span/span[last()]/span/div/span"
+    },
+    "color": {
+      "attribute": "",
+      "regex": "^[^|]+",
+      "groups": [],
+      "selector": "p.product-detail-selected-color"
+    },
+    "images": {
+      "attribute": "srcset",
+      "regex": "^(\\S+\/w\/)(?:\\d+)(\\S+)",
+      "groups": [],
+      "selector": "ul.product-detail-images__images > li > button > div > div > picture >source:nth-child(1):not([srcset*='extrainfo'])"
+    }
+  
+  }
