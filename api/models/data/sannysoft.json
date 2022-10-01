@@ -4,7 +4,8 @@
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
     "whiteListUrls": [
-"sannysoft"
+"sannysoft",
+"jsdelivr"
     ],
     "blockUrls": [
         
