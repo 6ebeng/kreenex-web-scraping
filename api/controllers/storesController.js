@@ -346,7 +346,8 @@ puppeteer.use(proxyRouter)
       }))
 
       await page.screenshot({
-        path: 'debug/screenshoots/' + store + '.png'
+        path: 'debug/screenshoots/' + store + '.png',
+        fullPage: true
       });
 
     }
