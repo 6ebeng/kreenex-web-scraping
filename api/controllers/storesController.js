@@ -203,7 +203,7 @@ puppeteer.use(proxyRouter)
         silent: true,
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"],
     });
-      await xvfb.startSync();
+      xvfb.startSync();
       console.log('xvfb started');
     }
 
