@@ -358,10 +358,12 @@ const data = require('../models/data/' + store)
 
 
 
-    await page.goto(req.body.Url, {
+    const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
       timeout: 0
     });
+    if (data.debug) console.log(response.json())
+
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
 
