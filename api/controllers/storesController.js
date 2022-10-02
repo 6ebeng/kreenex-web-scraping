@@ -362,7 +362,7 @@ const data = require('../models/data/' + store)
       waitUntil: data.waitUntil,
       timeout: 0
     });
-    if (data.debug) console.log(response.headers())
+    if (data.debug) console.log(response.headers().json())
 
     await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
