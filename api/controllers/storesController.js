@@ -166,7 +166,10 @@ async function search(req, res) {
 let url = req.body.Url
 var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
 let store = match[4].replace(/\..+/g,'')
-const data = require('../models/data/' + store)
+
+
+try{
+  const data = require('../models/data/' + store)
 
   /* Initialize Browser */
   try {
@@ -511,6 +514,13 @@ const data = require('../models/data/' + store)
       xvfb.stopSync();
     }
   }
+} catch {
+  return res.status(500).json({
+    ResponseCode: 500,
+    Data: {},
+    Message: `${store} is not supported!`
+  });
+}
 }
 
 module.exports = storesController;
