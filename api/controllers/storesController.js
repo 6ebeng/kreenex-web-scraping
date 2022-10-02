@@ -290,10 +290,10 @@ try{
     });
 
 
-
+    const akamai = require("../helper/akamai_bypass")
     // Bypass detections
-    await page.evaluateOnNewDocument(() => {
-       
+    await page.evaluateOnNewDocument((akamai) => {
+      akamai;
       Object.defineProperty(navigator, "languages", {get: () => ['en-US', 'en', 'ku'] });
       Object.defineProperty(navigator, 'deviceMemory', {get: () => 8  });
       Object.defineProperty(navigator, 'hardwareConcurrency', {get: () => 8});
@@ -357,7 +357,7 @@ try{
       //   overwrite('toBlob');
       //   overwrite('toDataURL');
       // })();
-    });
+    },akamai);
 
 
 
