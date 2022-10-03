@@ -401,7 +401,7 @@ try{
     }
 
     await page.waitForSelector(data.container, {
-      timeout: 30000
+      timeout: 15000
     });
 
     // /* Load Page Content */
