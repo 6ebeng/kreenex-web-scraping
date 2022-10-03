@@ -164,6 +164,8 @@ async function search(req, res) {
 
 
 let url = req.body.Url
+console.log(url)
+
 var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
 let store = match[4].replace(/\..+/g,'')
 
