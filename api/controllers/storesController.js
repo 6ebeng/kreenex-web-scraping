@@ -238,7 +238,7 @@ try{
         "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
         "--lang=en,en-US",
         "--use-fake-device-for-media-stream",
-        "--disable-gpu",
+        "--use-gl=angle",
         "--display=" + xvfb._display
        ]
     }
