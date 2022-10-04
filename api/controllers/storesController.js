@@ -372,7 +372,7 @@ try{
     });
     if (data.debug) console.log(await response.headers())
 
-    await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
+    //await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
 
     // debug
