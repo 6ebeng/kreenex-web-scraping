@@ -258,7 +258,7 @@ try{
     
     
     //first tab
-    const page = (await browser.pages())[0];
+    const page = await browser.pages();
     await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
