@@ -8,7 +8,7 @@
 
 const async = require("async"),
   puppeteer = require('puppeteer-extra'),
-  cheerio = require('cheerio'),
+  //cheerio = require('cheerio'),
   scrollToBottom = require('scroll-to-bottomjs'), 
   {check, validationResult} = require('express-validator'),
   fs = require('fs')
