@@ -17,7 +17,7 @@
     stealth
   } = require("../helper/packages.js")
 
-const browser = null;
+var browser;
 let storesController = {
   validate,
   search
