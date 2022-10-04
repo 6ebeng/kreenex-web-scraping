@@ -12,7 +12,8 @@ puppeteer = require('puppeteer-extra'),
 scrollToBottom = require('scroll-to-bottomjs'), 
 {check, validationResult} = require('express-validator'),
 fs = require('fs'),
-Xvfb = require('xvfb');
+Xvfb = require('xvfb'),
+stealth = require('puppeteer-extra-plugin-stealth');
 
 
 module.exports = {
@@ -22,5 +23,6 @@ module.exports = {
     check,
     validationResult,
     fs,
-    Xvfb
+    Xvfb,
+    stealth
 }

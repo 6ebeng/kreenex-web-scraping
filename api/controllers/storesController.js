@@ -13,7 +13,8 @@
     check,
     validationResult,
     fs,
-    Xvfb
+    Xvfb,
+    stealth
   } = require("../helper/packages.js")
 
 var browser;
@@ -182,7 +183,7 @@ try{
 
 
     /* Launch Browser */
-    puppeteer.use(require('puppeteer-extra-plugin-stealth')());
+    puppeteer.use(stealth());
 
     /*
       Uses for Windows
