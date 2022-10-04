@@ -515,9 +515,9 @@ try{
     });
   } finally {
     console.log("done " + url )
-    await browser.close();
+      browser.close();
     if (!data.isHeadless) {
-      await Xvfb.stopSync();
+      Xvfb.stopSync();
     }
   }
 } catch {
