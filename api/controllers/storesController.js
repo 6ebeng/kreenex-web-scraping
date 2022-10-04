@@ -250,7 +250,8 @@ try{
       args: argsValue,
       slowMo: 0,
       ignoreHTTPSErrors: true,
-      defaultViewport: null
+      defaultViewport: null,
+      devtools: false
     });
     
     
