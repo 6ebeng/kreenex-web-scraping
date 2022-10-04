@@ -255,7 +255,6 @@ try{
       devtools:false,
       defaultViewport: null
     });
-    console.log(browser)
     
     //first tab
     const page = (await browser.pages())[0];

@@ -11,6 +11,6 @@ const express   = require('express'),
       storeController = require('../controllers/storesController');
 
       /*Website Routings */
-      router.post('/search',storeController.validate('search'),storeController.search); 
+      router.post('/search',storeController.validate('search'),async()=> storeController.search); 
 
 module.exports = router;      
