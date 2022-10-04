@@ -35,7 +35,7 @@ function delay(time) {
 /** 
    For Validation that url contains search keyword
 **/
-function validate(method) {
+async function validate(method) {
   switch (method) {
     case 'search': {
       return [
