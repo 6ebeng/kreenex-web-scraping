@@ -17,7 +17,7 @@
     stealth
   } = require("../helper/packages.js")
 
-var browser;
+const browser = null;
 let storesController = {
   validate,
   search
@@ -209,7 +209,7 @@ try{
       // Xvfb -ac :10 -screen 0 1200x800x24 &
       // export DISPLAY=:10
     if (!data.isHeadless) {
-      var xvfb = new Xvfb({
+      const xvfb = new Xvfb({
         silent: true,
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
     });
@@ -258,7 +258,7 @@ try{
     
     
     //first tab
-    var page = (await browser.pages())[0];
+    const page = (await browser.pages())[0];
     await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
