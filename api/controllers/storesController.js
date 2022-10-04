@@ -116,7 +116,7 @@ async function elementClick(page, selector){
 }
 
 
-async function search(req, res) {
+const search = async(req, res)=> {
 
   /* To Check Validation json */
   let errors = validationResult(req);
