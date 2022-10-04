@@ -471,14 +471,14 @@ try{
     var strCategory = await elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true) || "";
     Response.Category = strCategory.join(" ").trim()
     var strPrice = await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
-    console.log("price is >" + await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false))
     //Extract clean price without decimal
     if(strPrice.includes(",") || strPrice.includes(".")) {
       strPrice = strPrice.match(/[,.\d]+(?=[.,]\d+)/g)[0]
       strPrice =  strPrice.replace(/[.,]/g,'')
     } else{
       console.log("price is >" + strPrice)
-      strPrice =  strPrice.match(/\d+/g)[0]
+      strPrice =  strPrice.match(/\d+/g)
+      strPrice = strPrice[0]
     }
 
     Response.Price = strPrice
