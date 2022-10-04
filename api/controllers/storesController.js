@@ -6,13 +6,15 @@
  * Developed By  : Tishko Rasoul (tishko.rasoul@gmail.com)
  */
 
-const async = require("async"),
-  puppeteer = require('puppeteer-extra'),
-  //cheerio = require('cheerio'),
-  scrollToBottom = require('scroll-to-bottomjs'), 
-  {check, validationResult} = require('express-validator'),
-  fs = require('fs'),
-  Xvfb = require('xvfb');
+  const {
+    async,
+    puppeteer,
+    scrollToBottom,
+    check,
+    validationResult,
+    fs,
+    Xvfb
+  } = require("../helper/packages.js")
 
 var browser;
 let storesController = {
