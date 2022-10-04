@@ -463,15 +463,15 @@ try{
     var strPrice = await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
     //Extract clean price without decimal
     if(strPrice.includes(",") || strPrice.includes(".")) {
-      strPrice = strPrice.match(/[,.\d]+(?=[.,]\d+)/g)[0]
-      strPrice = strPrice.replace(/[.,]/g,'')
+      strPrice = await strPrice.match(/[,.\d]+(?=[.,]\d+)/g)[0]
+      strPrice = await strPrice.replace(/[.,]/g,'')
     } else{
-      strPrice = strPrice.match(/\d+/g)[0]
+      strPrice = await strPrice.match(/\d+/g)[0]
     }
 
-    Response.Price = strPrice
+    Response.Price = await strPrice
     Response.Color = await elementSelector(page,data.color.selector || null,data.color.attribute || null, data.color.regex || null, data.color.groups || [], false) || "";
-    Response.Size = Size;
+    Response.Size = await Size;
 
     //  if(!Response.Price){
     //    Response.Price = $('div#productInfo > div#rightInfoBar > div.info-panel:nth-child(1) > div.main-info-area > div:nth-child(3) > div.price-area > div > div > span.advanced-price').text().replace(/\n/g, "").trim() || "";
@@ -496,7 +496,7 @@ try{
       
      }
  
-     Response.Images = strImages
+     Response.Images = await strImages
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
