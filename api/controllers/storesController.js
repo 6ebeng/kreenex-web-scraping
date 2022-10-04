@@ -257,11 +257,16 @@ try{
 
     //first tab
     const page = (await browser.pages())[0];
+
+    const cookiesString = await fs.promises.readFile('./cookies.json');
+    const cookies = JSON.parse(cookiesString);
+    await page.setCookie(...cookies);
+
+
     await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
-    const cookies = await page.cookies();
-    await fs.promises.writeFile('./cookies.json', JSON.stringify(cookies, null, 2));
+
 
     //Block unnecessary resource types and urls
     page.on('request', request => {
@@ -372,6 +377,9 @@ try{
       timeout: 0
     });
     if (data.debug) console.log(await response.headers())
+
+    const saveCookies = await page.cookies();
+    await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
 
     //await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
