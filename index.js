@@ -30,7 +30,8 @@ server.listen(app.get('port'), function () {
   console.log(`Express server listening on port ${app.get('port')}`);
 });
 
-
+/* Cross Origin */
+app.use(cors())
 
 /* BodyParser Middleware */
 app.use(bodyParser.json());
@@ -45,8 +46,6 @@ app.use(function(err, req, res, next){
     return next(err); // if it's not a 400, let the default error handling do it. 
 })
 
-/* Cross Origin */
-app.use(cors())
 
 app.use(function (req, res, next){
   res.header("Access-Control-Allow-Origin", "*");

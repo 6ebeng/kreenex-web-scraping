@@ -5,24 +5,25 @@
  * Package : Controller
  * Developed By  : Tishko Rasoul (tishko.rasoul@gmail.com)
  */
+  const {
+    async,
+    puppeteer,
+    cheerio,
+    scrollToBottom,
+    check,
+    validationResult,
+    stealth,
+    Xvfb
+  } = require("../helper/packages");
 
-const async = require("async"),
-  puppeteer = require('puppeteer-extra'),
-  //cheerio = require('cheerio'),
-  scrollToBottom = require('scroll-to-bottomjs'), 
-  {check, validationResult} = require('express-validator'),
-  fs = require('fs')
+
 
 var browser;
-let storesController = {
-  validate,
-  search
-}
 
 /**
     For delay time
 **/
-function delay(time) {
+async function delay(time) {
   return new Promise(function (resolve) {
     setTimeout(resolve, time)
   });
@@ -31,7 +32,7 @@ function delay(time) {
 /** 
    For Validation that url contains search keyword
 **/
-function validate(method) {
+async function validate(method) {
   switch (method) {
     case 'search': {
       return [
@@ -179,7 +180,7 @@ try{
 
 
     /* Launch Browser */
-    puppeteer.use(require('puppeteer-extra-plugin-stealth')());
+    puppeteer.use(stealth());
 
     /*
       Uses for Windows
@@ -205,7 +206,7 @@ try{
       // Xvfb -ac :10 -screen 0 1200x800x24 &
       // export DISPLAY=:10
     if (!data.isHeadless) {
-      var Xvfb = require('xvfb');
+      
       var xvfb = new Xvfb({
         silent: true,
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
@@ -513,7 +514,7 @@ try{
   } finally{
     await browser.close();
     if (!data.isHeadless) {
-      xvfb.stopSync();
+      await xvfb.stopSync();
     }
   }
 } catch {
@@ -525,4 +526,7 @@ try{
 }
 }
 
-module.exports = storesController;
+module.exports = {
+  validate,
+  search
+};
