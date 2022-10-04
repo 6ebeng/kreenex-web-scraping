@@ -511,7 +511,7 @@ try{
       Message: "Some error occured Or data not found, please try again."
     });
   } finally {
-    browser.close();
+    await browser.close();
     if (!data.isHeadless) {
       xvfb.stopSync();
     }
