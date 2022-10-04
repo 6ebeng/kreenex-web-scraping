@@ -481,9 +481,9 @@ try{
       strPrice =  strPrice.match(/\d+/g)[0]
     }
 
-    Response.Price = await strPrice
+    Response.Price = strPrice
     Response.Color = await elementSelector(page,data.color.selector || null,data.color.attribute || null, data.color.regex || null, data.color.groups || [], false) || "";
-    Response.Size = await Size;
+    Response.Size = Size;
 
     //  if(!Response.Price){
     //    Response.Price = $('div#productInfo > div#rightInfoBar > div.info-panel:nth-child(1) > div.main-info-area > div:nth-child(3) > div.price-area > div > div > span.advanced-price').text().replace(/\n/g, "").trim() || "";
