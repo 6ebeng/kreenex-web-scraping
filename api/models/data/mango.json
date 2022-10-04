@@ -20,7 +20,11 @@
     "https://st0.mngbcn.com/app/shop/desktop/loyalty",
     "https://st0.mngbcn.com/static/js/oldLibs.js",
     "https://st0.mngbcn.com/lib/mng-chatbot/",
-    "https://st.mngbcn.com/scripts/tagmanager"
+    "https://st.mngbcn.com/scripts/tagmanager",
+    "https://shop.mango.com/modals/seleccionPaisIP.faces",
+    "https://shop.mango.com/st-newsletter/newsletter",
+    "https://shop.mango.com/st-store-locator/storeLocator/manifest.json",
+    "https://shop.mango.com/st-newsletter/newsletter/footer/manifest.json"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
