@@ -226,6 +226,7 @@ try{
       "--disable-translate",
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
+      '--single-process',
       "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
       "--lang=en,en-US"
      ]
@@ -242,6 +243,7 @@ try{
         "--lang=en,en-US",
         "--use-fake-device-for-media-stream",
         "--use-gl=angle",
+        '--single-process',
         "--display=" + xvfb._display
        ]
     }
