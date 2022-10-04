@@ -246,16 +246,16 @@ try{
        ]
     }
 
-    await puppeteer.launch({
+    browser = await puppeteer.launch({
       headless: data.isHeadless,
-      //executablePath: '/usr/bin/google-chrome',
+      executablePath: '/usr/bin/google-chrome',
       args: argsValue,
       slowMo: 0,
       ignoreHTTPSErrors: true,
       devtools:false,
       defaultViewport: null
-    }).then(async ()=>{
-
+    });
+    
     //first tab
     const page = (await browser.pages())[0];
     await page.emulateTimezone('Asia/Baghdad');
@@ -424,7 +424,7 @@ try{
       if (isOutStock) {
         await browser.close();
         if (!data.isHeadless) {
-          Xvfb.stopSync();
+          await Xvfb.stopSync();
         }
         return res.status(500).json({
           ResponseCode: 500,
@@ -441,7 +441,7 @@ try{
       if (!isInstock) {
         await browser.close();
         if (!data.isHeadless) {
-          Xvfb.stopSync();
+          await Xvfb.stopSync();
         }
         return res.status(500).json({
           ResponseCode: 500,
@@ -510,27 +510,28 @@ try{
      Response.Images = await strImages
      await browser.close();
      if (!data.isHeadless) {
-       Xvfb.stopSync();
+       await Xvfb.stopSync();
      }
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
       Message: "Success."
     });
-  })
   } catch (e) {
     console.log('err', e)
     await browser.close();
     if (!data.isHeadless) {
-      Xvfb.stopSync();
+      await Xvfb.stopSync();
     }
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
       Message: "Some error occured Or data not found, please try again."
     });
+  } finally {
+    console.log("done " + url )
+
   }
-  
 } catch {
   return res.status(500).json({
     ResponseCode: 500,
