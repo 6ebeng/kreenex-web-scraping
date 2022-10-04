@@ -116,11 +116,7 @@ async function elementClick(page, selector){
 }
 
 
-
-
 async function search(req, res) {
-
-
 
   /* To Check Validation json */
   let errors = validationResult(req);
@@ -250,25 +246,21 @@ try{
        ]
     }
 
-//launch puppeteer, do everything in .then() handler
-puppeteer.launch({
-    headless: data.isHeadless,
-    //executablePath: '/usr/bin/google-chrome',
-    args: argsValue,
-    slowMo: 0,
-    ignoreHTTPSErrors: true,
-    devtools:false,
-    defaultViewport: null
-  })
-  
-  .then(function(browser){
+    browser = await puppeteer.launch({
+      headless: data.isHeadless,
+      //executablePath: '/usr/bin/google-chrome',
+      args: argsValue,
+      slowMo: 0,
+      ignoreHTTPSErrors: true,
+      devtools:false,
+      defaultViewport: null
+    });
 
-    
     //first tab
-    const page = (browser.pages())[0];
-     page.emulateTimezone('Asia/Baghdad');
+    const page = (await browser.pages())[0];
+    await page.emulateTimezone('Asia/Baghdad');
 
-     page.setRequestInterception(true);
+    await page.setRequestInterception(true);
 
     //Block unnecessary resource types and urls
     page.on('request', request => {
@@ -305,7 +297,7 @@ puppeteer.launch({
 
 
     // Bypass detections
-     page.evaluateOnNewDocument(() => {
+    await page.evaluateOnNewDocument(() => {
        
       Object.defineProperty(navigator, "languages", {get: () => ['en-US', 'en', 'ku'] });
       Object.defineProperty(navigator, 'deviceMemory', {get: () => 8  });
@@ -374,25 +366,25 @@ puppeteer.launch({
 
 
 
-    const response =  page.goto(req.body.Url, {
+    const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
       timeout: 0
     });
-    if (data.debug) console.log( response.headers())
+    if (data.debug) console.log(await response.headers())
 
     //await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
 
 
     // debug
     if (data.debug) {
-      fs.writeFileSync('debug/docs/' + store + '.html',  page.evaluate(() => {
+      fs.writeFileSync('debug/docs/' + store + '.html', await page.evaluate(() => {
         return document.querySelectorAll("html")[0].outerHTML
       }), {
         encoding: 'utf8',
         flag: 'w'
       })
 
-      console.log( page.evaluate(() => {
+      console.log(await page.evaluate(() => {
         var arr = []
         arr.push(navigator.webdriver)
         arr.push(navigator.language)
@@ -404,14 +396,14 @@ puppeteer.launch({
         return arr
       }))
 
-       page.screenshot({
+      await page.screenshot({
         path: 'debug/screenshoots/' + store + '.png',
         fullPage: true
       });
 
     }
 
-     page.waitForSelector(data.container, {
+    await page.waitForSelector(data.container, {
       timeout: 15000
     });
 
@@ -425,14 +417,14 @@ puppeteer.launch({
 
       // Not Instock sizes
       let requiredSize = Size.toString();
-      var NotInStockSizes =  elementSelector(page, data.notInStockSizes.selector, data.notInStockSizes.attribute || null, data.notInStockSizes.regex || null, data.notInStockSizes.groups || [], true)
+      var NotInStockSizes = await elementSelector(page, data.notInStockSizes.selector, data.notInStockSizes.attribute || null, data.notInStockSizes.regex || null, data.notInStockSizes.groups || [], true)
       var isOutStock
       if (data.debug) console.log(NotInStockSizes)
       NotInStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isOutStock = true })
       if (isOutStock) {
-         browser.close();
+        await browser.close();
         if (!data.isHeadless) {
-           Xvfb.stopSync();
+          await Xvfb.stopSync();
         }
         return res.status(500).json({
           ResponseCode: 500,
@@ -442,14 +434,14 @@ puppeteer.launch({
       }
 
       // InStock Sizes
-      var InStockSizes =  elementSelector(page, data.inStockSizes.selector, data.inStockSizes.attribute || null, data.inStockSizes.regex || null, data.inStockSizes.groups || [], true)
+      var InStockSizes = await elementSelector(page, data.inStockSizes.selector, data.inStockSizes.attribute || null, data.inStockSizes.regex || null, data.inStockSizes.groups || [], true)
       var isInstock
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
       if (data.debug) console.log(InStockSizes)
       if (!isInstock) {
-         browser.close();
+        await browser.close();
         if (!data.isHeadless) {
-           Xvfb.stopSync();
+          await Xvfb.stopSync();
         }
         return res.status(500).json({
           ResponseCode: 500,
@@ -461,10 +453,10 @@ puppeteer.launch({
       // Click Size to appear the true price
       if (isInstock) {
         if(data.clickSize){
-         elementClick(page,
+        await elementClick(page,
                            data.clickSize.replace("{{size}}", Size.trim())
                            );
-         delay(2000);
+        await delay(2000);
         }
       }
     }
@@ -476,21 +468,21 @@ puppeteer.launch({
     var Response = {};
     Response.Url = req.body.Url;
 
-    Response.Name =  elementSelector(page,data.title.selector || null,data.title.attribute || null, data.title.regex || null, data.title.groups || [], false) || "";
-    var strCategory =  elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true) || "";
+    Response.Name = await elementSelector(page,data.title.selector || null,data.title.attribute || null, data.title.regex || null, data.title.groups || [], false) || "";
+    var strCategory = await elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true) || "";
     Response.Category = strCategory.join(" ").trim()
-    var strPrice =  elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
+    var strPrice = await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
     //Extract clean price without decimal
     if(strPrice.includes(",") || strPrice.includes(".")) {
-      strPrice =  strPrice.match(/[,.\d]+(?=[.,]\d+)/g)[0]
-      strPrice =  strPrice.replace(/[.,]/g,'')
+      strPrice = await strPrice.match(/[,.\d]+(?=[.,]\d+)/g)[0]
+      strPrice = await strPrice.replace(/[.,]/g,'')
     } else{
-      strPrice =  strPrice.match(/\d+/g)[0]
+      strPrice = await strPrice.match(/\d+/g)[0]
     }
 
-    Response.Price =  strPrice
-    Response.Color =  elementSelector(page,data.color.selector || null,data.color.attribute || null, data.color.regex || null, data.color.groups || [], false) || "";
-    Response.Size =  Size;
+    Response.Price = await strPrice
+    Response.Color = await elementSelector(page,data.color.selector || null,data.color.attribute || null, data.color.regex || null, data.color.groups || [], false) || "";
+    Response.Size = await Size;
 
     //  if(!Response.Price){
     //    Response.Price = $('div#productInfo > div#rightInfoBar > div.info-panel:nth-child(1) > div.main-info-area > div:nth-child(3) > div.price-area > div > div > span.advanced-price').text().replace(/\n/g, "").trim() || "";
@@ -500,7 +492,7 @@ puppeteer.launch({
     //  }
 
      /* See All Images */
-     var strImages =  elementSelector(page,data.images.selector,data.images.attribute || null,data.images.regex || null,data.images.groups || [],true)
+     var strImages = await elementSelector(page,data.images.selector,data.images.attribute || null,data.images.regex || null,data.images.groups || [],true)
 
      for (let index = 0; index < strImages.length; index++) {
       if(strImages[index]){
@@ -515,17 +507,16 @@ puppeteer.launch({
       
      }
  
-     Response.Images =  strImages
-      browser.close();
+     Response.Images = await strImages
+     await browser.close();
      if (!data.isHeadless) {
-      Xvfb.stopSync();
+       await Xvfb.stopSync();
      }
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
       Message: "Success."
     });
-})
   } catch (e) {
     console.log('err', e)
     browser.close();
@@ -548,7 +539,6 @@ puppeteer.launch({
     Message: `${store} is not supported!`
   });
 }
-
 }
 
 module.exports = storesController;
