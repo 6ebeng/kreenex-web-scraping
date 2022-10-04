@@ -519,9 +519,9 @@ try{
     });
   } catch (e) {
     console.log('err', e)
-    await browser.close();
+    browser.close();
     if (!data.isHeadless) {
-      await Xvfb.stopSync();
+      Xvfb.stopSync();
     }
     return res.status(500).json({
       ResponseCode: 500,
