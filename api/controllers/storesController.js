@@ -260,6 +260,8 @@ try{
     await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
+    const cookies = await page.cookies();
+    await fs.writeFile('./cookies.json', JSON.stringify(cookies, null, 2));
 
     //Block unnecessary resource types and urls
     page.on('request', request => {
