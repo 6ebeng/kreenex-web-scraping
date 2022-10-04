@@ -16,9 +16,7 @@
     "https://st0.mngbcn.com/static/js/topLayoutDivs.js",
     "https://st0.mngbcn.com/static/js/plugins.js",
     
-    "https://st0.mngbcn.com/lib/verne/utils.js",
-    "https://st0.mngbcn.com/lib/verne/navigation/navigation.js",
-    "https://st0.mngbcn.com/lib/verne/navigation/header.js"
+    "https://st0.mngbcn.com/lib/verne/utils.js"
   ],
   "container": "div.product-detail-main",
   "notInStockSizes": {
