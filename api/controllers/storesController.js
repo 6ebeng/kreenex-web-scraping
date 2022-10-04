@@ -19,6 +19,8 @@
 
 
 var browser;
+let storeController = {validate,search}
+
 
 /**
     For delay time
@@ -527,7 +529,4 @@ try{
 }
 }
 
-module.exports = {
-  validate,
-  search
-};
+module.exports = storeController;
