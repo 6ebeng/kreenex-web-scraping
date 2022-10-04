@@ -116,7 +116,7 @@ async function elementClick(page, selector){
 }
 
 
-const search = async(req, res)=> {
+async function search(req, res) {
 
   /* To Check Validation json */
   let errors = validationResult(req);
@@ -183,7 +183,7 @@ try{
 
 
     /* Launch Browser */
-    puppeteer.use(stealth());
+    puppeteer.use(stealth);
 
     /*
       Uses for Windows
