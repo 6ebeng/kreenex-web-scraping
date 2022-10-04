@@ -251,7 +251,17 @@ try{
     }
 
 //launch puppeteer, do everything in .then() handler
-puppeteer.launch({devtools:false}).then(function(browser){
+puppeteer.launch({
+    headless: data.isHeadless,
+    //executablePath: '/usr/bin/google-chrome',
+    args: argsValue,
+    slowMo: 0,
+    ignoreHTTPSErrors: true,
+    devtools:false,
+    defaultViewport: null
+  })
+  
+  .then(function(browser){
 
     
     //first tab
