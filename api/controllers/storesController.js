@@ -472,6 +472,7 @@ try{
     var strCategory = await elementSelector(page,data.category.selector || null,data.category.attribute || null, data.category.regex || null, data.category.groups || [], true) || "";
     Response.Category = strCategory.join(" ").trim()
     var strPrice = await elementSelector(page,data.price.selector,data.price.attribute || null,data.price.regex || null,data.price.groups || [],false) || ""
+    console.log("price is >" + strPrice)
     //Extract clean price without decimal
     if(strPrice.includes(",") || strPrice.includes(".")) {
       strPrice = strPrice.match(/[,.\d]+(?=[.,]\d+)/g)[0]
