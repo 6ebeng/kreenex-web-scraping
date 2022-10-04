@@ -11,7 +11,8 @@ const async = require("async"),
   //cheerio = require('cheerio'),
   scrollToBottom = require('scroll-to-bottomjs'), 
   {check, validationResult} = require('express-validator'),
-  fs = require('fs')
+  fs = require('fs'),
+  Xvfb = require('xvfb');
 
 var browser;
 let storesController = {
@@ -205,7 +206,6 @@ try{
       // Xvfb -ac :10 -screen 0 1200x800x24 &
       // export DISPLAY=:10
     if (!data.isHeadless) {
-      var Xvfb = require('xvfb');
       var xvfb = new Xvfb({
         silent: true,
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
