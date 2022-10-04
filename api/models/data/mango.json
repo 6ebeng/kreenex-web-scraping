@@ -22,7 +22,8 @@
     "https://st0.mngbcn.com/lib/mng-chatbot/",
     "https://st.mngbcn.com/scripts/tagmanager",
     "https://shop.mango.com/modals/seleccionPaisIP.faces",
-    "https://shop.mango.com/st-newsletter/newsletter"
+    "https://shop.mango.com/st-newsletter/newsletter",
+    "https://shop.mango.com/st-store-locator/storeLocator/manifest.json"
 
   ],
   "container": "div.product-detail-main",
