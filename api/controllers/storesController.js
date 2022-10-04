@@ -248,7 +248,7 @@ try{
 
     browser = await puppeteer.launch({
       headless: data.isHeadless,
-      //executablePath: '/usr/bin/google-chrome',
+      executablePath: '/usr/bin/google-chrome',
       args: argsValue,
       slowMo: 0,
       ignoreHTTPSErrors: true,
