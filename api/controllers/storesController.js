@@ -166,8 +166,8 @@ async function search(req, res) {
 let url = req.body.Url
 console.log(url)
 
-var match = url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
-let store = match[4].replace(/\..+/g,'')
+var match = await url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
+let store = await match[4].replace(/\..+/g,'')
 
 
 try{
@@ -510,8 +510,8 @@ try{
       Data: {},
       Message: "Some error occured Or data not found, please try again."
     });
-  } finally{
-    await browser.close();
+  } finally {
+    browser.close();
     if (!data.isHeadless) {
       xvfb.stopSync();
     }
