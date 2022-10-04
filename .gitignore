@@ -2,5 +2,5 @@ node_modules
 testAPI.rest
 example.html
 tmp
-debug\docs\*
-debug\screenshoots\*
+debug\docs
+debug\screenshoots
