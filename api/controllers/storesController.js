@@ -513,7 +513,7 @@ try{
   } finally {
     await browser.close();
     if (!data.isHeadless) {
-      xvfb.stopSync();
+      await xvfb.stopSync();
     }
   }
 } catch {
