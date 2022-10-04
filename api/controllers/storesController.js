@@ -246,7 +246,7 @@ try{
        ]
     }
 
-    browser = await puppeteer.launch({
+    await puppeteer.launch({
       headless: data.isHeadless,
       //executablePath: '/usr/bin/google-chrome',
       args: argsValue,
@@ -254,8 +254,8 @@ try{
       ignoreHTTPSErrors: true,
       devtools:false,
       defaultViewport: null
-    });
-    
+    }).then(async ()=>{
+
     //first tab
     const page = (await browser.pages())[0];
     await page.emulateTimezone('Asia/Baghdad');
@@ -422,6 +422,10 @@ try{
       if (data.debug) console.log(NotInStockSizes)
       NotInStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isOutStock = true })
       if (isOutStock) {
+        await browser.close();
+        if (!data.isHeadless) {
+          Xvfb.stopSync();
+        }
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
@@ -435,6 +439,10 @@ try{
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
       if (data.debug) console.log(InStockSizes)
       if (!isInstock) {
+        await browser.close();
+        if (!data.isHeadless) {
+          Xvfb.stopSync();
+        }
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
@@ -500,26 +508,29 @@ try{
      }
  
      Response.Images = await strImages
+     await browser.close();
+     if (!data.isHeadless) {
+       Xvfb.stopSync();
+     }
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
       Message: "Success."
     });
+  })
   } catch (e) {
     console.log('err', e)
-
+    await browser.close();
+    if (!data.isHeadless) {
+      Xvfb.stopSync();
+    }
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
       Message: "Some error occured Or data not found, please try again."
     });
-  } finally {
-    console.log("done " + url )
-      browser.close();
-    if (!data.isHeadless) {
-      Xvfb.stopSync();
-    }
   }
+  
 } catch {
   return res.status(500).json({
     ResponseCode: 500,
