@@ -248,7 +248,7 @@ try{
     const USER_AGENT = '5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36';
     //Randomize User agent or Set a valid one
     const userAgent = randomUseragent.getRandom();
-    const UA = userAgent || USER_AGENT;
+    const UA = USER_AGENT;
 
     browser = await puppeteer.launch({
       headless: data.isHeadless,
