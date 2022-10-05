@@ -14,7 +14,10 @@
     validationResult,
     fs,
     Xvfb,
-    stealth
+    stealth,
+    createCursor,
+    getRandomPagePoint,
+    installMouseHelper
   } = require("../helper/packages.js")
 
 var browser;
@@ -258,6 +261,9 @@ try{
     //first tab
     const page = (await browser.pages())[0];
 
+    const cursor = createCursor(page, await getRandomPagePoint(page), true)
+
+    console(cursor)
     const cookiesString = await fs.promises.readFile('./cookies.json');
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
@@ -377,6 +383,9 @@ try{
       timeout: 0
     });
     if (data.debug) console.log(await response.headers())
+
+
+    //await cursor.move()
 
     const saveCookies = await page.cookies();
     await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
