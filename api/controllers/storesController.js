@@ -15,9 +15,7 @@
     fs,
     Xvfb,
     stealth,
-    createCursor,
-    getRandomPagePoint,
-    installMouseHelper
+    randomUseragent
   } = require("../helper/packages.js")
 
 var browser;
@@ -178,7 +176,7 @@ let store = await match[4].replace(/\..+/g,'')
 
 
 try{
-  const data = require('../models/data/' + store)
+  const data = await require('../models/data/' + store)
 
   /* Initialize Browser */
   try {
@@ -229,7 +227,6 @@ try{
       "--disable-translate",
       "--window-position=0,0",
       "--autoplay-policy=no-user-gesture-required",
-      "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
       "--lang=en,en-US"
      ]
     } else {
@@ -241,7 +238,6 @@ try{
         "--disable-translate",
         "--window-position=0,0",
         "--autoplay-policy=no-user-gesture-required",
-        "--user-agent=5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
         "--lang=en,en-US",
         "--use-fake-device-for-media-stream",
         "--use-gl=angle",
@@ -249,21 +245,40 @@ try{
        ]
     }
 
+    const USER_AGENT = '5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36';
+    //Randomize User agent or Set a valid one
+    const userAgent = randomUseragent.getRandom();
+    const UA = userAgent || USER_AGENT;
+
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
       args: argsValue,
       slowMo: 0,
-      ignoreHTTPSErrors: true,
-      defaultViewport: null
+      ignoreHTTPSErrors: true
     });
+
+
+
+
 
     //first tab
     const page = (await browser.pages())[0];
 
-    const cursor = createCursor(page, await getRandomPagePoint(page), true)
+    //Randomize viewport size
+    await page.setViewport({
+      width: 1920 + Math.floor(Math.random() * 100),
+      height: 3000 + Math.floor(Math.random() * 100),
+      deviceScaleFactor: 1,
+      hasTouch: false,
+      isLandscape: false,
+      isMobile: false,
+    });
 
-    console.log(cursor)
+    await page.setUserAgent(UA);
+    await page.setJavaScriptEnabled(true);
+    await page.setDefaultNavigationTimeout(0);
+
     const cookiesString = await fs.promises.readFile('./cookies.json');
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
@@ -317,7 +332,10 @@ try{
       Object.defineProperty(navigator, 'platform', {get: () => 'Win32'  });
       //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
       // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
+      window.chrome = {runtime: {},}; // Pass chrome check
 
+
+      
       const getParameter = WebGLRenderingContext.getParameter;
       WebGLRenderingContext.prototype.getParameter = function (parameter) {
         // UNMASKED_VENDOR_WEBGL
@@ -376,7 +394,24 @@ try{
       // })();
     });
 
+    await page.evaluateOnNewDocument(() => {
+      //Pass notifications check
+      const originalQuery = window.navigator.permissions.query;
+      return window.navigator.permissions.query = (parameters) => (
+        parameters.name === 'notifications' ?
+          Promise.resolve({ state: Notification.permission }) :
+          originalQuery(parameters)
+      );
+    });
 
+    await page.evaluateOnNewDocument(() => {
+      // Overwrite the `plugins` property to use a custom getter.
+      Object.defineProperty(navigator, 'plugins', {
+        // This just needs to have `length > 0` for the current test,
+        // but we could mock the plugins too if necessary.
+        get: () => [1, 2, 3, 4, 5],
+      });
+    });
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
@@ -384,13 +419,15 @@ try{
     });
     if (data.debug) console.log(await response.headers())
 
-
-    //await cursor.move()
+    await page.mouse.move(100, 100);
+    await page.mouse.down();
+    await page.mouse.move(200, 200);
+    await page.mouse.up();
 
     const saveCookies = await page.cookies();
     await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
 
-    //await page.evaluate(scrollToBottom, {frequency: 100,timing: 3});
+    await page.evaluate(scrollToBottom, {frequency: 100,timing: 1});
 
 
     // debug

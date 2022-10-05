@@ -14,7 +14,7 @@ scrollToBottom = require('scroll-to-bottomjs'),
 fs = require('fs'),
 Xvfb = require('xvfb'),
 stealth = require('puppeteer-extra-plugin-stealth')(),
-{ createCursor, getRandomPagePoint, installMouseHelper } = require('ghost-cursor');
+randomUseragent = require('random-useragent');
 
 
 module.exports = {
@@ -26,7 +26,5 @@ module.exports = {
     fs,
     Xvfb,
     stealth,
-    createCursor,
-    getRandomPagePoint,
-    installMouseHelper
+    randomUseragent
 }
