@@ -267,8 +267,8 @@ try{
 
     //Randomize viewport size
     await page.setViewport({
-      width: 1920 + Math.floor(Math.random() * 100),
-      height: 3000 + Math.floor(Math.random() * 100),
+      width: 1366 + Math.floor(Math.random() * 100),
+      height: 768 + Math.floor(Math.random() * 100),
       deviceScaleFactor: 1,
       hasTouch: false,
       isLandscape: false,
