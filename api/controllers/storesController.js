@@ -275,7 +275,7 @@ try{
     });
 
 
-
+console.log(userAgents[Math.floor(Math.random()*userAgents.length)])
     await page.setUserAgent(userAgents[Math.floor(Math.random()*userAgents.length)]);
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
