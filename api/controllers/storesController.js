@@ -275,8 +275,8 @@ try{
     });
 
 
-    
-    await page.setUserAgent(userAgents[Math.floor(Math.random()*userAgents.length)]);
+    const userAgent = userAgents[Math.floor(Math.random()*userAgents.length)]
+    await page.setUserAgent(userAgent);
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
 
@@ -581,7 +581,7 @@ try{
     if (!data.isHeadless) {
       Xvfb.stopSync();
     }
-    console.log(userAgents[Math.floor(Math.random()*userAgents.length)])
+    console.log(userAgent)
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
