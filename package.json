@@ -22,13 +22,11 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-validator": "^6.14.2",
-    "ghost-cursor": "^1.1.15",
     "pretty-error": "^4.0.0",
-    "puppeteer": "^18.0.4",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1",
-    "random-useragent": "^0.5.0",
     "scroll-to-bottomjs": "^1.1.0",
+    "user-agents": "^1.0.1159",
     "uuid": "^9.0.0",
     "xvfb": "^0.4.0"
   }
