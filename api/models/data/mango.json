@@ -1,8 +1,8 @@
 {
-  "debug": true,
+  "debug": false,
   "isHeadless": true,
   "waitUntill": "domcontentloaded",
-  "blockResourceTypes": ["image","media","font"],
+  "blockResourceTypes": ["image","media","font","other"],
   "whiteListUrls": [
     "https://shop.mango.com",
     "mngbcn.com"
