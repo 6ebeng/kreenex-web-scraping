@@ -263,7 +263,7 @@ try{
 
     const cursor = createCursor(page, await getRandomPagePoint(page), true)
 
-    console(cursor)
+    console.log(cursor)
     const cookiesString = await fs.promises.readFile('./cookies.json');
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
