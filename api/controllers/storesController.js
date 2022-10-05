@@ -14,8 +14,7 @@
     validationResult,
     fs,
     Xvfb,
-    stealth,
-    UserAgent
+    stealth
   } = require("../helper/packages.js")
 
 var browser;
@@ -270,7 +269,7 @@ try{
       isMobile: false,
     });
 
-    await page.setUserAgent(new UserAgent({ platform: 'Win32',vendor: 'Google Inc.'}).random().data.userAgent);
+    await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36");
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
 
