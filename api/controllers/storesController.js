@@ -118,7 +118,7 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         var tmp = []
         
         tmpSelector.forEach(item =>{
-          console.log(item.match(regex))
+          console.log(item.replace(regex,""))
           tmp.push(item.match(regex).join(""))
         })
         return tmp
