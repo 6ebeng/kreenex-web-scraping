@@ -208,7 +208,7 @@ async function search(req, res) {
 
 
   let url = req.body.Url
-  console.log(url)
+  console.log('\x1b[34m%s\x1b[0m', url)
 
   var match = await url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
   let store = await match[4].replace(/\..+/g, '')
@@ -229,6 +229,18 @@ async function search(req, res) {
   ]
   const userAgent = userAgents[Math.floor(Math.random() * userAgents.length)]
 
+  const xvfb = new Xvfb({
+    silent: true,
+    xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
+  });
+
+  if (!data.isHeadless) {
+    await xvfb.startSync();
+    argsHeadFull = [
+      "--use-fake-device-for-media-stream",
+      "--display=" + xvfb._display
+    ]
+  }
 
   /* Initialize Browser */
   try {
@@ -263,17 +275,7 @@ async function search(req, res) {
 
     var argsHeadFull = []
 
-    if (!data.isHeadless) {
-      const xvfb = new Xvfb({
-        silent: true,
-        xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
-      });
-      await xvfb.startSync();
-      argsHeadFull = [
-        "--use-fake-device-for-media-stream",
-        "--display=" + xvfb._display
-      ]
-    }
+
 
 
 
