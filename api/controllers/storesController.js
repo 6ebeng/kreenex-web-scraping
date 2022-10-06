@@ -266,7 +266,7 @@ async function search(req, res) {
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
       });
       await xvfb.startSync();
-      argsValue = [
+      argsHeadFull = [
         "--use-fake-device-for-media-stream",
         "--use-gl=angle",
         "--display=" + xvfb._display
