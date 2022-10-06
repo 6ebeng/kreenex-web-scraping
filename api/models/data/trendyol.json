@@ -8,7 +8,8 @@
 "https://cdn.dsmcdn.com"
     ],
     "blockUrls": [
-"https://cdn.dsmcdn.com/web"
+"https://cdn.dsmcdn.com/web",
+"https://cdn.dsmcdn.com/mnresize"
     ],
     "container": "div.product-container",
     "notInStockSizes": {
