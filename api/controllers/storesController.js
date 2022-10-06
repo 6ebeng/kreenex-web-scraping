@@ -17,7 +17,7 @@ const {
   stealth
 } = require("../helper/packages.js")
 
-const bypassDetections = require("../helper/bypassDetections.js")
+const bypass = require("../helper/bypassDetections.js")
 
 var browser;
 let storesController = {
@@ -337,7 +337,7 @@ async function search(req, res) {
 
 
     // Bypass detections
-    await bypassDetections(page)
+    await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
