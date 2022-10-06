@@ -302,7 +302,7 @@ async function search(req, res) {
     });
 
     //first tab
-    page = (await browser.pages())[0];
+    const page = (await browser.pages())[0];
 
     //Randomize viewport size
     await page.setViewport({
