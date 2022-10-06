@@ -1,0 +1,57 @@
+{
+    "debug": true,
+    "isHeadless": true,
+    "waitUntill": "domcontentloaded",
+    "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
+    "whiteListUrls": [
+"trendyol"
+    ],
+    "blockUrls": [
+        "https://www.zara.com/akam"
+    ],
+    "container": "div.product-container",
+    "notInStockSizes": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "//div[contains(@class,'variants')]/div[contains(@class,'sp-itm')][contains(@class,'so')] | //div[contains(@class,'slc-txt-w')]/div[contains(@class,'pr-slc')][contains(@class,'passive')]"
+    },
+    "inStockSizes": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "//div[contains(@class,'variants')]/div[contains(@class,'sp-itm')][not(contains(@class,'so'))] | //div[contains(@class,'slc-txt-w')]/div[contains(@class,'pr-slc')][not(contains(@class,'passive'))]"
+    },
+    "clickSize": "",
+    "title": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "h1.pr-new-br > span"
+    },
+    "category": {
+      "attribute": "",
+      "regex": "[\\S ]+ ([\\S ]+)",
+      "groups": [1],
+      "selector": "   //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=4]/a[last()-1]/span |  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=5]/a[last()-2]/span |  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=5]/a[last()-1]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=6]/a[last()-3]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=6]/a[last()-2]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=6]/a[last()-1]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-4]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-3]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-2]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-1]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-5]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-4]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-3]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-2]/span|  //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-1]/span"
+    },
+    "price": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": "//span[contains(@class,'prc-slg')] | //div/span[contains(@class,'prc-dsc')]"
+    },
+    "color": {
+      "attribute": "title",
+      "regex": "",
+      "groups": [],
+      "selector": "div.slicing-attributes > section:nth-of-type(1) > div[class*=styles-module_sliderBase] > div[class*=styles-module_slider] > a.selected.slc-img"
+    },
+    "images": {
+      "attribute": "src",
+      "regex": "^.+.com|\/ty\\d+\/.+",
+      "groups": [],
+      "selector": "//div[contains(@class,'base-product-image')]/div/img | //div[contains(@class,'product-slide')][not(contains(@class,'focused'))]/img"
+    }
+  
+  }
