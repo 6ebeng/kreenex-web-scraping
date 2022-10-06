@@ -106,7 +106,7 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
       } else {
         //if we have only regex    
         return Array.from(await mainSelector(page, selector, attribute)).map(item =>{
-          
+          console.log(regex)
           console.log("regex >" + item.match(regex))
           item.replace(regex,"")
         })
