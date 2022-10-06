@@ -1,4 +1,4 @@
-async function bypassDetections(page){
+module.exports = async function bypassDetections(page){
 
     await page.evaluateOnNewDocument(() => {
 
@@ -89,5 +89,3 @@ async function bypassDetections(page){
         });
       });
 }
-
-module.exports = {bypassDetections}
