@@ -2,7 +2,7 @@
     "debug": true,
     "isHeadless": true,
     "waitUntill": "domcontentloaded",
-    "blockResourceTypes": [],
+    "blockResourceTypes": ["image","media","stylesheet","font","other","fetch"],
     "whiteListUrls": [
 "trendyol.com/",
 "https://cdn.dsmcdn.com"
