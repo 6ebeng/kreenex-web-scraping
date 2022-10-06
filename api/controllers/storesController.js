@@ -498,7 +498,7 @@ async function search(req, res) {
     });
   } finally {
     console.log("done " + url)
-    await page.close()
+    await browser.close()
     if (!data.isHeadless) {
       Xvfb.stopSync();
     }
