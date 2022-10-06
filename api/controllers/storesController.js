@@ -107,10 +107,8 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         var tmp = []
         tmpSelector.forEach(item => {
           var arr = []
-            groups.forEach(element => {
-              arr.push(item.match(regex)[element])
-            });
-          tmp = arr.join("")
+          groups.forEach(group =>(arr.push(item.match(regex)[group])));
+          tmp.push(arr.join(""))
         })
         return tmp
 
@@ -118,13 +116,13 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         //if we have only regex
         const tmpSelector = await mainSelector(page, selector, attribute)
         var tmp = []
-        tmpSelector.forEach(item =>(tmp = item.match(regex).join("")))
+        tmpSelector.forEach(item =>(tmp.push(item.match(regex).join(""))))
         return tmp
       }
     } else {
 
       return await mainSelector(page, selector, attribute)
-      
+
     }
     
   }
