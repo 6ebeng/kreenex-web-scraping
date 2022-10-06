@@ -99,20 +99,13 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
     }
   } else {
     if (regex) {
-
         // if we have groups
-      if (groups.length > 0) {
-        return Array.from(await mainSelector(page, selector, attribute)).map(item => Array.from(groups).map(group =>(item.match(new RegExp(regex,'g'))[group])).join(""))
-      } else {
-        //if we have only regex    
-        return Array.from(await mainSelector(page, selector, attribute)).map(item =>(item.match(new RegExp(regex,'g'))).join(""))
-      }
+      if (groups.length > 0) return Array.from(await mainSelector(page, selector, attribute)).map(item => Array.from(groups).map(group =>(item.match(new RegExp(regex,'gi'))[group])).join(""));
+      //if we have only regex
+      else return Array.from(await mainSelector(page, selector, attribute)).map(item =>(item.match(new RegExp(regex,'gi'))).join(""));
     } else {
-
       return await mainSelector(page, selector, attribute)
-
     }
-    
   }
 }
 
