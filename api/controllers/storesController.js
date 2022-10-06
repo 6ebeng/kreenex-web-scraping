@@ -106,9 +106,11 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
       } else {
         //if we have only regex    
         return Array.from(await mainSelector(page, selector, attribute)).map(item =>{
-          console.log(item.match(regex))
-          console.log("regex >" + (item.match(regex)).join(""))
-          item.replace(regex,"")
+          while ((m = regex.exec(item)) !== null) {
+            if (m.index === regex.lastIndex) regex.lastIndex++; arr.push(m[0])
+          }
+        return arr.join("")
+
         })
       }
     } else {
