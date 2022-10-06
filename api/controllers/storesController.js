@@ -105,13 +105,7 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         return Array.from(await mainSelector(page, selector, attribute)).map(item => Array.from(groups).map(group =>(item.match(regex)[group])).join(""))
       } else {
         //if we have only regex    
-        return Array.from(await mainSelector(page, selector, attribute)).map(item =>{
-          while ((m = regex.exec(item)) !== null) {
-            if (m.index === regex.lastIndex) regex.lastIndex++; arr.push(m[0])
-          }
-        return arr.join("")
-
-        })
+        return Array.from(await mainSelector(page, selector, attribute)).map(item =>(item.match(new RegExp(regex,'g'))).join(""))
       }
     } else {
 
