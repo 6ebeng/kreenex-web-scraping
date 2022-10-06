@@ -414,7 +414,7 @@ try{
       waitUntil: data.waitUntil,
       timeout: 0
     });
-    if (data.debug) console.log(await response.headers())
+    //if (data.debug) console.log(await response.headers())
 
     await page.mouse.move(100, 100);
     await page.mouse.down();
