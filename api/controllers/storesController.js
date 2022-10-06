@@ -117,7 +117,11 @@ async function elementClick(page, selector) {
 }
 
 async function isValidStore(store) {
-  if (Array.from(fs.readdirSync('./api/models/data')).includes(store)) return true; else false;
+  if (Array.from(fs.readdirSync('./api/models/data')).includes(store)) {
+    return true;
+  } else {
+    false;
+  }
 }
 
 async function blockResources(page,data){
