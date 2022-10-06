@@ -258,7 +258,7 @@ try{
     });
 
     //first tab
-    const page = (await browser.page())[0];
+    const page = (await browser.pages())[0];
 
     //Randomize viewport size
     await page.setViewport({
