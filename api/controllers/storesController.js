@@ -118,22 +118,9 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         var tmp = []
         
         tmpSelector.forEach(item =>{
-
-          let m;
-          while ((m = regex.exec(item)) !== null) {
-              // This is necessary to avoid infinite loops with zero-width matches
-              if (m.index === regex.lastIndex) {
-                  regex.lastIndex++;
-              }
-              
-              // The result can be accessed through the `m`-variable.
-              console.log(m)
-          }
-
+          console.log(item.match(regex))
           tmp.push(item.match(regex).join(""))
         })
-
-
         return tmp
       }
     } else {
