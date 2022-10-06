@@ -10,7 +10,8 @@
     "blockUrls": [
 "https://cdn.dsmcdn.com/web",
 "https://www.trendyol.com/Content",
-"https://cdn.dsmcdn.com//seller-ads"
+"https://cdn.dsmcdn.com//seller-ads",
+"https://cdn.dsmcdn.com/indexing-sticker-stamp"
     ],
     "container": "div.product-container",
     "notInStockSizes": {
