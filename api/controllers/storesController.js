@@ -98,7 +98,35 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
       return tmpSelector[0] //return the first array
     }
   } else {
-    return await mainSelector(page, selector, attribute)
+    if (regex) {
+
+      if (groups.length > 0) {
+        // if we have groups
+        
+        const tmpSelector = await mainSelector(page, selector, attribute)
+        var tmp = []
+        tmpSelector.forEach(item => {
+          var arr = []
+            groups.forEach(element => {
+              arr.push(item.match(regex)[element])
+            });
+          tmp = arr.join("")
+        })
+        return tmp
+
+      } else {
+        //if we have only regex
+        const tmpSelector = await mainSelector(page, selector, attribute)
+        var tmp = []
+        tmpSelector.forEach(item =>(tmp = item.match(regex).join("")))
+        return tmp
+      }
+    } else {
+
+      return await mainSelector(page, selector, attribute)
+      
+    }
+    
   }
 }
 
