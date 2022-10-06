@@ -222,6 +222,14 @@ async function search(req, res) {
   }
   const data = await require('../models/data/' + store)
 
+  const userAgents = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19042",
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:70.0) Gecko/20100101 Firefox/70.0"
+  ]
+  const userAgent = userAgents[Math.floor(Math.random() * userAgents.length)]
+
+
   /* Initialize Browser */
   try {
 
@@ -267,12 +275,6 @@ async function search(req, res) {
       ]
     }
 
-    var userAgents = [
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19042",
-      "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-      "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:70.0) Gecko/20100101 Firefox/70.0"
-    ]
-    var userAgent = userAgents[Math.floor(Math.random() * userAgents.length)]
 
 
     browser = await puppeteer.launch({
@@ -479,6 +481,7 @@ async function search(req, res) {
   } catch (e) {
     console.log('err', e)
     console.log(userAgent)
+    console.log('\x1b[31m%s\x1b[0m', url)
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
