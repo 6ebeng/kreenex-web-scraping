@@ -257,36 +257,16 @@ async function search(req, res) {
     // kill -- "-$xvfb_pid"
     // Xvfb -ac :10 -screen 0 1200x800x24 &
     // export DISPLAY=:10
+
+    var argsHeadFull = []
+
     if (!data.isHeadless) {
       const xvfb = new Xvfb({
         silent: true,
         xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
       });
       await xvfb.startSync();
-    }
-
-    let argsValue
-    if (!data.headless) {
       argsValue = [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--window-size=1366x768",
-        "--blink-settings=imagesEnabled=false",
-        "--disable-translate",
-        "--window-position=0,0",
-        "--autoplay-policy=no-user-gesture-required",
-        "--lang=en,en-US"
-      ]
-    } else {
-      argsValue = [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--window-size=1366,768",
-        "--blink-settings=imagesEnabled=false",
-        "--disable-translate",
-        "--window-position=0,0",
-        "--autoplay-policy=no-user-gesture-required",
-        "--lang=en,en-US",
         "--use-fake-device-for-media-stream",
         "--use-gl=angle",
         "--display=" + xvfb._display
@@ -296,7 +276,17 @@ async function search(req, res) {
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
-      args: argsValue,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--window-size=1366x768",
+        "--blink-settings=imagesEnabled=false",
+        "--disable-translate",
+        "--window-position=0,0",
+        "--autoplay-policy=no-user-gesture-required",
+        "--lang=en,en-US",
+        ...argsHeadFull
+      ],
       slowMo: 0,
       ignoreHTTPSErrors: true
     });
@@ -498,7 +488,7 @@ async function search(req, res) {
     console.log("done " + url)
     browser.close()
     if (!data.isHeadless) {
-      Xvfb.stopSync();
+      xvfb.stopSync();
     }
   }
 }
