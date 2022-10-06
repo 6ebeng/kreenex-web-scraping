@@ -19,7 +19,7 @@ const {
 
 const bypass = require("../helper/bypassDetections.js")
 
-var browser;
+var browser,page;
 let storesController = {
   validate,
   search
@@ -305,7 +305,7 @@ async function search(req, res) {
     });
 
     //first tab
-    const page = (await browser.pages())[0];
+    page = (await browser.pages())[0];
 
     //Randomize viewport size
     await page.setViewport({
