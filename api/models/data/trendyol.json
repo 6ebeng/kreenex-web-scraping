@@ -32,8 +32,8 @@
     },
     "category": {
       "attribute": "",
-      "regex": "[\\S ]+ ([\\S ]+)",
-      "groups": [1],
+      "regex": "",
+      "groups": [],
       "selector": "//div[@id='marketing-product-detail-breadcrumb']/div[count(a)=4]/a[last()-1 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=5]/a[last()-2 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=5]/a[last()-1 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=6]/a[last()-3 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=6]/a[last()-2 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=6]/a[last()-1 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-4 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-3 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-2 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=7]/a[last()-1 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-5 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-4 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-3 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-2 ]/span | //div[@id='marketing-product-detail-breadcrumb']/div[count(a)=8]/a[last()-1]/span"
     },
     "price": {
