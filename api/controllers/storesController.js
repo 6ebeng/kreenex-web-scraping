@@ -116,7 +116,11 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         //if we have only regex
         const tmpSelector = await mainSelector(page, selector, attribute)
         var tmp = []
-        tmpSelector.forEach(item =>(tmp.push(item.match(regex).join(""))))
+        
+        tmpSelector.forEach(item =>{
+          console.log(item.match(regex))
+          tmp.push(item.match(regex).join(""))
+        })
         return tmp
       }
     } else {
