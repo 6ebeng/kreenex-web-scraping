@@ -19,7 +19,6 @@ const {
 
 const bypass = require("../helper/bypassDetections.js")
 
-var browser,page;
 let storesController = {
   validate,
   search
@@ -163,6 +162,7 @@ async function blockResources(page,data){
 
 async function search(req, res) {
 
+  var browser
   /* To Check Validation json */
   let errors = validationResult(req);
 
@@ -496,7 +496,7 @@ async function search(req, res) {
     });
   } finally {
     console.log("done " + url)
-    page.close()
+    browser.close()
     if (!data.isHeadless) {
       Xvfb.stopSync();
     }
