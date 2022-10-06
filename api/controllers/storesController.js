@@ -116,8 +116,10 @@ async function elementClick(page, selector) {
   }
 }
 
+
 async function isValidStore(store) {
-  if (Array.from(fs.readdirSync("../models/data/")).includes(store)) return true; else return false;
+  console.log((Array.from(fs.readdirSync('../models/data'))))
+  if (Array.from(fs.readdirSync('../models/data')).includes(store)) return true; else return false;
 }
 
 async function blockResources(page,data){
@@ -212,6 +214,8 @@ async function search(req, res) {
 
   var match = await url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
   let store = await match[4].replace(/\..+/g, '')
+
+  
 
   if (!await isValidStore(store)) {
     console.log('\x1b[33m%s\x1b[0m', url)
