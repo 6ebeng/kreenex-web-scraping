@@ -346,10 +346,10 @@ async function search(req, res) {
     });
     //if (data.debug) console.log(await response.headers())
 
-    await page.mouse.move(100, 100);
-    await page.mouse.down();
-    await page.mouse.move(200, 200);
-    await page.mouse.up();
+    // await page.mouse.move(100, 100);
+    // await page.mouse.down();
+    // await page.mouse.move(200, 200);
+    // await page.mouse.up();
 
     const saveCookies = await page.cookies();
     await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
