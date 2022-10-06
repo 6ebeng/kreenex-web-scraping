@@ -229,11 +229,13 @@ async function search(req, res) {
   ]
   const userAgent = userAgents[Math.floor(Math.random() * userAgents.length)]
 
+  
   const xvfb = new Xvfb({
     silent: true,
     xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
   });
 
+  var argsHeadFull = []
   if (!data.isHeadless) {
     await xvfb.startSync();
     argsHeadFull = [
@@ -272,11 +274,6 @@ async function search(req, res) {
     // kill -- "-$xvfb_pid"
     // Xvfb -ac :10 -screen 0 1200x800x24 &
     // export DISPLAY=:10
-
-    var argsHeadFull = []
-
-
-
 
 
     browser = await puppeteer.launch({
