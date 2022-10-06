@@ -17,7 +17,8 @@ const {
   stealth
 } = require("../helper/packages.js")
 
-const bypass = require("../helper/bypassDetections.js")
+const bypass = require("../helper/bypassDetections.js");
+const { map } = require("async");
 
 let storesController = {
   validate,
@@ -118,7 +119,7 @@ async function elementClick(page, selector) {
 
 
 async function isValidStore(store) {
-  if (Array.from(fs.readdirSync('./api/models/data')).includes(store)) return true; else return false;
+  if (Array.from(fs.readdirSync('./api/models/data')).map(e=>(e.replace('.json',''))).includes(store)) return true; else return false;
 }
 
 async function blockResources(page,data){
