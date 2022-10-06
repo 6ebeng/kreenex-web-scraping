@@ -499,7 +499,7 @@ async function search(req, res) {
     });
   } finally {
     console.log("done " + url)
-    await browser.close()
+    browser.close()
     if (!data.isHeadless) {
       Xvfb.stopSync();
     }
