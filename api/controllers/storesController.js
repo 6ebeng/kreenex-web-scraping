@@ -218,7 +218,6 @@ async function search(req, res) {
   var match = await url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
   let store = await match[4].replace(/\..+/g, '')
 
-   = null
   if (!isValidStore(store)) {
     return res.status(500).json({
       ResponseCode: 500,
