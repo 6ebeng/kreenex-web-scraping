@@ -12,8 +12,7 @@
 "https://www.trendyol.com/Content",
 "https://cdn.dsmcdn.com//seller-ads",
 "https://cdn.dsmcdn.com/indexing-sticker-stamp",
-"_org_thumb.jpg",
-"_org_zoom.jpg"
+"_org_thumb.jpg"
     ],
     "container": "div.product-container",
     "notInStockSizes": {
