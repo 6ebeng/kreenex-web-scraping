@@ -50,7 +50,7 @@
     },
     "images": {
       "attribute": "src",
-      "regex": "(\\S+\\.com)|(\\/ty\\d+\\/\\S+)",
+      "regex": "\\S+\\.com|\\/ty\\d+\\/\\S+",
       "groups": [],
       "selector": "//div[contains(@class,'base-product-image')]/div/img | //div[contains(@class,'product-slide')][not(contains(@class,'focused'))]/img"
     }
