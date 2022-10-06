@@ -4,7 +4,7 @@
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
     "whiteListUrls": [
-"https://www.trendyol.com/",
+"trendyol.com/",
 "https://cdn.dsmcdn.com"
     ],
     "blockUrls": [
