@@ -218,17 +218,15 @@ async function search(req, res) {
   var match = await url.match("^((http[s]?|ftp):\/\/)?\/?([^\/\.]+\.)*?([^\/\.]+\.[^:\/\s\.]{1,3}(\.[^:\/\s\.]{1,2})?(:\d+)?)($|\/)([^#?\s]+)?(.*?)?(#[\w\-]+)?$")
   let store = await match[4].replace(/\..+/g, '')
 
-  const data = null
+   = null
   if (!isValidStore(store)) {
     return res.status(500).json({
       ResponseCode: 500,
       Data: {},
       Message: `${store} is not supported!`
     });
-  } else {
-     data = await require('../models/data/' + store)
   }
-
+  const data = await require('../models/data/' + store)
 
   /* Initialize Browser */
   try {
