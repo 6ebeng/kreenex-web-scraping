@@ -229,7 +229,7 @@ async function search(req, res) {
   ]
   const userAgent = userAgents[Math.floor(Math.random() * userAgents.length)]
 
-  
+
   const xvfb = new Xvfb({
     silent: true,
     xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
@@ -472,6 +472,8 @@ async function search(req, res) {
     }
 
     Response.Images = await strImages
+
+    console.log('\x1b[32m%s\x1b[0m', url)
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
@@ -487,7 +489,6 @@ async function search(req, res) {
       Message: "Some error occured Or data not found, please try again."
     });
   } finally {
-    console.log("done " + url)
     browser.close()
     if (!data.isHeadless) {
       xvfb.stopSync();
