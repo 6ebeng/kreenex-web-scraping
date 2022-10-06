@@ -342,7 +342,7 @@ async function search(req, res) {
     const saveCookies = await page.cookies();
     await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
 
-    await page.evaluate(scrollToBottom, { frequency: 100, timing: 1 });
+    await page.evaluate(scrollToBottom, { frequency: 100, timing: 8 });
 
 
     // debug
