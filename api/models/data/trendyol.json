@@ -2,9 +2,10 @@
     "debug": true,
     "isHeadless": true,
     "waitUntill": "domcontentloaded",
-    "blockResourceTypes": ["image","media","stylesheet","font"],
+    "blockResourceTypes": ["image","media","stylesheet","font","other"],
     "whiteListUrls": [
-"trendyol"
+"https://www.trendyol.com/",
+"https://cdn.dsmcdn.com"
     ],
     "blockUrls": [
         "https://www.zara.com/akam"
