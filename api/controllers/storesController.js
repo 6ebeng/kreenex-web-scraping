@@ -257,12 +257,8 @@ try{
       ignoreHTTPSErrors: true
     });
 
-
-
-
-
     //first tab
-    const page = (await browser.pages())[0];
+    const page = (await browser.page())[0];
 
     //Randomize viewport size
     await page.setViewport({
@@ -478,10 +474,6 @@ try{
       if (data.debug) console.log(NotInStockSizes)
       NotInStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isOutStock = true })
       if (isOutStock) {
-        await browser.close();
-        if (!data.isHeadless) {
-          await Xvfb.stopSync();
-        }
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
@@ -495,10 +487,6 @@ try{
       InStockSizes.forEach(item => { if (item.trim() === requiredSize.trim()) isInstock = true })
       if (data.debug) console.log(InStockSizes)
       if (!isInstock) {
-        await browser.close();
-        if (!data.isHeadless) {
-          await Xvfb.stopSync();
-        }
         return res.status(500).json({
           ResponseCode: 500,
           Data: {},
@@ -566,10 +554,6 @@ try{
      }
  
      Response.Images = await strImages
-     await browser.close();
-     if (!data.isHeadless) {
-       await Xvfb.stopSync();
-     }
     return res.status(200).json({
       ResponseCode: 200,
       Data: Response,
@@ -577,10 +561,6 @@ try{
     });
   } catch (e) {
     console.log('err', e)
-    browser.close();
-    if (!data.isHeadless) {
-      Xvfb.stopSync();
-    }
     console.log(userAgent)
     return res.status(500).json({
       ResponseCode: 500,
@@ -589,6 +569,10 @@ try{
     });
   } finally {
     console.log("done " + url )
+    await this.page.close()
+    if (!data.isHeadless) {
+      Xvfb.stopSync();
+    }
 
   }
 } catch {
