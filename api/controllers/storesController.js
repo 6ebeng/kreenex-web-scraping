@@ -105,7 +105,11 @@ async function elementSelector(page, selector, attribute, regex, groups, queryAl
         return Array.from(await mainSelector(page, selector, attribute)).map(item => Array.from(groups).map(group =>(item.match(regex)[group])).join(""))
       } else {
         //if we have only regex    
-        return Array.from(await mainSelector(page, selector, attribute)).map(item =>(item.replace(regex,"")))
+        return Array.from(await mainSelector(page, selector, attribute)).map(item =>{
+          console.log("orgin >" + item.replace(regex,""))
+          console.log("modified >" + item.replace(regex,""))
+          item.replace(regex,"")
+        })
       }
     } else {
 
