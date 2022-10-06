@@ -118,8 +118,8 @@ async function elementClick(page, selector) {
 
 
 async function isValidStore(store) {
-  console.log((Array.from(await fs.readdirSync('../models/data'))))
-  if (Array.from(await fs.readdirSync('../models/data')).includes(store)) return true; else return false;
+  console.log((Array.from(fs.readdirSync('./api/models/data'))))
+  if (Array.from(fs.readdirSync('../models/data')).includes(store)) return true; else return false;
 }
 
 async function blockResources(page,data){
