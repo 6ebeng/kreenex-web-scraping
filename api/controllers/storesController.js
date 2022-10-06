@@ -268,7 +268,6 @@ async function search(req, res) {
       await xvfb.startSync();
       argsHeadFull = [
         "--use-fake-device-for-media-stream",
-        "--use-gl=angle",
         "--display=" + xvfb._display
       ]
     }
