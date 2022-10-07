@@ -1,5 +1,5 @@
 {
-    "debug": true,
+    "debug": false,
     "isHeadless": true,
     "scrollToBottom": false,
     "waitUntill": "domcontentloaded",

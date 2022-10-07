@@ -1,6 +1,6 @@
 {
     "debug": true,
-    "isHeadless": true,
+    "isHeadless": false,
     "scrollToBottom": false,
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
