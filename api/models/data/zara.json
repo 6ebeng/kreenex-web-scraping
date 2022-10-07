@@ -1,6 +1,7 @@
 {
     "debug": true,
     "isHeadless": true,
+    "scrollToBottom": false,
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
     "whiteListUrls": [
