@@ -369,7 +369,7 @@ async function search(req, res) {
 
     if(data.scrollToBottom) await page.evaluate(scrollToBottom, { frequency: 200, timing: 0 });
 
-    if(data.debug) await delay(5000)
+    if(data.debug) await delay(8000)
 
     // debug
     if (data.debug) {
