@@ -316,6 +316,7 @@ async function search(req, res) {
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
         `--disable-blink-features=AutomationControlled`,
+        `--disable-gpu`,
         ...argsHeadFull
       ],
       slowMo: 0,
