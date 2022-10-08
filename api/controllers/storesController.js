@@ -354,7 +354,7 @@ async function search(req, res) {
       timeout: 0
     });
     //if (data.debug) console.log(await response.headers())
-await delay(4000)
+
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
 
