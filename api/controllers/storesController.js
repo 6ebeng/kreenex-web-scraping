@@ -303,6 +303,7 @@ async function search(req, res) {
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
         `--lang=en,en-US`,
+        `--disable-blink-features=AutomationControlled`,
         `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
