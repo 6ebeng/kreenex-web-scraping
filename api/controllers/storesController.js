@@ -272,6 +272,9 @@ async function search(req, res) {
     
     useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
     useEvasion(puppeteer,'webgl.vendor',{vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"})
+    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
+    useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
 
 
 
@@ -314,7 +317,6 @@ async function search(req, res) {
         `--autoplay-policy=no-user-gesture-required`,
         `--lang=en,en-US`,
         `--disable-blink-features=AutomationControlled`,
-        `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
       slowMo: 0,
