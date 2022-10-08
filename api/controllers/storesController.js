@@ -257,7 +257,6 @@ async function search(req, res) {
   if (!data.isHeadless) {
     await xvfb.startSync();
     argsHeadFull = [
-      "--use-fake-device-for-media-stream",
       "--display=" + xvfb._display
     ]
   }
@@ -311,12 +310,6 @@ async function search(req, res) {
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
         `--window-size=1366x768`,
-        `--blink-settings=imagesEnabled=false`,
-        `--disable-translate`,
-        `--window-position=0,0`,
-        `--autoplay-policy=no-user-gesture-required`,
-        `--lang=en,en-US`,
-        `--disable-blink-features=AutomationControlled`,
         ...argsHeadFull
       ],
       slowMo: 0,
