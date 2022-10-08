@@ -344,7 +344,7 @@ async function search(req, res) {
     await page.setCookie(...cookies);
 
 
-    await page.emulateTimezone('Asia/Baghdad');
+    //await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
 
