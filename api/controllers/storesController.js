@@ -364,8 +364,8 @@ async function search(req, res) {
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
 
-    const saveCookies = await page.cookies();
-    await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
+    //const saveCookies = await page.cookies();
+    //await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
 
     if(data.scrollToBottom) await page.evaluate(scrollToBottom, { frequency: 200, timing: 0 });
 
