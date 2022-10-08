@@ -2,36 +2,36 @@ module.exports = async function bypassDetections(page){
 
     await page.evaluateOnNewDocument(() => {
 
-        Object.defineProperty(navigator, "languages", { get: () => ['en-US', 'en', 'ku'] });
-        Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
-        Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
-        Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
-        //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
-        // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
+        // Object.defineProperty(navigator, "languages", { get: () => ['en-US', 'en', 'ku'] });
+        // Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
+        // Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
+        // Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
+        // //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
+        // // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
 
         
-        window.chrome = {
-          runtime: true
-        };
-        window.navigator.chrome = {
-          runtime: true,
-        };
+        // window.chrome = {
+        //   runtime: true
+        // };
+        // window.navigator.chrome = {
+        //   runtime: true,
+        // };
   
   
   
-        const getParameter = WebGLRenderingContext.getParameter;
-        WebGLRenderingContext.prototype.getParameter = function (parameter) {
-          // UNMASKED_VENDOR_WEBGL
-          if (parameter === 37445) {
-            return 'Google Inc. (Intel)';
-          }
-          // UNMASKED_RENDERER_WEBGL
-          if (parameter === 37446) {
-            return 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)';
-          }
+        // const getParameter = WebGLRenderingContext.getParameter;
+        // WebGLRenderingContext.prototype.getParameter = function (parameter) {
+        //   // UNMASKED_VENDOR_WEBGL
+        //   if (parameter === 37445) {
+        //     return 'Google Inc. (Intel)';
+        //   }
+        //   // UNMASKED_RENDERER_WEBGL
+        //   if (parameter === 37446) {
+        //     return 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)';
+        //   }
   
-          return getParameter(parameter);
-        };
+        //   return getParameter(parameter);
+        // };
   
         // store the existing descriptor
         const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
@@ -77,22 +77,22 @@ module.exports = async function bypassDetections(page){
         // })();
       });
   
-      await page.evaluateOnNewDocument(() => {
-        //Pass notifications check
-        const originalQuery = window.navigator.permissions.query;
-        return window.navigator.permissions.query = (parameters) => (
-          parameters.name === 'notifications' ?
-            Promise.resolve({ state: Notification.permission }) :
-            originalQuery(parameters)
-        );
-      });
+//       await page.evaluateOnNewDocument(() => {
+//         //Pass notifications check
+//         const originalQuery = window.navigator.permissions.query;
+//         return window.navigator.permissions.query = (parameters) => (
+//           parameters.name === 'notifications' ?
+//             Promise.resolve({ state: Notification.permission }) :
+//             originalQuery(parameters)
+//         );
+//       });
   
-      await page.evaluateOnNewDocument(() => {
-        // Overwrite the `plugins` property to use a custom getter.
-        Object.defineProperty(navigator, 'plugins', {
-          // This just needs to have `length > 0` for the current test,
-          // but we could mock the plugins too if necessary.
-          get: () => [1, 2, 3, 4, 5],
-        });
-      });
+//       await page.evaluateOnNewDocument(() => {
+//         // Overwrite the `plugins` property to use a custom getter.
+//         Object.defineProperty(navigator, 'plugins', {
+//           // This just needs to have `length > 0` for the current test,
+//           // but we could mock the plugins too if necessary.
+//           get: () => [1, 2, 3, 4, 5],
+//         });
+//       });
 }

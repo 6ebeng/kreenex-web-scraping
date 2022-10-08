@@ -354,7 +354,7 @@ async function search(req, res) {
 
 
     // Bypass detections
-    //await bypass(page)
+    await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
