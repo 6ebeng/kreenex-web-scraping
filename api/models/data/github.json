@@ -5,9 +5,9 @@
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
     "whiteListUrls": [
-"github",
-"data:image",
-"web.app"
+    "github",
+    "data:image",
+    "web.app"
     ],
     "blockUrls": [
   
