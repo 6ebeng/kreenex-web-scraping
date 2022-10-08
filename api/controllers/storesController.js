@@ -345,15 +345,15 @@ async function search(req, res) {
 
     await page.emulateTimezone('Asia/Baghdad');
 
-    await page.setRequestInterception(true);
+    //await page.setRequestInterception(true);
 
 
     //Block unnecessary resource types and urls
-    await blockResources(page,data)
+    //await blockResources(page,data)
 
 
     // Bypass detections
-    await bypass(page)
+    //await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
