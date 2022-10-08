@@ -310,8 +310,15 @@ async function search(req, res) {
       args: [
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
+        `--window-size=1366x768`,
+        `--blink-settings=imagesEnabled=false`,
+        `--disable-translate`,
+        `--window-position=0,0`,
+        `--autoplay-policy=no-user-gesture-required`,
+        `--disable-blink-features=AutomationControlled`,
         ...argsHeadFull
       ],
+      slowMo: 0,
       ignoreHTTPSErrors: true
     });
 
