@@ -312,7 +312,6 @@ async function search(req, res) {
         `--disable-setuid-sandbox`,
         ...argsHeadFull
       ],
-      slowMo: 0,
       ignoreHTTPSErrors: true
     });
 
