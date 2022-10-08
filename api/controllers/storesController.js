@@ -130,7 +130,7 @@ async function isValidStore(store) {
 }
 
 async function blockResources(page,data){
-  page.on('request', request => {
+  page.on((request,response) => {
     var resourceType
     var url = true
     for (let index = 0; index < data.blockResourceTypes.length; index++) {
