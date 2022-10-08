@@ -326,7 +326,7 @@ async function search(req, res) {
     //first tab
     const page = (await browser.pages())[0];
 
-    await page.browser().setUserAgent(ua);
+    await page.browser().setUserAgent(userAgent);
 
     console.log(await page.browser().userAgent())
 
