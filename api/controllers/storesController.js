@@ -261,7 +261,12 @@ async function search(req, res) {
 
 
     /* Launch Browser */
-    puppeteer.use(stealth());
+    stealth.enabledEvasions.delete('navigator.vendor')
+    puppeteer.use(stealth);
+
+    const NavigatorVendorPlugin = require('puppeteer-extra-plugin-stealth/evasions/navigator.vendor')
+    const nvp = NavigatorVendorPlugin({ vendor: 'Apple Computer, Inc.' }) // Custom vendor
+    puppeteer.use(nvp)
 
     /*
       Uses for Windows
