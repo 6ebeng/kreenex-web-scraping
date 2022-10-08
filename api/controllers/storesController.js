@@ -264,7 +264,7 @@ async function search(req, res) {
     stealth.enabledEvasions.delete('navigator.vendor')
     //stealth.enabledEvasions.delete('webgl.vendor')
 
-    stealth.enabledEvasions.add('navigator.vendor')({ vendor: 'Tishko' })
+    stealth.enabledEvasions.add('navigator.vendor').add({ vendor: 'Tishko' })
 
 
 
