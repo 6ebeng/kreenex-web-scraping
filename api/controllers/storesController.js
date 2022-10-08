@@ -163,6 +163,12 @@ async function blockResources(page,data){
 
 }
 
+async function useEvasion(puppeteer,evasion,obj){
+  stealth.enabledEvasions.delete('navigator.vendor')
+  puppeteer.use(stealth);
+  puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)(obj))
+}
+
 
 async function search(req, res) {
 
@@ -261,15 +267,13 @@ async function search(req, res) {
 
 
     /* Launch Browser */
-    stealth.enabledEvasions.delete('navigator.vendor')
-    stealth.enabledEvasions.delete('webgl.vendor')
-
-    
-
     puppeteer.use(stealth);
 
-    puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/navigator.vendor')({ vendor: 'Google Inc.' }))
-    puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/webgl.vendor')({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
+    
+    useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    useEvasion(puppeteer,'webgl.vendor',{vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"})
+
+
 
 
     /*
