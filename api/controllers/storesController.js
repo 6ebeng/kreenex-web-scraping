@@ -316,7 +316,6 @@ async function search(req, res) {
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
         `--disable-blink-features=AutomationControlled`,
-        `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -326,9 +325,9 @@ async function search(req, res) {
     //first tab
     const page = (await browser.pages())[0];
 
-    await page.setUserAgent(userAgent);
+    // await page.setUserAgent(userAgent);
 
-    console.log(await page.browser().userAgent())
+    // console.log(await page.browser().userAgent())
 
     //Randomize viewport size
     await page.setViewport({
