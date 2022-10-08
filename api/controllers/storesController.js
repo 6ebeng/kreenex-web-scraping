@@ -262,7 +262,6 @@ async function search(req, res) {
 
     /* Launch Browser */
     puppeteer.use(stealth(
-      driver,
       vendor="Google Inc.",
       renderer="Intel Iris OpenGL Engine",
     ));
