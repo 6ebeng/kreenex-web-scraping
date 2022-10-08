@@ -8,7 +8,14 @@ module.exports = async function bypassDetections(page){
         Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
         //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
         // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
-        window.chrome = { runtime: {}, }; // Pass chrome check
+
+        
+        window.chrome = {
+          runtime: true
+        };
+        window.navigator.chrome = {
+          runtime: true,
+        };
   
   
   
