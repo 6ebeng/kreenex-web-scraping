@@ -257,6 +257,7 @@ async function search(req, res) {
   if (!data.isHeadless) {
     await xvfb.startSync();
     argsHeadFull = [
+      "--use-fake-device-for-media-stream",
       "--display=" + xvfb._display
     ]
   }
@@ -310,6 +311,7 @@ async function search(req, res) {
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
         `--window-size=1366x768`,
+        `--blink-settings=imagesEnabled=false`,
         ...argsHeadFull
       ],
       slowMo: 0,
