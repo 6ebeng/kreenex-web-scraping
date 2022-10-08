@@ -262,16 +262,14 @@ async function search(req, res) {
 
     /* Launch Browser */
     stealth.enabledEvasions.delete('navigator.vendor')
-    //stealth.enabledEvasions.delete('webgl.vendor')
+    stealth.enabledEvasions.delete('webgl.vendor')
 
-    stealth.enabledEvasions.add('navigator.vendor').add({ vendor: 'Tishko' })
-
-
+    
 
     puppeteer.use(stealth);
 
-    //puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/navigator.vendor')({ vendor: 'Google Inc.' }))
-    //puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/webgl.vendor')({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
+    puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/navigator.vendor')({ vendor: 'Google Inc.' }))
+    puppeteer.use(require('puppeteer-extra-plugin-stealth/evasions/webgl.vendor')({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
 
 
     /*
