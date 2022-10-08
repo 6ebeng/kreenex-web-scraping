@@ -335,7 +335,7 @@ async function search(req, res) {
       isMobile: false,
     });
 
-    await page.setJavaScriptEnabled(false);
+    await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
 
     const cookiesString = await fs.promises.readFile('./cookies.json');
@@ -345,15 +345,15 @@ async function search(req, res) {
 
     await page.emulateTimezone('Asia/Baghdad');
 
-    //await page.setRequestInterception(true);
+    await page.setRequestInterception(true);
 
 
     //Block unnecessary resource types and urls
-    //await blockResources(page,data)
+    await blockResources(page,data)
 
 
     // Bypass detections
-    //await bypass(page)
+    await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
@@ -364,8 +364,8 @@ async function search(req, res) {
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
 
-    //const saveCookies = await page.cookies();
-    //await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
+    const saveCookies = await page.cookies();
+    await fs.promises.writeFile('./cookies.json', JSON.stringify(saveCookies, null, 2));
 
     if(data.scrollToBottom) await page.evaluate(scrollToBottom, { frequency: 200, timing: 0 });
 
