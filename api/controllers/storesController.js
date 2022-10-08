@@ -335,7 +335,7 @@ async function search(req, res) {
       isMobile: false,
     });
 
-    await page.setJavaScriptEnabled(true);
+    await page.setJavaScriptEnabled(false);
     await page.setDefaultNavigationTimeout(0);
 
     const cookiesString = await fs.promises.readFile('./cookies.json');
