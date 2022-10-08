@@ -12,7 +12,7 @@
     "blockUrls": [
   
     ],
-    "container": "div#fingerprint-data",
+    "container": "//*[@id='fingerprint-data']/div[2]/div/div[1]/div[1]",
     "notInStockSizes": {
       "attribute": "",
       "regex": "",
