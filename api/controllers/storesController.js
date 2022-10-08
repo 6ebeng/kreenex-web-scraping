@@ -261,7 +261,7 @@ async function search(req, res) {
 
 
     /* Launch Browser */
-    //puppeteer.use(stealth());
+    puppeteer.use(stealth());
 
     /*
       Uses for Windows
