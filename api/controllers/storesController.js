@@ -311,7 +311,7 @@ async function search(req, res) {
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
         `--window-size=1366x768`,
-        `--blink-settings=imagesEnabled=false`,
+        `--blink-settings=imagesEnabled=true`,
         `--disable-translate`,
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
