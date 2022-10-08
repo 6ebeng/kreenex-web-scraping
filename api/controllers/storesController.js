@@ -272,7 +272,7 @@ async function search(req, res) {
     
     useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
     useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
-    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    //useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
     useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
     useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
 
@@ -316,7 +316,6 @@ async function search(req, res) {
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
         `--disable-blink-features=AutomationControlled`,
-        `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -326,8 +325,13 @@ async function search(req, res) {
     //first tab
     const page = (await browser.pages())[0];
 
-    await page.setUserAgent(userAgent);
 
+
+    let ua = await page.browser().userAgent()
+    ua = ua.replace('HeadlessChrome/', 'Chrome/')
+    ua = ua.replace(/(([^)]+))/, '(Windows NT 10.0; Win64; x64)')
+    await page.setUserAgent(ua);
+    
     console.log(await page.browser().userAgent())
 
     //Randomize viewport size
