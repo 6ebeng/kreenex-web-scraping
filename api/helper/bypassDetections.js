@@ -3,9 +3,9 @@ module.exports = async function bypassDetections(page){
     await page.evaluateOnNewDocument(() => {
 
         // Object.defineProperty(navigator, "languages", { get: () => ['en-US', 'en', 'ku'] });
-        // Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
+        Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
         // Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
-        // Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
+        Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
         // //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
         // // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
 
