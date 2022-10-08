@@ -379,17 +379,17 @@ async function search(req, res) {
         flag: 'w'
       })
 
-      console.log(await page.evaluate(() => {
-        var arr = []
-        arr.push(navigator.webdriver)
-        arr.push(navigator.language)
-        arr.push(navigator.deviceMemory)
-        arr.push(navigator.hardwareConcurrency)
-        arr.push(navigator.platform)
-        arr.push(window.screen.width)
-        arr.push(window.screen.height)
-        return arr
-      }))
+      // console.log(await page.evaluate(() => {
+      //   var arr = []
+      //   arr.push(navigator.webdriver)
+      //   arr.push(navigator.language)
+      //   arr.push(navigator.deviceMemory)
+      //   arr.push(navigator.hardwareConcurrency)
+      //   arr.push(navigator.platform)
+      //   arr.push(window.screen.width)
+      //   arr.push(window.screen.height)
+      //   return arr
+      // }))
 
       await page.screenshot({
         path: 'debug/screenshoots/' + store + '.png',
