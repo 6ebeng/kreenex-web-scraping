@@ -5,7 +5,8 @@
     "waitUntill": "domcontentloaded",
     "blockResourceTypes": [],
     "whiteListUrls": [
-"zara"
+"zara",
+"jpeg/base64"
     ],
     "blockUrls": [
         "https://www.zara.com/akam"
