@@ -329,7 +329,7 @@ async function search(req, res) {
     let ua = await page.browser().userAgent()
     ua = ua.replace('HeadlessChrome/', 'Chrome/')
     ua = ua.replace(/(([^)]+))/, '(Windows NT 10.0; Win64; x64)')
-    await page.setUserAgent(ua);
+    await page.browser().setUserAgent(ua);
 
     console.log(await page.browser().userAgent())
 
