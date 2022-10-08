@@ -261,7 +261,11 @@ async function search(req, res) {
 
 
     /* Launch Browser */
-    puppeteer.use(stealth);
+    puppeteer.use(stealth(
+      driver,
+      vendor="Google Inc.",
+      renderer="Intel Iris OpenGL Engine",
+    ));
 
     /*
       Uses for Windows
@@ -338,7 +342,7 @@ async function search(req, res) {
 
 
     // Bypass detections
-    await bypass(page)
+    //await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
