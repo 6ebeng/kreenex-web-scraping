@@ -2,7 +2,7 @@
     "debug": true,
     "isHeadless": false,
     "scrollToBottom": false,
-    "waitUntill": "domcontentloaded",
+    "waitUntill": "networkidle0",
     "blockResourceTypes": [],
     "whiteListUrls": [
     "github",
