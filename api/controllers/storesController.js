@@ -261,10 +261,7 @@ async function search(req, res) {
 
 
     /* Launch Browser */
-    puppeteer.use(stealth({
-      vendor:"Google Inc.",
-      renderer:"Intel Iris OpenGL Engine",
-  }));
+    //puppeteer.use(stealth());
 
     /*
       Uses for Windows
