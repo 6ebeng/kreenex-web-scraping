@@ -315,16 +315,15 @@ async function search(req, res) {
 
 
     // Saved cookies reading
-    const cookies = fs.readFileSync('cookies.json', 'utf8');
+    const cookies = fs.readFileSync('./cookies.json', 'utf8');
 
     const deserializedCookies = JSON.parse(cookies);
     await page.setCookie(...deserializedCookies);
 
     const localStorage = await page.evaluate(() => JSON.stringify(window.localStorage));
-    fs.writeFileSync('localStorage.json', localStorage);
-    
+    fs.writeFileSync('./localStorage.json', localStorage);
 
-    const ReadlocalStorage = fs.readFileSync('localStorage.json', 'utf8');
+    const ReadlocalStorage = fs.readFileSync('./localStorage.json', 'utf8');
     const deserializedStorage = JSON.parse(ReadlocalStorage);
     await page.evaluate(deserializedStorage => {
       for (const key in deserializedStorage) {
