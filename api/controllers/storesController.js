@@ -157,7 +157,7 @@ async function blockResources(page,data,proxy){
     } else {
       //console.log(request.resourceType()); 
       if (data.debug) console.log('\x1b[32m%s\x1b[0m', '"' + request.url() + '",');
-      if(proxy) await useProxy(request,proxy); else request.continue();
+      if(proxy) await useProxy(request,`https://${proxy}`); else request.continue();
     }
 
   });
