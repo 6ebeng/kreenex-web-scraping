@@ -277,12 +277,6 @@ async function search(req, res) {
       args: [
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
-        `--window-size=1366x768`,
-        `--blink-settings=imagesEnabled=true`,
-        `--disable-translate`,
-        `--window-position=0,0`,
-        `--autoplay-policy=no-user-gesture-required`,
-        `--disable-blink-features=AutomationControlled`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -291,7 +285,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
-        await useProxy(page,proxy);
+       // await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -303,8 +297,8 @@ async function search(req, res) {
       isMobile: false,
     });
 
-    await page.setJavaScriptEnabled(true);
-    await page.setDefaultNavigationTimeout(0);
+    //await page.setJavaScriptEnabled(true);
+    //await page.setDefaultNavigationTimeout(0);
 
     // await page.setUserAgent(userAgent);
 
@@ -314,18 +308,18 @@ async function search(req, res) {
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
 
-    await page.emulateTimezone('Asia/Baghdad');
+    //await page.emulateTimezone('Asia/Baghdad');
 
 
-    await page.setRequestInterception(true);
+    //await page.setRequestInterception(true);
 
 
 
     //Block unnecessary resource types and urls
-    await blockResources(page,data)
+    //await blockResources(page,data)
     
     // Bypass detections
-    await bypass(page)
+    //await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
