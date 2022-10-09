@@ -317,7 +317,7 @@ async function search(req, res) {
 
     await page.setRequestInterception(true);
 
-    //await useProxy(page,proxy);
+    await useProxy(page,proxy);
 
     //Block unnecessary resource types and urls
     await blockResources(page,data)
