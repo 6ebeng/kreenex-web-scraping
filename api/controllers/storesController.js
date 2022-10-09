@@ -239,6 +239,7 @@ async function search(req, res) {
     useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
 
     console.log(puppeteer)
+    console.log(stealth)
     puppeteer.use(stealth)
 
 
