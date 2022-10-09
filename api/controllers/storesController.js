@@ -164,11 +164,9 @@ async function blockResources(page,data){
 
 }
 
-async function useEvasion(puppeteer,evasion,obj){
-  stealth.enabledEvasions.delete(evasion)
-  puppeteer.use(stealth);
-  puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)(obj))
-}
+
+
+
 
 
 async function search(req, res) {
@@ -232,15 +230,30 @@ async function search(req, res) {
 
 
     /* Launch Browser */
+
+    stealth.enabledEvasions.delete('navigator.vendor')
+    stealth.enabledEvasions.delete('webgl.vendor')
+    stealth.enabledEvasions.delete('user-agent-override')
+    stealth.enabledEvasions.delete('navigator.languages')
+    stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
+
     puppeteer.use(stealth);
 
-    
-    useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
-    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
-    useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
+    const vendor = require("puppeteer-extra-plugin-stealth/evasions/navigator.vendor")({ vendor: 'Google Inc.' })
+    puppeteer.use(vendor)
 
+    const webgl = require("puppeteer-extra-plugin-stealth/evasions/webgl.vendor")({vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
+    puppeteer.use(webgl)
+
+    const userAgentOverride = require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en'})
+    puppeteer.use(userAgentOverride)
+    
+
+    const languages = require("puppeteer-extra-plugin-stealth/evasions/navigator.languages")(['en-US', 'en'])
+    puppeteer.use(languages)
+
+    const hardwareConcurrency = require("puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency")(8)
+    puppeteer.use(hardwareConcurrency)
 
     var proxy
     if (data.proxies.length > 0){
