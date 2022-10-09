@@ -295,7 +295,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
-        await useProxy(page,proxy);
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -309,8 +309,6 @@ async function search(req, res) {
 
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
-
-    await page.setUserAgent(userAgent);
 
     console.log(await page.browser().userAgent())
 
