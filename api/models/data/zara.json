@@ -3,7 +3,8 @@
   "isHeadless": false,
   "scrollToBottom": false,
   "proxies": [
-
+    "185.191.177.14:46757",
+    "24.109.252.48:80"
   ],
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": [],
