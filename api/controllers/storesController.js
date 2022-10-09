@@ -242,7 +242,7 @@ async function search(req, res) {
       puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/user-agent-override`)({userAgent: userAgent,locale: 'en-US,en'}))
       puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
 
-      puppeteer.use(require(`../helper/evasions/webgl`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
+      //puppeteer.use(require(`../helper/evasions/webgl`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
 
     var proxy
     if (data.proxies.length > 0){
