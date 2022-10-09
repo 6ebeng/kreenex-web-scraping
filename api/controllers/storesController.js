@@ -284,8 +284,6 @@ async function search(req, res) {
         `--disable-translate`,
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
-        `--disable-web-security`,
-        `--ignore-certificate-errors`,
         `--disable-blink-features=AutomationControlled`,
         ...argsHeadFull
       ],
