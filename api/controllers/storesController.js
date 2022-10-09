@@ -17,7 +17,6 @@ const {
 } = require("../helper/packages.js")
 
 const bypass = require("../helper/bypassDetections.js");
-const { map } = require("async");
 
 let storesController = {
   validate,
