@@ -315,7 +315,7 @@ async function search(req, res) {
 
 
     // Saved cookies reading
-    const cookies = fs.readFileSync('./cookies.json', 'utf8');
+    const cookies = fs.readFileSync('cookies.json', 'utf8');
 
     const deserializedCookies = JSON.parse(cookies);
     await page.setCookie(...deserializedCookies);
