@@ -235,11 +235,11 @@ async function search(req, res) {
     puppeteer.use(stealth);
 
     
-    //useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)"})
-    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
-    useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
+    // useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    // useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
+    // useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    // useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
+    // useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
 
 
     var proxy
@@ -280,7 +280,13 @@ async function search(req, res) {
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
         `--window-size=1366x768`,
-
+        `--blink-settings=imagesEnabled=true`,
+        `--disable-translate`,
+        `--window-position=0,0`,
+        `--autoplay-policy=no-user-gesture-required`,
+        `--disable-web-security`,
+        `--ignore-certificate-errors`,
+        `--disable-blink-features=AutomationControlled`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -289,7 +295,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
-    await useProxy(page,proxy);
+        await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
