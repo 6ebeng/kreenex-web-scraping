@@ -23,11 +23,11 @@ module.exports = async function bypassDetections(page){
         WebGLRenderingContext.prototype.getParameter = function (parameter) {
           // UNMASKED_VENDOR_WEBGL
           if (parameter === 37445) {
-            return 'Google Inc. (Intel)';
+            return 'Intel Inc.';
           }
           // UNMASKED_RENDERER_WEBGL
           if (parameter === 37446) {
-            return 'ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)';
+            return 'Intel Iris OpenGL Engine';
           }
   
           return getParameter(parameter);
