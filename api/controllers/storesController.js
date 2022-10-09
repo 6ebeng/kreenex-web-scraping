@@ -241,7 +241,7 @@ async function search(req, res) {
 
     puppeteer.use(stealth)
 
-    //puppeteer.use(require(puppeteer-extra-plugin-stealth/evasions/webgl.vendor)({vendor: "Intel Inc.", renderer: "Intel Iris OpenGL Engine"}))
+    puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/webgl.vendor")({vendor: "Intel Inc.", renderer: "Intel Iris OpenGL Engine"}))
 
     var proxy
     if (data.proxies.length > 0){
