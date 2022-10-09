@@ -13,11 +13,11 @@ const {
   validationResult,
   fs,
   Xvfb,
-  stealth
+  stealth,
+  useProxy
 } = require("../helper/packages.js")
 
 const bypass = require("../helper/bypassDetections.js");
-
 
 let storesController = {
   validate,
@@ -129,7 +129,7 @@ async function isValidStore(store) {
 }
 
 async function blockResources(page,data){
-  page.on('request', request => {
+  page.on('request',async request => {
     var resourceType
     var url = true
     for (let index = 0; index < data.blockResourceTypes.length; index++) {
@@ -162,10 +162,10 @@ async function blockResources(page,data){
 
 }
 
-async function useEvasion(puppeteer,evasion,obj){
-  stealth.enabledEvasions.delete('navigator.vendor')
-  puppeteer.use(stealth);
-  puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)(obj))
+function useEvasion(stealth,puppeteer,evasion,obj){
+  stealth.enabledEvasions.delete(evasion)
+  const ev = require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)
+  puppeteer.use(ev(obj))
 }
 
 
@@ -182,43 +182,6 @@ async function search(req, res) {
       Message: errors.array()[0].msg
     });
   }
-
-
-
-  // // Configure the proxy router plugin for more info go to https://github.com/berstend/puppeteer-extra/tree/master/packages/plugin-proxy-router
-
-  // const ProxyRouter = require('@extra/proxy-router')
-  // const proxyRouter = ProxyRouter({
-  //   // define the available proxies (replace this with your proxies)
-  //   proxies: {
-  //     // the default browser proxy, can be `null` as well for direct connections
-  //     DEFAULT: 'http://user:pass@proxyhost:port',
-  //     // optionally define more proxies you can use in `routeByHost`
-  //     // you can use whatever names you'd like for them
-  //     DATACENTER: 'http://user:pass@proxyhost2:port',
-  //     RESIDENTIAL_US: 'http://user:pass@proxyhost3:port',
-  //   },
-  //   // optional function for flexible proxy routing
-  //   // if this is not specified the `DEFAULT` proxy will be used for all connections
-  //   routeByHost: async ({ host }) => {
-  //     if (['pagead2.googlesyndication.com', 'fonts.gstatic.com'].includes(host)) {
-  //       return 'ABORT' // block connection to certain hosts
-  //     }
-  //     if (host.includes('google')) {
-  //       return 'DIRECT' // use a direct connection for all google domains
-  //     }
-  //     if (host.endsWith('.tile.openstreetmap.org')) {
-  //       return 'DATACENTER' // route heavy images through datacenter proxy
-  //     }
-  //     if (host === 'canhazip.com') {
-  //       return 'RESIDENTIAL_US' // special proxy for this domain
-  //     }
-  //     // everything else will use `DEFAULT` proxy
-  //   },
-  // })
-
-  // // Add the plugin
-  // puppeteer.use(proxyRouter)
 
 
   let url = req.body.Url
@@ -240,12 +203,13 @@ async function search(req, res) {
   const data = await require('../models/data/' + store)
 
   const userAgents = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.19042",
-    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:70.0) Gecko/20100101 Firefox/70.0"
   ]
   const userAgent = userAgents[Math.floor(Math.random() * userAgents.length)]
-
+  // const userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
+  //const userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
 
   const xvfb = new Xvfb({
     silent: true,
@@ -266,17 +230,21 @@ async function search(req, res) {
 
 
     /* Launch Browser */
-    puppeteer.use(stealth);
 
     
-    useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)"})
-    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
-    useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
+    useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
+    useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
+    useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
 
+    puppeteer.use(stealth)
 
-
+    var proxy
+    if (data.proxies.length > 0){
+       proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+       console.log(proxy)
+    }
 
     /*
       Uses for Windows
@@ -310,11 +278,12 @@ async function search(req, res) {
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
         `--window-size=1366x768`,
-        `--blink-settings=imagesEnabled=false`,
+        `--blink-settings=imagesEnabled=true`,
         `--disable-translate`,
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
         `--disable-blink-features=AutomationControlled`,
+        `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -323,6 +292,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
+        await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -337,20 +307,24 @@ async function search(req, res) {
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
 
+    await page.setUserAgent(userAgent);
+
+    console.log(await page.browser().userAgent())
+
     const cookiesString = await fs.promises.readFile('./cookies.json');
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
 
-
     await page.emulateTimezone('Asia/Baghdad');
+
 
     await page.setRequestInterception(true);
 
 
+
     //Block unnecessary resource types and urls
     await blockResources(page,data)
-
-
+    
     // Bypass detections
     await bypass(page)
 
@@ -368,7 +342,7 @@ async function search(req, res) {
 
     if(data.scrollToBottom) await page.evaluate(scrollToBottom, { frequency: 200, timing: 0 });
 
-    if(data.debug) await delay(5000)
+    if(data.debug) await delay(8000)
 
     // debug
     if (data.debug) {
