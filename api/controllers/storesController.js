@@ -164,8 +164,7 @@ async function blockResources(page,data){
 
 function useEvasion(stealth,puppeteer,evasion,obj){
   stealth.enabledEvasions.delete(evasion)
-  const ev = require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)
-  puppeteer.use(ev(obj))
+  puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)(obj))
 }
 
 
@@ -232,6 +231,7 @@ async function search(req, res) {
     /* Launch Browser */
 
     
+    
     useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
     useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
     useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
@@ -239,6 +239,7 @@ async function search(req, res) {
     useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
 
     puppeteer.use(stealth)
+
 
     var proxy
     if (data.proxies.length > 0){
