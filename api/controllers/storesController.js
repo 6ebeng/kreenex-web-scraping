@@ -232,13 +232,13 @@ async function search(req, res) {
     /* Launch Browser */
 
     
-    stealth.enabledEvasions.delete('navigator.vendor')
+    useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
+    useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
+    useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
+
     puppeteer.use(stealth)
-    
-    // Stealth plugins are just regular `puppeteer-extra` plugins and can be added as such
-    const NavigatorVendorPlugin = require('puppeteer-extra-plugin-stealth/evasions/navigator.vendor')
-    const nvp = NavigatorVendorPlugin({ vendor: 'Apple Computer, Inc.' }) // Custom vendor
-    puppeteer.use(nvp)
 
     var proxy
     if (data.proxies.length > 0){
@@ -277,6 +277,12 @@ async function search(req, res) {
       args: [
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
+        `--window-size=1366x768`,
+        `--blink-settings=imagesEnabled=true`,
+        `--disable-translate`,
+        `--window-position=0,0`,
+        `--autoplay-policy=no-user-gesture-required`,
+        `--disable-blink-features=AutomationControlled`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -285,7 +291,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
-       // await useProxy(page,proxy);
+        await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -297,8 +303,8 @@ async function search(req, res) {
       isMobile: false,
     });
 
-    //await page.setJavaScriptEnabled(true);
-    //await page.setDefaultNavigationTimeout(0);
+    await page.setJavaScriptEnabled(true);
+    await page.setDefaultNavigationTimeout(0);
 
     // await page.setUserAgent(userAgent);
 
@@ -308,18 +314,18 @@ async function search(req, res) {
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
 
-    //await page.emulateTimezone('Asia/Baghdad');
+    await page.emulateTimezone('Asia/Baghdad');
 
 
-    //await page.setRequestInterception(true);
+    await page.setRequestInterception(true);
 
 
 
     //Block unnecessary resource types and urls
-    //await blockResources(page,data)
+    await blockResources(page,data)
     
     // Bypass detections
-    //await bypass(page)
+    await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
