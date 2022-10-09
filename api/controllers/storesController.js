@@ -238,9 +238,10 @@ async function search(req, res) {
     // useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
     // useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
 
-
+stealth.enabledEvasions.delete('webgl.vendor')
     puppeteer.use(stealth)
 console.log(stealth.enabledEvasions)
+
     puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/webgl.vendor")({vendor: "Intel Inc.", renderer: "Intel Iris OpenGL Engine"}))
 
     var proxy
