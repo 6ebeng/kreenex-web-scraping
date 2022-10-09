@@ -288,7 +288,6 @@ async function search(req, res) {
         '--disable-infobars',
         `--disable-blink-features=AutomationControlled`,
         `--user-agent=${userAgent}`,
-        `--disable-gpu`,
         ...argsHeadFull
       ],
       slowMo: 0
