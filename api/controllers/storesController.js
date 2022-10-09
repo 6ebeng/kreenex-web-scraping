@@ -295,6 +295,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -315,9 +316,10 @@ async function search(req, res) {
 
     await page.emulateTimezone('Asia/Baghdad');
 
+
     await page.setRequestInterception(true);
 
-    await useProxy(page,proxy);
+
 
     //Block unnecessary resource types and urls
     await blockResources(page,data)
