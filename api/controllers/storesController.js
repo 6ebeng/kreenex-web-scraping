@@ -130,7 +130,7 @@ async function isValidStore(store) {
   if (Array.from(fs.readdirSync('./api/models/data')).map(e=>(e.replace('.json',''))).includes(store)) return true; else return false;
 }
 
-async function blockResources(page,data,proxy){
+async function blockResources(page,data){
   page.on('request',async request => {
     var resourceType
     var url = true
@@ -157,7 +157,7 @@ async function blockResources(page,data,proxy){
     } else {
       //console.log(request.resourceType()); 
       if (data.debug) console.log('\x1b[32m%s\x1b[0m', '"' + request.url() + '",');
-      if(proxy) await useProxy(request,proxy,page); else request.continue();
+      request.continue();
     }
 
   });
@@ -322,8 +322,9 @@ async function search(req, res) {
 
     await page.setRequestInterception(true);
 
+    await useProxy(page, proxy);
     //Block unnecessary resource types and urls
-    await blockResources(page,data,proxy)
+    await blockResources(page,data)
     
     // Bypass detections
     await bypass(page)
