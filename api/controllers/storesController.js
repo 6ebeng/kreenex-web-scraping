@@ -234,8 +234,6 @@ async function search(req, res) {
     stealth.enabledEvasions.delete('navigator.languages')
     stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
 
-    stealth.availableEvasions.
-
 
       puppeteer.use(require(`../helper/evasions/webgl`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
     
