@@ -17,7 +17,6 @@ useProxy = require('puppeteer-page-proxy');
 
 
 module.exports = {
-    async,
     puppeteer,
     scrollToBottom,
     check,
