@@ -232,14 +232,16 @@ async function search(req, res) {
 
     
     
-    useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
-    useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
-    useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
+    // useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    // useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Intel Inc.", renderer: "Intel Iris OpenGL Engine", "platform": "Win32"})
+    // useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    // useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
+    // useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
+
 
     puppeteer.use(stealth)
 
+    puppeteer.use(require(puppeteer-extra-plugin-stealth/evasions/webgl.vendor)({vendor: "Intel Inc.", renderer: "Intel Iris OpenGL Engine"}))
 
     var proxy
     if (data.proxies.length > 0){
