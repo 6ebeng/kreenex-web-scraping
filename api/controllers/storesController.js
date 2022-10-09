@@ -318,12 +318,13 @@ async function search(req, res) {
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
 
+    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36');
 
     //await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
 
-    await useProxy(page, "http://" + proxy);
+    await useProxy(page,proxy);
     //Block unnecessary resource types and urls
     await blockResources(page,data)
     
