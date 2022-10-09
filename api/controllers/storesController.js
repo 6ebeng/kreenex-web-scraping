@@ -294,7 +294,7 @@ async function search(req, res) {
     //first tab
     const page = (await browser.pages())[0];
     await useProxy(page,proxy);
-
+    await page.setUserAgent(userAgent);
     //Randomize viewport size
     await page.setViewport({
       width: 1366 + Math.floor(Math.random() * 100),
