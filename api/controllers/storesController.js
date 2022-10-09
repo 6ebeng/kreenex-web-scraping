@@ -165,7 +165,7 @@ async function blockResources(page,data){
 }
 
 async function useEvasion(puppeteer,evasion,obj){
-  stealth.enabledEvasions.delete('navigator.vendor')
+  stealth.enabledEvasions.delete(evasion)
   puppeteer.use(stealth);
   puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)(obj))
 }
