@@ -129,8 +129,8 @@ async function isValidStore(store) {
   if (Array.from(fs.readdirSync('./api/models/data')).map(e=>(e.replace('.json',''))).includes(store)) return true; else return false;
 }
 
-async function blockResources(page,data){
-  page.on('request', request => {
+async function blockResources(page,data,proxy){
+  page.on('request',async request => {
     var resourceType
     var url = true
     for (let index = 0; index < data.blockResourceTypes.length; index++) {
@@ -156,7 +156,7 @@ async function blockResources(page,data){
     } else {
       //console.log(request.resourceType()); 
       if (data.debug) console.log('\x1b[32m%s\x1b[0m', '"' + request.url() + '",');
-      request.continue();
+      if(proxy) await proxyRequest(req,proxy); else request.continue();
     }
 
   });
@@ -183,43 +183,6 @@ async function search(req, res) {
       Message: errors.array()[0].msg
     });
   }
-
-
-
-  // // Configure the proxy router plugin for more info go to https://github.com/berstend/puppeteer-extra/tree/master/packages/plugin-proxy-router
-
-  // const ProxyRouter = require('@extra/proxy-router')
-  // const proxyRouter = ProxyRouter({
-  //   // define the available proxies (replace this with your proxies)
-  //   proxies: {
-  //     // the default browser proxy, can be `null` as well for direct connections
-  //     DEFAULT: 'http://user:pass@proxyhost:port',
-  //     // optionally define more proxies you can use in `routeByHost`
-  //     // you can use whatever names you'd like for them
-  //     DATACENTER: 'http://user:pass@proxyhost2:port',
-  //     RESIDENTIAL_US: 'http://user:pass@proxyhost3:port',
-  //   },
-  //   // optional function for flexible proxy routing
-  //   // if this is not specified the `DEFAULT` proxy will be used for all connections
-  //   routeByHost: async ({ host }) => {
-  //     if (['pagead2.googlesyndication.com', 'fonts.gstatic.com'].includes(host)) {
-  //       return 'ABORT' // block connection to certain hosts
-  //     }
-  //     if (host.includes('google')) {
-  //       return 'DIRECT' // use a direct connection for all google domains
-  //     }
-  //     if (host.endsWith('.tile.openstreetmap.org')) {
-  //       return 'DATACENTER' // route heavy images through datacenter proxy
-  //     }
-  //     if (host === 'canhazip.com') {
-  //       return 'RESIDENTIAL_US' // special proxy for this domain
-  //     }
-  //     // everything else will use `DEFAULT` proxy
-  //   },
-  // })
-
-  // // Add the plugin
-  // puppeteer.use(proxyRouter)
 
 
   let url = req.body.Url
@@ -277,7 +240,10 @@ async function search(req, res) {
     useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
 
 
-
+    var proxy
+    if (data.proxies){
+       proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+    }
 
     /*
       Uses for Windows
@@ -315,6 +281,7 @@ async function search(req, res) {
         `--disable-translate`,
         `--window-position=0,0`,
         `--autoplay-policy=no-user-gesture-required`,
+        `--disable-web-security`,
         `--disable-blink-features=AutomationControlled`,
         `--user-agent=${userAgent}`,
         ...argsHeadFull
@@ -352,11 +319,9 @@ async function search(req, res) {
 
     await page.setRequestInterception(true);
 
-
     //Block unnecessary resource types and urls
-    await blockResources(page,data)
-
-
+    await blockResources(page,data,proxy)
+    
     // Bypass detections
     await bypass(page)
 

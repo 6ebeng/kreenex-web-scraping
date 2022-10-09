@@ -2,6 +2,7 @@
     "debug": true,
     "isHeadless": false,
     "scrollToBottom": false,
+    "proxies": [],
     "waitUntill": "networkidle0",
     "blockResourceTypes": [],
     "whiteListUrls": [

@@ -25,6 +25,7 @@
     "pretty-error": "^4.0.0",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1",
+    "puppeteer-page-proxy": "^1.2.8",
     "scroll-to-bottomjs": "^1.1.0",
     "uuid": "^9.0.0",
     "xvfb": "^0.4.0"

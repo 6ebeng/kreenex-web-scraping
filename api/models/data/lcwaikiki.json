@@ -2,6 +2,7 @@
   "debug": false,
   "isHeadless": true,
   "scrollToBottom": false,
+  "proxies": [],
   "waitUntill": "domcontentloaded",
   "blockResourceTypes": ["image", "media", "stylesheet", "font", "other", "fetch"],
   "whiteListUrls": [
