@@ -14,7 +14,8 @@ const {
   validationResult,
   fs,
   Xvfb,
-  stealth
+  stealth,
+  useProxy
 } = require("../helper/packages.js")
 
 const bypass = require("../helper/bypassDetections.js");
@@ -156,7 +157,7 @@ async function blockResources(page,data,proxy){
     } else {
       //console.log(request.resourceType()); 
       if (data.debug) console.log('\x1b[32m%s\x1b[0m', '"' + request.url() + '",');
-      if(proxy) await proxyRequest(req,proxy); else request.continue();
+      if(proxy) await useProxy(req,proxy); else request.continue();
     }
 
   });
