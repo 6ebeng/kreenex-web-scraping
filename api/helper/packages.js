@@ -6,8 +6,7 @@
  * Developed By  : Tishko Rasoul (tishko.rasoulgmail.com)
 */
 
-const async = require("async"),
-puppeteer = require('puppeteer-extra'),
+const puppeteer = require('puppeteer-extra'),
 //cheerio = require('cheerio'),
 scrollToBottom = require('scroll-to-bottomjs'), 
 {check, validationResult} = require('express-validator'),

@@ -6,20 +6,9 @@
  * Developed By  : Tishko Rasoul (tishko.rasoul@gmail.com)
  */
 
-const {
-  async,
-  puppeteer,
-  scrollToBottom,
-  check,
-  validationResult,
-  fs,
-  Xvfb,
-  stealth,
-  useProxy
-} = require("../helper/packages.js")
+import { puppeteer, scrollToBottom, check, validationResult, fs, Xvfb, stealth, useProxy } from "../helper/packages.js";
 
-const bypass = require("../helper/bypassDetections.js");
-const { map } = require("async");
+import bypass from "../helper/bypassDetections.js";
 
 let storesController = {
   validate,
@@ -237,7 +226,7 @@ async function search(req, res) {
     
     // useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
     // useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
-    // useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
     // useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
     // useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
 
@@ -295,7 +284,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
-        await useProxy(page,proxy);
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -309,6 +298,9 @@ async function search(req, res) {
 
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
+
+
+    // console.log(await page.browser().userAgent())
 
     const cookiesString = await fs.promises.readFile('./cookies.json');
     const cookies = JSON.parse(cookiesString);
@@ -494,4 +486,4 @@ async function search(req, res) {
   }
 }
 
-module.exports = storesController;
+export default storesController;
