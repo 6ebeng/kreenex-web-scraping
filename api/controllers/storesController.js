@@ -232,11 +232,11 @@ async function search(req, res) {
 
     
     
-    // useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    // useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"})
-    // useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    // useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
-    // useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
+    useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"})
+    useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
+    useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
 
     console.log(puppeteer)
     puppeteer.use(stealth)
