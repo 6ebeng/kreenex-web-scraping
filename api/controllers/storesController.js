@@ -235,11 +235,11 @@ async function search(req, res) {
     puppeteer.use(stealth);
 
     
-    // useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    // useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
-    // useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    // useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
-    // useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
+    useEvasion(puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    useEvasion(puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
+    useEvasion(puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(puppeteer,'navigator.languages',['en-US', 'en'])
+    useEvasion(puppeteer,'navigator.hardwareConcurrency',8)
 
 
     var proxy
@@ -296,10 +296,6 @@ async function search(req, res) {
     //first tab
     const page = (await browser.pages())[0];
 
-    // await page.setUserAgent(userAgent);
-
-    // console.log(await page.browser().userAgent())
-
     //Randomize viewport size
     await page.setViewport({
       width: 1366 + Math.floor(Math.random() * 100),
@@ -317,13 +313,12 @@ async function search(req, res) {
     const cookies = JSON.parse(cookiesString);
     await page.setCookie(...cookies);
 
-    //await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36');
-
-    //await page.emulateTimezone('Asia/Baghdad');
+    await page.emulateTimezone('Asia/Baghdad');
 
     await page.setRequestInterception(true);
 
     //await useProxy(page,proxy);
+    
     //Block unnecessary resource types and urls
     await blockResources(page,data)
     
@@ -344,7 +339,7 @@ async function search(req, res) {
 
     if(data.scrollToBottom) await page.evaluate(scrollToBottom, { frequency: 200, timing: 0 });
 
-    if(data.debug) await delay(15000)
+    if(data.debug) await delay(8000)
 
     // debug
     if (data.debug) {
