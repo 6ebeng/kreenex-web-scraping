@@ -2,36 +2,36 @@ module.exports = async function bypassDetections(page){
 
     await page.evaluateOnNewDocument(() => {
 
-        Object.defineProperty(navigator, "languages", { get: () => ['en-US', 'en', 'ku'] });
-        Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
-        Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
-        Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
+        // Object.defineProperty(navigator, "languages", { get: () => ['en-US', 'en', 'ku'] });
+        // Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
+        // Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 8 });
+        // Object.defineProperty(navigator, 'platform', { get: () => 'Win32' });
         // //Object.defineProperty(navigator, 'plugins', {get: function() {return [1, 2, 3, 4, 5];}}); detection expose
         // // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
 
         
-        window.chrome = {
-          runtime: true
-        };
-        window.navigator.chrome = {
-          runtime: true,
-        };
+        // window.chrome = {
+        //   runtime: true
+        // };
+        // window.navigator.chrome = {
+        //   runtime: true,
+        // };
   
   
   
-        const getParameter = WebGLRenderingContext.getParameter;
-        WebGLRenderingContext.prototype.getParameter = function (parameter) {
-          // UNMASKED_VENDOR_WEBGL
-          if (parameter === 37445) {
-            return 'Intel Inc.';
-          }
-          // UNMASKED_RENDERER_WEBGL
-          if (parameter === 37446) {
-            return 'Intel Iris OpenGL Engine';
-          }
+        // const getParameter = WebGLRenderingContext.getParameter;
+        // WebGLRenderingContext.prototype.getParameter = function (parameter) {
+        //   // UNMASKED_VENDOR_WEBGL
+        //   if (parameter === 37445) {
+        //     return 'Intel Inc.';
+        //   }
+        //   // UNMASKED_RENDERER_WEBGL
+        //   if (parameter === 37446) {
+        //     return 'Intel Iris OpenGL Engine';
+        //   }
   
-          return getParameter(parameter);
-        };
+        //   return getParameter(parameter);
+        // };
   
         // store the existing descriptor
         const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
