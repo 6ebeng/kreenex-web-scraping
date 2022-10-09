@@ -162,7 +162,10 @@ async function blockResources(page,data){
 
 }
 
-
+function useEvasion(stealth,puppeteer,evasion,obj){
+  stealth.enabledEvasions.delete(evasion)
+  puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/${evasion}`)(obj))
+}
 
 
 async function search(req, res) {
@@ -227,24 +230,16 @@ async function search(req, res) {
 
     /* Launch Browser */
 
-
-
-    stealth.enabledEvasions.delete('webgl.vendor')
-    stealth.enabledEvasions.delete('user-agent-override')
-    stealth.enabledEvasions.delete('navigator.languages')
-    stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
-
-
-      puppeteer.use(require(`../helper/evasions/webgl`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
     
-    // useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
-    // useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"})
-    // useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
-    // useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
-    // useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
-
+    
+    useEvasion(stealth,puppeteer,'navigator.vendor',{ vendor: 'Google Inc.' })
+    useEvasion(stealth,puppeteer,'webgl.vendor',{vendor: "Google Inc. (Intel)", renderer: "ANGLE (Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11)", "platform": "Win32"})
+    useEvasion(stealth,puppeteer,'user-agent-override',{userAgent: userAgent,locale: 'en-US,en'})
+    useEvasion(stealth,puppeteer,'navigator.languages',['en-US', 'en'])
+    useEvasion(stealth,puppeteer,'navigator.hardwareConcurrency',8)
 
     puppeteer.use(stealth)
+
 
     var proxy
     if (data.proxies.length > 0){
@@ -298,7 +293,7 @@ async function search(req, res) {
 
     //first tab
     const page = (await browser.pages())[0];
-    await useProxy(page,proxy);
+        await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -312,6 +307,8 @@ async function search(req, res) {
 
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
+
+    await page.setUserAgent(userAgent);
 
     console.log(await page.browser().userAgent())
 
