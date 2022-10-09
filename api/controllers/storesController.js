@@ -244,6 +244,7 @@ async function search(req, res) {
     var proxy
     if (data.proxies){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+       console.log(proxy)
     }
 
     /*
