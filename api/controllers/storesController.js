@@ -282,9 +282,10 @@ async function search(req, res) {
         `--blink-settings=imagesEnabled=true`,
         `--disable-translate`,
         `--window-position=0,0`,
-        `--autoplay-policy=no-user-gesture-required`,
+        '--disable-infobars',
         `--disable-blink-features=AutomationControlled`,
         `--user-agent=${userAgent}`,
+        `--disable-gpu`,
         ...argsHeadFull
       ],
       slowMo: 0,
@@ -322,7 +323,7 @@ async function search(req, res) {
     const localStorage = await page.evaluate(() => JSON.stringify(window.localStorage));
     fs.writeFileSync('localStorage.json', localStorage);
     
-    
+
     const ReadlocalStorage = fs.readFileSync('localStorage.json', 'utf8');
     const deserializedStorage = JSON.parse(ReadlocalStorage);
     await page.evaluate(deserializedStorage => {
