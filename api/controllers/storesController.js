@@ -243,7 +243,7 @@ async function search(req, res) {
 
 
     var proxy
-    if (data.proxies){
+    if (data.proxies.length > 0){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
        console.log(proxy)
     }
@@ -318,7 +318,7 @@ async function search(req, res) {
     await page.setRequestInterception(true);
 
     //await useProxy(page,proxy);
-    
+
     //Block unnecessary resource types and urls
     await blockResources(page,data)
     
