@@ -127,43 +127,11 @@ if (!this._WebGL) {
     this._WebGL['s34852'] = 8;
     this._WebGL['s3386'] = [32767, 32767];
     this._WebGL['webgl2'] = true;
-    if (machine.os.name.toLowerCase().includes('windows')) {
-        this._WebGL['s7936'] = 'Mozilla';
-        this._WebGL['s7937'] = 'Mozilla';
-        this._WebGL['s37445'] = vendor;
-        this._WebGL['s37446'] = WEBGL_RENDERERS_DESKTOP[Math.floor(Math.random() * WEBGL_RENDERERS_DESKTOP.length)];
-    }
-    else if (machine.os.name.toLowerCase().includes('android')) {
-        this._WebGL['s37445'] = WEBGL_VENDORS_ANDROID[Math.floor(Math.random() * WEBGL_VENDORS_ANDROID.length)];
-        this._WebGL['s37446'] = WEBGL_RENDERERS_ANDROID[Math.floor(Math.random() * WEBGL_RENDERERS_ANDROID.length)];
-    }
-    else if (machine.os.name.toLowerCase().includes('linux')) {
-        this._WebGL['s37445'] = vendor;
-        this._WebGL['s37446'] = WEBGL_RENDERERS_DESKTOP[Math.floor(Math.random() * WEBGL_RENDERERS_DESKTOP.length)];
-    }
-    else if (machine.os.name.toLowerCase().includes('apple') || machine.os.name.toLowerCase().includes('ios') || (machine.os.name.toLowerCase().includes('mac') && machine.browser.name.includes('Safari'))) {
-        this._WebGL['s7938'] = 'WebGL 1.0';
-        this._WebGL['s35724'] = 'WebGL GLSL ES 1.0 (1.0)';
-        this._WebGL['s37445'] = 'Apple Inc.';
-        this._WebGL['s37446'] = 'Apple GPU';
-        this._WebGL['s36347'] = 512;
-        this._WebGL['s36348'] = 15;
-        this._WebGL['s34852'] = 1;
-        this._WebGL['s33902'] = [1, 16];
-        this._WebGL['s33901'] = [1, 511];
-        this._WebGL['s3386'] = [16384, 16384];
-        this._WebGL['s36349'] = 224;
-        this._WebGL['s35661'] = 32;
-        this._WebGL['webgl2'] = false;
-    }
-    else if (machine.os.name.toLowerCase().includes('mac')) {
-        this._WebGL['s37445'] = 'Intel Inc.';
-        this._WebGL['s37446'] = 'Intel HD Graphics 4000 OpenGL Engine';
-    }
-    else {
-        this._WebGL['s37445'] = vendor;
-        this._WebGL['s37446'] = 'Google SwiftShader';
-    }
+    this._WebGL['s7936'] = 'Mozilla';
+    this._WebGL['s7937'] = 'Mozilla';
+    this._WebGL['s37445'] = vendor;
+    this._WebGL['s37446'] = WEBGL_RENDERERS_DESKTOP[Math.floor(Math.random() * WEBGL_RENDERERS_DESKTOP.length)];
+    
     this._WebGL['offset'] = Math.random();
 }
 await page.evaluateOnNewDocument((session) => {
