@@ -314,7 +314,7 @@ async function search(req, res) {
         `--blink-settings=imagesEnabled=true`,
         `--disable-translate`,
         `--window-position=0,0`,
-        `--user-agent=${userAgent}`,
+        //`--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
       slowMo: 0
