@@ -286,17 +286,13 @@ async function search(req, res) {
   }
 
   
-    // stealth.enabledEvasions.delete('navigator.vendor')
-    //stealth.enabledEvasions.delete('user-agent-override')
-    // stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
-
-      //puppeteer.use(stealth())
 
 
-
-      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
-      puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
-      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
+        
+      const navigatorVendor = require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' })
+      const userAgentOverride =  require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',})
+      
+        puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
       puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
       
 
@@ -348,9 +344,15 @@ async function search(req, res) {
 
     //first tab
     
-    const page = await browser.newPage(); 
+    const page = (await browser.pages())[0]; 
     // 'user-agent-override', // doesn't work since playwright has no page.browser()
-        await useProxy(page,proxy);
+    
+
+
+    await userAgentOverride.onPageCreated(page)
+
+
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
