@@ -294,10 +294,9 @@ async function search(req, res) {
 
 
 
-      // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
-      const UserAgentOverride = require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")
-      puppeteer.use(UserAgentOverride({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
-      // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
+      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
+      puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
+      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
 
     var proxy
     if (data.proxies.length > 0){
@@ -385,7 +384,7 @@ async function search(req, res) {
     //Block unnecessary resource types and urls
     await blockResources(page,data)
 
-    await bypassWebgl(page,userAgent,"Intel Inc.")
+    //await bypassWebgl(page,userAgent,"Intel Inc.")
     // Bypass detections
     await bypass(page)
 
