@@ -228,7 +228,7 @@ async function search(req, res) {
 
     /* Launch Browser */
 
-    if(!data.headless){
+    if(!data.isHeadless){
     puppeteer.use(stealth({
       enabledEvasions: new Set([
       /* evasions for headless only
