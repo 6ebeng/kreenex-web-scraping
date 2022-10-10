@@ -7,7 +7,7 @@
 */
 
 const puppeteer = require('puppeteer-extra'),
-stealth = require('puppeteer-extra-plugin-stealth')
+stealth = require('puppeteer-extra-plugin-stealth'),
 scrollToBottom = require('scroll-to-bottomjs'), 
 {check, validationResult} = require('express-validator'),
 fs = require('fs'),
