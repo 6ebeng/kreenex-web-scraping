@@ -11,12 +11,12 @@ module.exports = async function bypassDetections(page){
         // // Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {get: function() {return window}});   HM not work
 
         
-        // window.chrome = {
-        //   runtime: true
-        // };
-        // window.navigator.chrome = {
-        //   runtime: true,
-        // };
+        window.chrome = {
+          runtime: true
+        };
+        window.navigator.chrome = {
+          runtime: true,
+        };
   
   
   
