@@ -275,7 +275,7 @@ async function search(req, res) {
 
     browser = await puppeteer.launch({
       headless: data.isHeadless,
-      executablePath: '/usr/bin/google-chrome',
+      //executablePath: '/usr/bin/google-chrome',
       args: [
         `--no-sandbox`,
         `--disable-setuid-sandbox`,
