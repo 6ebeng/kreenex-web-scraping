@@ -105,7 +105,7 @@ const WEBGL_RENDERERS_ANDROID = ['Adreno (TM) 630', 'Mali-T830'];
 if (!this._WebGL) {
     this._WebGL = {};
     const parser = require('ua-parser-js');
-    const machine = parser(this._settings.device.userAgent);
+    const machine = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36";
     const rand = function (min, max) {
         return Math.floor(Math.random() * (max - min) + min);
     };
