@@ -304,8 +304,8 @@ async function search(req, res) {
       isMobile: false,
     });
 
-    // await page.setJavaScriptEnabled(true);
-    // await page.setDefaultNavigationTimeout(0);
+    await page.setJavaScriptEnabled(true);
+    await page.setDefaultNavigationTimeout(0);
 
     //await page.setUserAgent(userAgent);
 
@@ -313,23 +313,23 @@ async function search(req, res) {
 
 
     // Saved cookies reading
-    // const cookies = fs.readFileSync('cookies.json', 'utf8');
+    const cookies = fs.readFileSync('cookies.json', 'utf8');
 
-    // const deserializedCookies = JSON.parse(cookies);
-    // await page.setCookie(...deserializedCookies);
+    const deserializedCookies = JSON.parse(cookies);
+    await page.setCookie(...deserializedCookies);
 
-    // await page.emulateTimezone('Asia/Baghdad');
-
-
-    // await page.setRequestInterception(true);
+    await page.emulateTimezone('Asia/Baghdad');
 
 
+    await page.setRequestInterception(true);
 
-    // //Block unnecessary resource types and urls
-    // await blockResources(page,data)
+
+
+    //Block unnecessary resource types and urls
+    await blockResources(page,data)
     
-    // // Bypass detections
-    // await bypass(page)
+    // Bypass detections
+    await bypass(page)
 
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
