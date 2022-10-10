@@ -231,15 +231,15 @@ async function search(req, res) {
     if(!data.headless){
     puppeteer.use(stealth({
       enabledEvasions: new Set([
-      /* evasions for headless only
+      // evasions for headless only
       'chrome.app',
       'chrome.csi',
       'chrome.loadTimes',
       'chrome.runtime',
       'navigator.permissions',
       'navigator.plugins',
-      'window.outerdimensions'
-      */
+      'window.outerdimensions',
+
       //launch args (the webdriver fix is very much needed depending on how you launch chrome, just the method changed in v89) and sourceurl 
       'defaultArgs',
       // appears to be necessary to prevent iframe issues? https://github.com/puppeteer/puppeteer/issues/1106
