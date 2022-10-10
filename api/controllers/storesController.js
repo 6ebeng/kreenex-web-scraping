@@ -232,7 +232,7 @@ async function search(req, res) {
 // stealth.enabledEvasions.add("navigator.webdriver")
 // stealth.enabledEvasions.add("defaultArgs")
 // stealth.enabledEvasions.add("sourceurl")
-stealth.enabledEvasions.add("user-agent-override")
+stealth.enabledEvasions.add("user-agent-override")(({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
 console.log(stealth.enabledEvasions)
     // stealth.enabledEvasions.delete('navigator.vendor')
     stealth.enabledEvasions.delete('user-agent-override')
@@ -243,7 +243,7 @@ console.log(stealth.enabledEvasions)
 
 
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
-      puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
+      //puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
 
     var proxy
