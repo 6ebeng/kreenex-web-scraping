@@ -235,7 +235,7 @@ async function search(req, res) {
 
 console.log(stealth.enabledEvasions)
 console.log("\n\n\n")
-stealth.enabledEvasions.add(require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
+stealth.enabledEvasions.add(require("puppeteer-extra-plugin-stealth/evasions/webgl.vendor")({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
 console.log(stealth.enabledEvasions)
 
       puppeteer.use(stealth)
