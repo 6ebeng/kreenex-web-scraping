@@ -324,7 +324,7 @@ async function search(req, res) {
     
     const page = (await browser.pages())[0]; 
     
-    await require("../helper/evasions/canvas.fingerprint")("584c47d5fb6d7e24be28394cfc2994f5d74920348062226c6ee9138d1cd8dc97").onPageCreated(page)
+    await require("../helper/evasions/canvas.fingerprint")({"canvasSalt":"584c47d5fb6d7e24be28394cfc2994f5d74920348062226c6ee9138d1cd8dc97"}).onPageCreated(page)
 
     await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}).onPageCreated(page)
     // await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
