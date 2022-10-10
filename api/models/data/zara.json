@@ -10,7 +10,7 @@
   "blockResourceTypes": [],
   "whiteListUrls": [
     "zara",
-    "jpeg/base64"
+    "base64"
   ],
   "blockUrls": [
     "https://www.zara.com/akam"
