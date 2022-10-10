@@ -257,6 +257,7 @@ async function search(req, res) {
       ])
     }))
   } else {
+    console.log("hey")
     puppeteer.use(stealth({
       enabledEvasions: new Set([
       // evasions for headless only
