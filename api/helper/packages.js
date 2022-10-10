@@ -6,8 +6,11 @@
  * Developed By  : Tishko Rasoul (tishko.rasoulgmail.com)
 */
 
+const vanillaPuppeteer = require('puppeteer');
+const { addExtra } = require('puppeteer-extra');
+
 const 
-puppeteer = require('puppeteer-extra')(require('puppeteer')),
+puppeteer = addExtra(vanillaPuppeteer),
 //cheerio = require('cheerio'),
 scrollToBottom = require('scroll-to-bottomjs'), 
 {check, validationResult} = require('express-validator'),
