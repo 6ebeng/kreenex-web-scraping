@@ -314,6 +314,7 @@ async function search(req, res) {
         `--blink-settings=imagesEnabled=true`,
         `--disable-translate`,
         `--window-position=0,0`,
+        `--disable-gpu`,
         `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
