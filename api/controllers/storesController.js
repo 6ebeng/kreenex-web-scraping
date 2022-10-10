@@ -361,8 +361,8 @@ async function search(req, res) {
       isMobile: false,
     });
 
-    // await page.setJavaScriptEnabled(true);
-    // await page.setDefaultNavigationTimeout(0);
+    await page.setJavaScriptEnabled(true);
+    await page.setDefaultNavigationTimeout(0);
 
     //await page.setUserAgent(userAgent);
 
