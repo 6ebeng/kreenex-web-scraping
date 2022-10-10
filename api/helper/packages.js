@@ -6,7 +6,8 @@
  * Developed By  : Tishko Rasoul (tishko.rasoulgmail.com)
 */
 
-const puppeteer = require('puppeteer-extra'),
+const 
+puppeteer = require('puppeteer-extra')(require('puppeteer')),
 //cheerio = require('cheerio'),
 scrollToBottom = require('scroll-to-bottomjs'), 
 {check, validationResult} = require('express-validator'),
@@ -14,7 +15,6 @@ fs = require('fs'),
 Xvfb = require('xvfb'),
 stealth = require('puppeteer-extra-plugin-stealth')(),
 useProxy = require('puppeteer-page-proxy');
-
 
 module.exports = {
     puppeteer,
