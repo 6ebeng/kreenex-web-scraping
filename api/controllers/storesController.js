@@ -228,7 +228,12 @@ async function search(req, res) {
 
     /* Launch Browser */
 
-
+    stealth.enabledEvasions.clear()
+// stealth.enabledEvasions.add("navigator.webdriver")
+// stealth.enabledEvasions.add("defaultArgs")
+// stealth.enabledEvasions.add("sourceurl")
+stealth.enabledEvasions.add("user-agent-override")
+console.log(stealth.enabledEvasions)
     // stealth.enabledEvasions.delete('navigator.vendor')
     stealth.enabledEvasions.delete('user-agent-override')
     // stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
