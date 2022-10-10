@@ -19,20 +19,20 @@ module.exports = async function bypassDetections(page){
   
   
   
-        // const getParameter = WebGLRenderingContext.getParameter;
-        // WebGLRenderingContext.prototype.getParameter = function (parameter) {
-        //   // UNMASKED_VENDOR_WEBGL
-        //   if (parameter === 37445) {
-        //     return 'Intel Inc.';
-        //   }
-        //   // UNMASKED_RENDERER_WEBGL
-        //   if (parameter === 37446) {
-        //     return 'Intel Iris OpenGL Engine';
-        //   }
+        const getParameter = WebGLRenderingContext.getParameter;
+        WebGLRenderingContext.prototype.getParameter = function (parameter) {
+          // UNMASKED_VENDOR_WEBGL
+          if (parameter === 37445) {
+            return 'Intel Inc.';
+          }
+          // UNMASKED_RENDERER_WEBGL
+          if (parameter === 37446) {
+            return 'Intel(R) Iris(TM) Graphics 6100';
+          }
   
-        //   return getParameter(parameter);
-        // };
-  
+          return getParameter(parameter);
+        };
+
         // store the existing descriptor
         const elementDescriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
         // redefine the property with a patched descriptor
