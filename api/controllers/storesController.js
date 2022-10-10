@@ -231,15 +231,15 @@ async function search(req, res) {
     if(!data.headless){
     puppeteer.use(stealth({
       enabledEvasions: new Set([
-      // evasions for headless only
+      /* evasions for headless only
       'chrome.app',
       'chrome.csi',
       'chrome.loadTimes',
       'chrome.runtime',
       'navigator.permissions',
       'navigator.plugins',
-      'window.outerdimensions',
-
+      'window.outerdimensions'
+      */
       //launch args (the webdriver fix is very much needed depending on how you launch chrome, just the method changed in v89) and sourceurl 
       'defaultArgs',
       // appears to be necessary to prevent iframe issues? https://github.com/puppeteer/puppeteer/issues/1106
@@ -276,7 +276,7 @@ async function search(req, res) {
       // Doesn't appear to be necessary with chrome version > 89?
       'navigator.webdriver',
       // Strips puppeteer/CDP artifacts from stacktrace
-      'sourceurl',
+      'sourceurl'
       /* thou shall not lie about thou hardware stack
       'user-agent-override', // better off using this plugin manually than the default MSFT UA imo
       'webgl.vendor', // Try and use common hardware instead
@@ -351,6 +351,7 @@ async function search(req, res) {
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}).onPageCreated(page)
+    await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
   
     await useProxy(page,proxy);
