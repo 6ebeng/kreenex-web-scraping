@@ -259,7 +259,6 @@ async function search(req, res) {
   } else {
     stealth().enabledEvasions.delete("user-agent-override")
     stealth().enabledEvasions.delete("webgl.vendor")
-    stealth().enabledEvasions.delete("iframe.contentWindow")
     puppeteer.use(stealth())
 
   }
