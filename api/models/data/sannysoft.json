@@ -1,6 +1,6 @@
 {
   "debug": true,
-  "isHeadless": false,
+  "isHeadless": true,
   "scrollToBottom": false,
   "proxies": [],
   "waitUntill": "domcontentloaded",
