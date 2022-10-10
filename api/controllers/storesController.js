@@ -297,6 +297,8 @@ async function search(req, res) {
       puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
       puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
       puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
+      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
+      
 
     var proxy
     if (data.proxies.length > 0){
