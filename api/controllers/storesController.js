@@ -247,7 +247,7 @@ async function search(req, res) {
       // necessary if running chromium instad of chrome
       'media.codecs',
       // Doesn't appear to be necessary with chrome version > 89?
-      // 'navigator.webdriver',
+      'navigator.webdriver',
       // Strips puppeteer/CDP artifacts from stacktrace
       'sourceurl',
       /* thou shall not lie about thou hardware stack
