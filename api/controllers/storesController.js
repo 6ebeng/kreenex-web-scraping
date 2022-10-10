@@ -369,7 +369,7 @@ async function search(req, res) {
     //Block unnecessary resource types and urls
     await blockResources(page,data)
 
-    // await bypassWebgl(page,userAgent,"Intel Inc.")
+     await bypassWebgl(page,userAgent,"Intel Inc.")
     // // Bypass detections
     // await bypass(page)
 
