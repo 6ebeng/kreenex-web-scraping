@@ -7,7 +7,7 @@
 */
 
 const vanillaPuppeteer = require('puppeteer');
-const { addExtra } = require('puppeteer-extra');
+const  addExtra = require('puppeteer-extra');
 
 const 
 puppeteer = addExtra(vanillaPuppeteer),
