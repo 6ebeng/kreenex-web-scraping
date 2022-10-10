@@ -305,7 +305,7 @@ async function search(req, res) {
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
 
-    //await page.setUserAgent(userAgent);
+    await page.setUserAgent(userAgent);
 
     console.log(await page.browser().userAgent())
 
