@@ -1,5 +1,6 @@
 module.exports = async function bypassDetections(page){
 
+
     await page.evaluateOnNewDocument(() => {
 
         // Object.defineProperty(navigator, "languages", { get: () => ['en-US', 'en', 'ku'] });

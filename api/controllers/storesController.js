@@ -289,11 +289,10 @@ async function search(req, res) {
 
 
         
-      const navigatorVendor = require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' })
 
       
-        puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
-      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
+
+      
       
 
     var proxy
@@ -349,8 +348,11 @@ async function search(req, res) {
 
 
     await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}).onPageCreated(page)
+    await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
+    await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
+    await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}).onPageCreated(page)
 
-
+  
     await useProxy(page,proxy);
 
     //Randomize viewport size
