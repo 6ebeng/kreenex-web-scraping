@@ -295,14 +295,14 @@ async function search(req, res) {
         await useProxy(page,proxy);
 
     //Randomize viewport size
-    await page.setViewport({
-      width: 1366 + Math.floor(Math.random() * 100),
-      height: 768 + Math.floor(Math.random() * 100),
-      deviceScaleFactor: 1,
-      hasTouch: false,
-      isLandscape: false,
-      isMobile: false,
-    });
+    // await page.setViewport({
+    //   width: 1366 + Math.floor(Math.random() * 100),
+    //   height: 768 + Math.floor(Math.random() * 100),
+    //   deviceScaleFactor: 1,
+    //   hasTouch: false,
+    //   isLandscape: false,
+    //   isMobile: false,
+    // });
 
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
