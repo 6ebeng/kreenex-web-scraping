@@ -238,7 +238,7 @@ async function search(req, res) {
 
 
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
-      puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/user-agent-override`)({userAgent: userAgent,locale: 'en-US,en'}))
+      puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en'}))
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
 
     var proxy
