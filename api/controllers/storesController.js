@@ -315,6 +315,7 @@ async function search(req, res) {
         `--disable-translate`,
         `--window-position=0,0`,
         `--disable-gpu`,
+        `--disable-speech-api`,
         `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
