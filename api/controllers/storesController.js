@@ -228,12 +228,64 @@ async function search(req, res) {
 
     /* Launch Browser */
 
-    stealth.enabledEvasions.clear()
-// stealth.enabledEvasions.add("navigator.webdriver")
-// stealth.enabledEvasions.add("defaultArgs")
-// stealth.enabledEvasions.add("sourceurl")
-stealth.enabledEvasions.add("user-agent-override")(({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
-console.log(stealth.enabledEvasions)
+    if(!data.headless){
+    puppeteer.use(stealth({
+      enabledEvasions: new Set([
+      /* evasions for headless only
+      'chrome.app',
+      'chrome.csi',
+      'chrome.loadTimes',
+      'chrome.runtime',
+      'navigator.permissions',
+      'navigator.plugins',
+      'window.outerdimensions'
+      */
+      //launch args (the webdriver fix is very much needed depending on how you launch chrome, just the method changed in v89) and sourceurl 
+      'defaultArgs',
+      // appears to be necessary to prevent iframe issues? https://github.com/puppeteer/puppeteer/issues/1106
+      'iframe.contentWindow',
+      // necessary if running chromium instad of chrome
+      'media.codecs',
+      // Doesn't appear to be necessary with chrome version > 89?
+      // 'navigator.webdriver',
+      // Strips puppeteer/CDP artifacts from stacktrace
+      'sourceurl',
+      /* thou shall not lie about thou hardware stack
+      'user-agent-override', // better off using this plugin manually than the default MSFT UA imo
+      'webgl.vendor', // Try and use common hardware instead
+      */
+      ])
+    }))
+  } else {
+    puppeteer.use(stealth({
+      enabledEvasions: new Set([
+      // evasions for headless only
+      'chrome.app',
+      'chrome.csi',
+      'chrome.loadTimes',
+      'chrome.runtime',
+      'navigator.permissions',
+      'navigator.plugins',
+      'window.outerdimensions',
+      //launch args (the webdriver fix is very much needed depending on how you launch chrome, just the method changed in v89) and sourceurl 
+      'defaultArgs',
+      // appears to be necessary to prevent iframe issues? https://github.com/puppeteer/puppeteer/issues/1106
+      'iframe.contentWindow',
+      // necessary if running chromium instad of chrome
+      'media.codecs',
+      // Doesn't appear to be necessary with chrome version > 89?
+      // 'navigator.webdriver',
+      // Strips puppeteer/CDP artifacts from stacktrace
+      'sourceurl',
+      /* thou shall not lie about thou hardware stack
+      'user-agent-override', // better off using this plugin manually than the default MSFT UA imo
+      'webgl.vendor', // Try and use common hardware instead
+      */
+      ])
+    }))
+  }
+
+  
     // stealth.enabledEvasions.delete('navigator.vendor')
     stealth.enabledEvasions.delete('user-agent-override')
     // stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
@@ -243,7 +295,8 @@ console.log(stealth.enabledEvasions)
 
 
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
-      //puppeteer.use(require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
+      const UserAgentOverride = require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")
+      puppeteer.use(UserAgentOverride({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}))
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
 
     var proxy

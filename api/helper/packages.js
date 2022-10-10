@@ -7,12 +7,11 @@
 */
 
 const puppeteer = require('puppeteer-extra'),
-//cheerio = require('cheerio'),
+stealth = require('puppeteer-extra-plugin-stealth')
 scrollToBottom = require('scroll-to-bottomjs'), 
 {check, validationResult} = require('express-validator'),
 fs = require('fs'),
 Xvfb = require('xvfb'),
-stealth = require('puppeteer-extra-plugin-stealth')(),
 useProxy = require('puppeteer-page-proxy');
 
 
