@@ -324,12 +324,12 @@ async function search(req, res) {
     
     const page = (await browser.pages())[0]; 
     
-    await require("../helper/evasions/canvas.fingerprint")().onPageCreated(page)
+    await require("../helper/evasions/canvas.fingerprint")("584c47d5fb6d7e24be28394cfc2994f5d74920348062226c6ee9138d1cd8dc97").onPageCreated(page)
 
     await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}).onPageCreated(page)
     // await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
     // await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
-    // //await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}).onPageCreated(page)
+    await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Google Inc. (Intel)", renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"}).onPageCreated(page)
     // await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
   
