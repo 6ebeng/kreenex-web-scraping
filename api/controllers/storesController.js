@@ -346,7 +346,9 @@ async function search(req, res) {
     });
 
     //first tab
-    const page = (await browser.pages())[0];
+    
+    const page = await browser.newPage(); 
+    // 'user-agent-override', // doesn't work since playwright has no page.browser()
         await useProxy(page,proxy);
 
     //Randomize viewport size
