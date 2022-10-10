@@ -290,7 +290,7 @@ async function search(req, res) {
 
         
       const navigatorVendor = require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' })
-      const userAgentOverride =  require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',})
+
       
         puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8))
       puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
@@ -345,11 +345,10 @@ async function search(req, res) {
     //first tab
     
     const page = (await browser.pages())[0]; 
-    // 'user-agent-override', // doesn't work since playwright has no page.browser()
     
 
 
-    await userAgentOverride.onPageCreated(page)
+    await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent,locale: 'en-US,en', platform: 'Win32',}).onPageCreated(page)
 
 
     await useProxy(page,proxy);
