@@ -18,6 +18,7 @@ const {
 } = require("../helper/packages.js")
 
 const bypass = require("../helper/bypassDetections.js");
+const bypassWebgl = require("../helper/bypassWebgl.js");
 
 let storesController = {
   validate,
@@ -325,7 +326,8 @@ async function search(req, res) {
 
     //Block unnecessary resource types and urls
     await blockResources(page,data)
-    
+
+    await bypassWebgl(page,userAgent,"Intel Inc.")
     // Bypass detections
     await bypass(page)
 
