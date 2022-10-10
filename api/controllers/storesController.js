@@ -228,18 +228,16 @@ async function search(req, res) {
     /* Launch Browser */
 
 
-    stealth.enabledEvasions.delete('navigator.vendor')
-    stealth.enabledEvasions.delete('webgl.vendor')
-    stealth.enabledEvasions.delete('user-agent-override')
-    stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
-
-console.log(stealth.enabledEvasions)
-console.log("\n\n\n")
-stealth.enabledEvasions.add(require("puppeteer-extra-plugin-stealth/evasions/webgl.vendor")({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
-console.log(stealth.enabledEvasions)
+    // stealth.enabledEvasions.delete('navigator.vendor')
+    // stealth.enabledEvasions.delete('webgl.vendor')
+    // stealth.enabledEvasions.delete('user-agent-override')
+    // stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
 
       puppeteer.use(stealth)
 
+      puppeteer.use(
+        require('puppeteer-extra-plugin-stealth/evasions/console.debug')()
+      )
 
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }))
       // puppeteer.use(require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Intel Inc.", renderer: "Intel(R) Iris(TM) Graphics 6100"}))
