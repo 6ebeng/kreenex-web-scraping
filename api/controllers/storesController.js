@@ -290,7 +290,7 @@ async function search(req, res) {
     //stealth.enabledEvasions.delete('user-agent-override')
     // stealth.enabledEvasions.delete('navigator.hardwareConcurrency')
 
-      puppeteer.use(stealth)
+      //puppeteer.use(stealth())
 
 
 
