@@ -354,7 +354,7 @@ async function search(req, res) {
       "userAgentMetadata": {
 
           "fullVersion": "104.0.5112.81",
-          "platform": "Mac68K",
+          "platform": "Windows",
           "platformVersion": "3.1",
           "architecture": "x86_64",
           "model": "macOS Monterey",
