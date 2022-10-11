@@ -349,7 +349,7 @@ async function search(req, res) {
     await page.setJavaScriptEnabled(true);
     await page.setDefaultNavigationTimeout(0);
 
-    await page.setUserAgent({userAgent: userAgent,locale: 'en-US,en',"maskLinux": true,userAgentMetadata: {"brands": [{brand: 'Google Chrome', version: '105'},{brand: 'Not)A;Brand', version: '8'},{brand: 'Chromium', version: '105'}],"architecture": "x86_64","mobile": false}});
+    await page.setUserAgentOverride({userAgent: userAgent,locale: 'en-US,en',"maskLinux": true,userAgentMetadata: {"brands": [{brand: 'Google Chrome', version: '105'},{brand: 'Not)A;Brand', version: '8'},{brand: 'Chromium', version: '105'}],"architecture": "x86_64","mobile": false}});
 
     console.log(await browser.userAgent())
 
