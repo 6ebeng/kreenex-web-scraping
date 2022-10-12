@@ -355,9 +355,6 @@ async function search(req, res) {
 
     //await page.setUserAgent(userAgent);
 
-    console.log(await page.browser().userAgent())
-
-
     // Saved cookies reading
     const cookies = fs.readFileSync('cookies.json', 'utf8');
 
@@ -368,12 +365,10 @@ async function search(req, res) {
 
 
     await page.setRequestInterception(true);
-
-
-
     //Block unnecessary resource types and urls
     await blockResources(page,data)
 
+    console.log(await page.browser().userAgent())
     // await bypassWebgl(page,userAgent,"Intel Inc.")
     // // Bypass detections
     // await bypass(page)
