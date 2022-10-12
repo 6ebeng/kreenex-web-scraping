@@ -355,7 +355,7 @@ async function search(req, res) {
 
     //await page.setUserAgent(userAgent);
 
-    console.log(await browser.userAgent())
+    console.log(await page.browser().userAgent())
 
 
     // Saved cookies reading
