@@ -23,7 +23,7 @@ class Plugin extends PuppeteerExtraPlugin {
     }
     
     get name() {
-        return 'helper/evasions/webgl.vendor';
+        return 'stealth/evasions/webgl.vendor';
     }
     
     /* global WebGLRenderingContext WebGL2RenderingContext */
