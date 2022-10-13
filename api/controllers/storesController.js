@@ -335,9 +335,18 @@ async function search(req, res) {
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({
+      gpu: {
       vendor: "Google Inc. (Intel)",
       renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"
-    }).onPageCreated(page)
+    },
+    webgl: {
+      vendor: "Google Inc. (Intel)",
+      renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"
+    },
+    webgl2: {
+      vendor: "Google Inc. (Intel)",
+      renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"
+    }}).onPageCreated(page)
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
   
