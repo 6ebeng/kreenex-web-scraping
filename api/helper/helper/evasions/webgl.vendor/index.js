@@ -28,6 +28,7 @@ class Plugin extends PuppeteerExtraPlugin {
     
     /* global WebGLRenderingContext WebGL2RenderingContext */
     async onPageCreated(page) {
+      console.log(this)
         await withUtils(this, page).evaluateOnNewDocument(this.mainFunction, {
             gpu: this.opts.gpu,
             webgl: this.opts.webgl,
