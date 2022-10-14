@@ -338,7 +338,7 @@ async function search(req, res) {
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
     console.log(await page.evaluate(()=>{
-      return navigator.userAgentData;
+      return navigator.userAgentData.platform;
     }))
 
     await useProxy(page,proxy);
