@@ -265,13 +265,9 @@ async function search(req, res) {
 
   
 
-
-        
-
-      
-
-      
-      
+  puppeteer.use(
+    require('puppeteer-extra-plugin-stealth/evasions/console.debug')()
+  )
 
     var proxy
     if (data.proxies.length > 0){
