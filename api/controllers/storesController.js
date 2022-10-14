@@ -379,9 +379,6 @@ async function search(req, res) {
       timeout: 0
     });
     //if (data.debug) console.log(await response.headers())
-    console.log(await page.evaluate(()=>{
-      return navigator.userAgentData.brands;
-    }))
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
 
