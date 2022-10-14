@@ -338,6 +338,8 @@ async function search(req, res) {
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
   
+    console.log(await page.evaluate(async () => console.log(navigator.userAgentData)))
+
     await useProxy(page,proxy);
 
     //Randomize viewport size
