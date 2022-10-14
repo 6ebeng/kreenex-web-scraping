@@ -377,10 +377,20 @@ async function search(req, res) {
     // // Bypass detections
     // await bypass(page)
 
+
+   await page
+    .on('console', message =>
+      console.log(`${message.type().substr(0, 3).toUpperCase()} ${message.text()}`))
+    .on('pageerror', ({ message }) => console.log(message))
+    .on('response', response =>
+      console.log(`${response.status()} ${response.url()}`))
+    .on('requestfailed', request =>
+      console.log(`${request.failure().errorText} ${request.url()}`))
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
       timeout: 0
     });
+    
     //if (data.debug) console.log(await response.headers())
 
     await page.mouse.move(100, Math.floor(Math.random() * 100));
