@@ -339,7 +339,7 @@ async function search(req, res) {
 
   
     console.log(await page.evaluate(async () => {
-      return navigator.userAgentData
+      return await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion', 'architecture', 'bitness', 'model', 'uaFullVersion']);
     }))
 
     await useProxy(page,proxy);
@@ -377,16 +377,10 @@ async function search(req, res) {
     // // Bypass detections
     // await bypass(page)
 
-
-   await page
-    .on('console', message =>
-      console.log(`${message.type().substr(0, 3).toUpperCase()} ${message.text()}`))
-      
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
       timeout: 0
     });
-
     //if (data.debug) console.log(await response.headers())
 
     await page.mouse.move(100, Math.floor(Math.random() * 100));
