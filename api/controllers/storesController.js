@@ -336,14 +336,6 @@ async function search(req, res) {
       gpu: {
       vendor: "Google Inc. (Intel)",
       renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"
-    },
-    webgl: {
-      vendor: "Google Inc. (Intel)",
-      renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"
-    },
-    webgl2: {
-      vendor: "Google Inc. (Intel)",
-      renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"
     }}).onPageCreated(page)
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
