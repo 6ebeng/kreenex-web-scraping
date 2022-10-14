@@ -339,7 +339,8 @@ async function search(req, res) {
 
   
     console.log(await page.evaluate(async () => {
-      return await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion', 'architecture', 'bitness', 'model', 'uaFullVersion']);
+      const a = await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion', 'architecture', 'bitness', 'model', 'uaFullVersion'])
+      return a;
     }))
 
     await useProxy(page,proxy);
