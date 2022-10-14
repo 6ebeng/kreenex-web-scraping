@@ -337,11 +337,6 @@ async function search(req, res) {
     await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Google Inc. (Intel)", renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11","platform": "Win32"}).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
-  
-    console.log(await page.evaluate(async () => {
-      const a = await navigator.userAgentData.getHighEntropyValues(['platform', 'platformVersion', 'architecture', 'bitness', 'model', 'uaFullVersion'])
-      return a;
-    }))
 
     await useProxy(page,proxy);
 
