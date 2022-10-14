@@ -339,7 +339,7 @@ async function search(req, res) {
 
   
     console.log(await page.evaluate(async () => {
-      return console.log(navigator.userAgentData)
+      return navigator.userAgentData
     }))
 
     await useProxy(page,proxy);
