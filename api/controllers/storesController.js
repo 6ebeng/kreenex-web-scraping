@@ -328,9 +328,7 @@ async function search(req, res) {
     
 
     await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({
-      userAgent: userAgent,
-      locale: 'en-US,en',
-      maskLinux: true
+      userAgent: userAgent
     }).onPageCreated(page)
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
