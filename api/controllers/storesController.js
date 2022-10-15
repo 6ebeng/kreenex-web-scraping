@@ -374,7 +374,7 @@ async function search(req, res) {
     // await bypassWebgl(page,userAgent,"Intel Inc.")
     // // Bypass detections
     // await bypass(page)
-console.log("hello is" + await page.evaluate(()=>(CSS.supports('accent-color', 'initial'))))
+console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
       timeout: 0
