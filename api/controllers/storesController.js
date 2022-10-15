@@ -315,7 +315,7 @@ async function search(req, res) {
         `--disable-translate`,
         `--window-position=0,0`,
         '--hide-scrollbars',
-        '--mute-audio'
+        '--mute-audio',
         `--disable-speech-api`,
         `--user-agent=${userAgent}`,
         ...argsHeadFull
