@@ -2,7 +2,10 @@
     "debug": true,
     "isHeadless": false,
     "scrollToBottom": false,
-    "proxies": [],
+    "proxies": [
+      "185.191.177.14:46757",
+      "24.109.252.48:80"
+    ],
     "waitUntill": "networkidle0",
     "blockResourceTypes": [],
     "whiteListUrls": [
