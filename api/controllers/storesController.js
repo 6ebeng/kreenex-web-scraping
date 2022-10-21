@@ -265,14 +265,6 @@ async function search(req, res) {
 
   
 
-
-        
-
-      
-
-      
-      
-
     var proxy
     if (data.proxies.length > 0){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
