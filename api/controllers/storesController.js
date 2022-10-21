@@ -265,11 +265,8 @@ async function search(req, res) {
 
   
 
-    var proxy
-    if (data.proxies.length > 0){
-       proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
-       console.log(proxy)
-    }
+
+
 
     /*
       Uses for Windows
@@ -320,19 +317,13 @@ async function search(req, res) {
     const page = (await browser.pages())[0]; 
     
 
-    await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({
-      userAgent: userAgent,
-      locale: 'en-US,en',
-      maskLinux: true
-    }).onPageCreated(page)
+    await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent}).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Google Inc. (Intel)", renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"}).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
-
-
-    await useProxy(page,proxy);
+    if (data.proxies.length > 0) await useProxy(page,data.proxies[Math.floor(Math.random() * data.proxies.length)]);
 
     //Randomize viewport size
     await page.setViewport({
@@ -366,11 +357,11 @@ async function search(req, res) {
     // await bypassWebgl(page,userAgent,"Intel Inc.")
     // // Bypass detections
     // await bypass(page)
-console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
-    const response = await page.goto(req.body.Url, {
-      waitUntil: data.waitUntil,
-      timeout: 0
-    });
+// console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
+//     const response = await page.goto(req.body.Url, {
+//       waitUntil: data.waitUntil,
+//       timeout: 0
+//     });
     //if (data.debug) console.log(await response.headers())
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
