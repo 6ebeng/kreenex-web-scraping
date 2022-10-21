@@ -327,7 +327,6 @@ async function search(req, res) {
         '--disable-software-rasterizer',
         '--disable-cloud-import',
         '--disable-gesture-typing',
-        '--disable-setuid-sandbox',
         '--disable-offer-store-unmasked-wallet-cards',
         '--disable-offer-upload-credit-cards',
         '--disable-print-preview',
@@ -338,9 +337,7 @@ async function search(req, res) {
         '--enable-async-dns',
         '--enable-simple-cache-backend',
         '--enable-tcp-fast-open',
-        '--enable-webgl',
         '--prerender-from-omnibox=disabled',
-        '--enable-web-bluetooth',
         // cannot be turned on because it will cause Chromium to ignore the certificate error
         // '--ignore-certificate-errors',
         // '--ignore-certificate-errors-spki-list',
