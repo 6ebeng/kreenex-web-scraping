@@ -266,7 +266,11 @@ async function search(req, res) {
   
 
 
-
+    if (data.proxies.length > 0){
+       var proxy
+       proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+       console.log(proxy)
+    }
 
     /*
       Uses for Windows
@@ -328,12 +332,8 @@ async function search(req, res) {
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
 
-    if (data.proxies.length > 0){
-      var proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
-      console.log(proxy)
-      await useProxy(page,proxy);
-    }
-    
+
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
