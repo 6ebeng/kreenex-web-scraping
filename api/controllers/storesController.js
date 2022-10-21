@@ -352,7 +352,7 @@ async function search(req, res) {
     const deserializedCookies = JSON.parse(cookies);
     await page.setCookie(...deserializedCookies);
 
-    await page.emulateTimezone('Asia/Baghdad');
+    //await page.emulateTimezone('Asia/Baghdad');
 
 
     await page.setRequestInterception(true);
