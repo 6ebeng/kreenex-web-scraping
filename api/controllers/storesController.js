@@ -265,8 +265,11 @@ async function search(req, res) {
 
   
 
-
-
+    var proxy
+    if (data.proxies.length > 0){
+       proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+       console.log(proxy)
+    }
 
     /*
       Uses for Windows
@@ -307,7 +310,7 @@ async function search(req, res) {
         '--mute-audio',
         `--disable-speech-api`,
         `--user-agent=${userAgent}`,
-        ...argsHeadFull
+        ...argsHeadFull,
       ],
       slowMo: 0
     });
@@ -317,13 +320,19 @@ async function search(req, res) {
     const page = (await browser.pages())[0]; 
     
 
-    await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({userAgent: userAgent}).onPageCreated(page)
+    await require("puppeteer-extra-plugin-stealth/evasions/user-agent-override")({
+      userAgent: userAgent,
+      locale: 'en-US,en',
+      maskLinux: true
+    }).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.hardwareConcurrency`)(8).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.vendor`)({ vendor: 'Google Inc.' }).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/webgl.vendor`)({vendor: "Google Inc. (Intel)", renderer: "Intel, Intel(R) HD Graphics 4000 Direct3D11 vs_5_0 ps_5_0, D3D11"}).onPageCreated(page)
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
-    if (data.proxies.length > 0) await useProxy(page,data.proxies[Math.floor(Math.random() * data.proxies.length)]);
+
+
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
