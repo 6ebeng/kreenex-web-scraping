@@ -266,8 +266,15 @@ async function search(req, res) {
   
 
 
+        
+
+      
+
+      
+      
+
+    var proxy
     if (data.proxies.length > 0){
-       var proxy
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
        console.log(proxy)
     }
@@ -311,7 +318,7 @@ async function search(req, res) {
         '--mute-audio',
         `--disable-speech-api`,
         `--user-agent=${userAgent}`,
-        ...argsHeadFull,
+        ...argsHeadFull
       ],
       slowMo: 0
     });
@@ -367,11 +374,11 @@ async function search(req, res) {
     // await bypassWebgl(page,userAgent,"Intel Inc.")
     // // Bypass detections
     // await bypass(page)
-// console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
-//     const response = await page.goto(req.body.Url, {
-//       waitUntil: data.waitUntil,
-//       timeout: 0
-//     });
+console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
+    const response = await page.goto(req.body.Url, {
+      waitUntil: data.waitUntil,
+      timeout: 0
+    });
     //if (data.debug) console.log(await response.headers())
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
