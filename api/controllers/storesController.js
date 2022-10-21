@@ -307,7 +307,7 @@ async function search(req, res) {
         '--hide-scrollbars',
         '--mute-audio',
         `--disable-speech-api`,
-        //`--user-agent=${userAgent}`,
+        `--user-agent=${userAgent}`,
         ...argsHeadFull
       ],
       slowMo: 0
