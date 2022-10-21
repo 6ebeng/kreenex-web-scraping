@@ -310,7 +310,7 @@ async function search(req, res) {
         '--mute-audio',
         `--disable-speech-api`,
         `--user-agent=${userAgent}`,
-        ...argsHeadFull,
+        ...argsHeadFull
       ],
       slowMo: 0
     });
