@@ -263,20 +263,10 @@ async function search(req, res) {
 
   }
 
-  
-
-
-        
-
-      
-
-      
-      
-
     var proxy
     if (data.proxies.length > 0){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
-       console.log(proxy)
+       if (data.debug) console.log(proxy)
     }
 
     /*
@@ -371,9 +361,8 @@ async function search(req, res) {
 
     console.log(await page.browser().userAgent())
     // await bypassWebgl(page,userAgent,"Intel Inc.")
-    // // Bypass detections
+    // Bypass detections
     // await bypass(page)
-console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
     const response = await page.goto(req.body.Url, {
       waitUntil: data.waitUntil,
       timeout: 0
