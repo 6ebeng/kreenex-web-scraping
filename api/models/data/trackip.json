@@ -1,0 +1,59 @@
+{
+    "debug": true,
+    "isHeadless": false,
+    "scrollToBottom": false,
+    "proxies": [],
+    "waitUntill": "networkidle0",
+    "blockResourceTypes": [],
+    "whiteListUrls": [
+    "trackip"
+    ],
+    "blockUrls": [
+  
+    ],
+    "container": "//*[@id='fingerprint-data']/div[2]/div/div[1]/div[1]",
+    "notInStockSizes": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": ""
+    },
+    "inStockSizes": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": ""
+    },
+    "clickSize": "",
+    "title": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": ""
+    },
+    "category": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": ""
+    },
+    "price": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": ""
+    },
+    "color": {
+      "attribute": "",
+      "regex": "^[^|]+",
+      "groups": [],
+      "selector": ""
+    },
+    "images": {
+      "attribute": "",
+      "regex": "",
+      "groups": [],
+      "selector": ""
+    }
+  
+  }
