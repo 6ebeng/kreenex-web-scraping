@@ -265,10 +265,18 @@ async function search(req, res) {
 
   
 
+
+        
+
+      
+
+      
+      
+
     var proxy
     if (data.proxies.length > 0){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
-       if (data.debug) console.log(proxy)
+       console.log(proxy)
     }
 
     /*
@@ -331,10 +339,8 @@ async function search(req, res) {
     await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
 
-    if (data.proxies.length > 0){
-      await useProxy(page,proxy);
-   }
-    
+
+    await useProxy(page,proxy);
 
     //Randomize viewport size
     await page.setViewport({
@@ -368,11 +374,11 @@ async function search(req, res) {
     // await bypassWebgl(page,userAgent,"Intel Inc.")
     // // Bypass detections
     // await bypass(page)
-// console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
-//     const response = await page.goto(req.body.Url, {
-//       waitUntil: data.waitUntil,
-//       timeout: 0
-//     });
+console.log("hello is" + await page.evaluate(()=>(WebGLRenderingContext.VENDOR)))
+    const response = await page.goto(req.body.Url, {
+      waitUntil: data.waitUntil,
+      timeout: 0
+    });
     //if (data.debug) console.log(await response.headers())
     await page.mouse.move(100, Math.floor(Math.random() * 100));
     await page.mouse.move(200, Math.floor(Math.random() * 100));
