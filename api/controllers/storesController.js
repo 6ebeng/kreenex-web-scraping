@@ -225,6 +225,7 @@ async function search(req, res) {
   args.push('--mute-audio')
   args.push(`--disable-speech-api`)
   args.push(`--user-agent=${userAgent}`)
+  args.push(`--disable-web-security`)
 
   if (!data.isHeadless) {
     await xvfb.startSync();
