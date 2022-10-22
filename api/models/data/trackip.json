@@ -3,7 +3,7 @@
     "isHeadless": false,
     "scrollToBottom": false,
     "proxies": [
-      "socks4://185.14.249.19:3128"
+      "https://185.14.249.19:3128"
     ],
     "waitUntill": "networkidle0",
     "blockResourceTypes": [],
