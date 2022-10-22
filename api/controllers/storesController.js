@@ -213,14 +213,26 @@ async function search(req, res) {
     xvfb_args: ["-screen", "0", '1366x768x24', "-ac"]
   });
 
-  var argsHeadFull = []
+  var args = []
+
+  args.push(`--no-sandbox`)
+  args.push(`--disable-setuid-sandbox`)
+  args.push(`--window-size=1366x768`)
+  args.push(`--blink-settings=imagesEnabled=true`)
+  args.push(`--disable-translate`)
+  args.push(`--window-position=0,0`)
+  args.push('--hide-scrollbars')
+  args.push('--mute-audio')
+  args.push(`--disable-speech-api`)
+  args.push(`--user-agent=${userAgent}`)
+
   if (!data.isHeadless) {
     await xvfb.startSync();
-    argsHeadFull = [
-      "--use-fake-device-for-media-stream",
-      "--display=" + xvfb._display
-    ]
+    args.push("--use-fake-device-for-media-stream")
+    args.push("--display=" + xvfb._display)
   }
+
+  
 
   /* Initialize Browser */
   try {
@@ -266,7 +278,9 @@ async function search(req, res) {
     var proxy
     if (data.proxies.length > 0){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+       args.push(`--proxy-server=${proxy}`)
        if (data.debug) console.log(proxy)
+
     }
 
     /*
@@ -297,19 +311,7 @@ async function search(req, res) {
     browser = await puppeteer.launch({
       headless: data.isHeadless,
       executablePath: '/usr/bin/google-chrome',
-      args: [
-        `--no-sandbox`,
-        `--disable-setuid-sandbox`,
-        `--window-size=1366x768`,
-        `--blink-settings=imagesEnabled=true`,
-        `--disable-translate`,
-        `--window-position=0,0`,
-        '--hide-scrollbars',
-        '--mute-audio',
-        `--disable-speech-api`,
-        `--user-agent=${userAgent}`,
-        ...argsHeadFull
-      ],
+      args: args,
       slowMo: 0
     });
 
