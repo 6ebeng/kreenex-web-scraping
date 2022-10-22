@@ -277,10 +277,10 @@ async function search(req, res) {
 
 
     if (data.proxies.length > 0){
-      var proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+      var proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)].match(/(^\S+):(\d+)/g)
        //args.push(`--proxy-server=${proxy}`)
-       if (data.debug) console.log(proxy)
-       puppeteer.use(useProxy({address: proxy.match(/(?<=:)[\d]+/g)[0], port: proxy.match(/^\S+(?=:)/g)[0]}));
+       if (data.debug) console.log(proxy[0]+":"+proxy[1])
+       puppeteer.use(useProxy({address: proxy[0], port: proxy[1]}));
     }
 
     /*
