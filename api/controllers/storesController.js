@@ -275,12 +275,12 @@ async function search(req, res) {
 
   }
 
-    var proxy
+
     if (data.proxies.length > 0){
-       proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
+      var proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
        //args.push(`--proxy-server=${proxy}`)
        if (data.debug) console.log(proxy)
-
+       puppeteer.use(useProxy({address: proxy.match(/(?<=:)[\d]+/g)[0], port: proxy.match(/^\S+(?=:)/g)[0]}));
     }
 
     /*
@@ -327,7 +327,7 @@ async function search(req, res) {
     //await require(`puppeteer-extra-plugin-stealth/evasions/navigator.languages`)(['en-US', 'en']).onPageCreated(page)
 
 
-    if (data.proxies.length > 0) await useProxy(page,proxy);
+    
 
     //Randomize viewport size
     await page.setViewport({
