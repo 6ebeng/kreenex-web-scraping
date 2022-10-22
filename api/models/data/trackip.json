@@ -3,7 +3,7 @@
     "isHeadless": false,
     "scrollToBottom": false,
     "proxies": [
-      "45.76.86.183:10017"
+      "159.69.10.186:4102"
     ],
     "waitUntill": "networkidle0",
     "blockResourceTypes": [],
