@@ -280,7 +280,7 @@ async function search(req, res) {
     if (data.proxies.length > 0){
        proxy = data.proxies[Math.floor(Math.random() * data.proxies.length)]
        //args.push(`--proxy-server=${proxy}`)
-       if (data.debug) console.log(proxy[0]+":"+proxy[1])
+       if (data.debug) console.log(proxy)
     }
 
     /*
