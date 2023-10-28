@@ -7,6 +7,7 @@ debug/docs/*
 debug/screenshoots/*
 cookies.json
 test.js
+package-lock.json
 # testing
 /coverage
 
@@ -19,7 +20,7 @@ test.js
 .env.development.local
 .env.test.local
 .env.production.local
-package-lock.json
+
 
 npm-debug.log*
 yarn-debug.log*
