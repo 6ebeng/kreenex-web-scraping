@@ -49,6 +49,7 @@ function validate(method) {
   }
 }
 
+
 async function mainSelector(page, selector, attribute) {
   if (selector.startsWith('//')) {
     if (attribute) {
@@ -520,7 +521,7 @@ async function search(req, res) {
       Message: "Some error occured Or data not found, please try again."
     });
   } finally {
-    browser.close()
+    browser.close();
     if (!data.isHeadless) {
       xvfb.stopSync();
     }
