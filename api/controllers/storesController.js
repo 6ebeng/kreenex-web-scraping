@@ -6,7 +6,7 @@
  * Developed By  : Tishko Rasoul (tishko.rasoul@gmail.com)
  */
 
-const { puppeteer, scrollToBottom, check, validationResult, fs, Xvfb, stealth, useProxy } = require('../helper/packages.js');
+const { puppeteer, scrollToBottom, check, validationResult, fs, path, Xvfb, stealth, useProxy } = require('../helper/packages.js');
 
 const bypass = require('../helper/bypassDetections.js');
 const bypassWebgl = require('../helper/bypassWebgl.js');
@@ -390,7 +390,8 @@ async function search(req, res) {
 		//await page.setUserAgent(userAgent);
 
 		// Saved cookies reading
-		const cookies = fs.readFileSync('../../cookies.json', 'utf8');
+		const cookiesPath = path.join(__dirname, '../cookies.json');
+		const cookies = fs.readFileSync(cookiesPath, 'utf8');
 
 		const deserializedCookies = JSON.parse(cookies);
 		await page.setCookie(...deserializedCookies);
