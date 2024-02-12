@@ -1,19 +1,19 @@
-version: "3.8"
+version: '3.8'
 services:
   web:
-    image: "scraper"
-    container_name: "scraper_api"
+    image: 'scraper'
+    container_name: 'scraper_api'
     restart: always
-    build: 
+    build:
       target: production
     ports:
       - 4200:4200
     deploy:
       resources:
         limits:
-          memory: 512M
+          memory: 2048M
         reservations:
-          memory: 256M
+          memory: 1024M
     volumes:
       - ./src:/app/src
     stdin_open: true
