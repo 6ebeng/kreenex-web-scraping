@@ -390,7 +390,7 @@ async function search(req, res) {
 		//await page.setUserAgent(userAgent);
 
 		// Saved cookies reading
-		const cookiesPath = path.join(__dirname, '../cookies.json');
+		const cookiesPath = path.join(__dirname, '../../cookies.json');
 		const cookies = fs.readFileSync(cookiesPath, 'utf8');
 
 		const deserializedCookies = JSON.parse(cookies);
